@@ -17,3 +17,19 @@ final kSizedBoxWidth25 = SizedBox(width: 25);
 final kSizedBoxWidth30 = SizedBox(width: 30);
 final kSizedBoxWidth40 = SizedBox(width: 40);
 final kSizedBoxWidth50 = SizedBox(width: 50);
+
+double kMqHeight(BuildContext context) {
+  return MediaQuery.of(context).size.height;
+}
+
+double kMqWidth(BuildContext context) {
+  return MediaQuery.of(context).size.width;
+}
+
+kSbHeight(double height) {
+  return SizedBox(height: height);
+}
+
+kSbWidth(double width) {
+  return SizedBox(width: width);
+}
