@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
-import 'package:xenotune_flutter_dev/Presentation/onboarding_screen.dart';
+import 'package:xenotune_flutter_dev/Presentation/Widgets/Onboarding_widgets/onboarding_root.dart';
 
 class Demo extends StatelessWidget {
   const Demo({super.key});
@@ -19,7 +19,7 @@ class Demo extends StatelessWidget {
               ),
             ),
           ),
-          OnboardingScreen(),
+          OnboardingRoot(),
         ],
       ),
     );
