@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/begin_page.dart';
+import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
 
 class SleepPage extends StatelessWidget {
   const SleepPage({super.key});
@@ -55,7 +55,7 @@ class SleepPage extends StatelessWidget {
                             transitionDuration: Duration(milliseconds: 500),
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    BeginPage(),
+                                    WelcomePage(),
                             transitionsBuilder: (
                               context,
                               animation,
