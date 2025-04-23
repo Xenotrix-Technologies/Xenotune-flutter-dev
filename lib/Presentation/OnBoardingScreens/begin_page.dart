@@ -4,13 +4,14 @@ import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 class BeginPage extends StatelessWidget {
-  const BeginPage({super.key});
+  final Function() onPressed;
+  const BeginPage({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
           children: [
             Container(
               decoration: BoxDecoration(
@@ -55,7 +56,7 @@ class BeginPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: onPressed,
 
                     child: Text('Tap to Begin', style: inter(color: kblack)),
                   ),

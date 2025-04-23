@@ -18,7 +18,48 @@ class _OnboardingRootState extends State<OnboardingRoot> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ktransparent,
-      body: PageView(children: [SleepPage()]),
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          BeginPage(
+            onPressed: () {
+              _pageController.animateToPage(
+                1,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeOut,
+              );
+            },
+          ),
+          FocusPage(
+            onPressed: () {
+              _pageController.animateToPage(
+                2,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeOut,
+              );
+            },
+          ),
+          RelaxPage(
+            onPressed: () {
+              _pageController.animateToPage(
+                3,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeOut,
+              );
+            },
+          ),
+          SleepPage(
+            onPressed: () {
+              _pageController.animateToPage(
+                0,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeOut,
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

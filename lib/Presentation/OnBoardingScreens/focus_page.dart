@@ -4,7 +4,8 @@ import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 class FocusPage extends StatelessWidget {
-  const FocusPage({super.key});
+  final Function() onPressed;
+  const FocusPage({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class FocusPage extends StatelessWidget {
                   ),
                   kSbHeight(kMqHeight(context) * 0.03),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: onPressed,
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(

@@ -4,7 +4,8 @@ import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 class SleepPage extends StatelessWidget {
-  const SleepPage({super.key});
+  final Function() onPressed;
+  const SleepPage({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class SleepPage extends StatelessWidget {
                   ),
                   kSbHeight(kMqHeight(context) * 0.03),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: onPressed,
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
