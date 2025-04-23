@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/focus_page.dart';
 
 class BeginPage extends StatelessWidget {
-  final Function() onPressed;
-  const BeginPage({super.key, required this.onPressed});
+  const BeginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: ktransparent,
         body: Stack(
           children: [
             Container(
@@ -25,15 +26,21 @@ class BeginPage extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-                  Container(
-                    height: kMqHeight(context) * 0.59,
-                    color: kPrimarySleepColor,
+                  Hero(
+                    tag: 'animation',
+                    child: Container(
+                      height: kMqHeight(context) * 0.59,
+                      color: kPrimarySleepColor,
+                    ),
                   ),
                   kSbHeight(kMqHeight(context) * 0.05),
-                  Text(
-                    'You don\'t choose the music.\nThe moment does.',
-                    textAlign: TextAlign.center,
-                    style: lexanGiga(color: kwhite, fontSize: 17),
+                  Hero(
+                    tag: 'text',
+                    child: Text(
+                      'You don\'t choose the music.\nThe moment does.',
+                      textAlign: TextAlign.center,
+                      style: lexanGiga(color: kwhite, fontSize: 17),
+                    ),
                   ),
                   kSbHeight(kMqHeight(context) * 0.05),
 
@@ -56,7 +63,28 @@ class BeginPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: onPressed,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 500),
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  FocusPage(),
+                          transitionsBuilder: (
+                            context,
+                            animation,
+                            secondaryAnimation,
+                            child,
+                          ) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
 
                     child: Text('Tap to Begin', style: inter(color: kblack)),
                   ),

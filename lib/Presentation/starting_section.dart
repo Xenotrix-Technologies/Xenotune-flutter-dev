@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
-import 'package:xenotune_flutter_dev/Presentation/Widgets/Onboarding_widgets/onboarding_root.dart';
+import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/begin_page.dart';
 
-class Demo extends StatelessWidget {
-  const Demo({super.key});
+class StartingSection extends StatelessWidget {
+  const StartingSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class Demo extends StatelessWidget {
               ),
             ),
           ),
-          OnboardingRoot(),
+          BeginPage(),
         ],
       ),
     );
