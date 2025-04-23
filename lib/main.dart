@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
 import 'package:xenotune_flutter_dev/Presentation/starting_section.dart';
 
 void main() {
@@ -11,6 +10,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: WelcomePage());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: StartingSection(),
+    );
   }
 }

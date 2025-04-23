@@ -78,7 +78,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                   child: Ink(
                     padding: EdgeInsets.symmetric(
-                      horizontal: kMqWidth(context) * 0.25,
+                      horizontal: kMqWidth(context) * 0.20,
                       vertical: 12,
                     ),
                     decoration: BoxDecoration(
