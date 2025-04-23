@@ -41,7 +41,7 @@ class FocusPage extends StatelessWidget {
                     color: kPrimaryFocusColor,
                   ),
                   Text(
-                    'It’s built to block out noise and\nkeep your momentum flowing.',
+                    'It\'s built to block out noise and\nkeep your momentum flowing.',
                     textAlign: TextAlign.center,
                     style: kdamThmor(color: kBlueTextColour, fontSize: 17),
                   ),
