@@ -3,6 +3,7 @@ import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/focus_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/relax_page.dart';
+import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/sleep_page.dart';
 
 class OnboardingRoot extends StatefulWidget {
   const OnboardingRoot({super.key});
@@ -17,7 +18,7 @@ class _OnboardingRootState extends State<OnboardingRoot> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ktransparent,
-      body: PageView(children: [RelaxPage()]),
+      body: PageView(children: [SleepPage()]),
     );
   }
 }
