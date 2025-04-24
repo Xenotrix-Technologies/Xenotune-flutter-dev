@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Widgets/Gradient%20Header/gradient_header.dart';
+import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

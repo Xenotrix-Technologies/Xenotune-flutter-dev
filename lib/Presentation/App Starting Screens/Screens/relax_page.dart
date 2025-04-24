@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/sleep_page.dart';
+import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/sleep_page.dart';
 
 class RelaxPage extends StatelessWidget {
   const RelaxPage({super.key});
