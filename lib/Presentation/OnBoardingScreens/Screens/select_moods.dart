@@ -6,7 +6,9 @@ import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/widg
 import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class SelectMood extends StatefulWidget {
-  const SelectMood({super.key});
+  final Function()? onBack;
+  final Function()? onContinue;
+  const SelectMood({super.key, this.onBack, this.onContinue});
 
   @override
   State<SelectMood> createState() => _SelectMoodState();
@@ -40,7 +42,6 @@ class _SelectMoodState extends State<SelectMood> {
     return Scaffold(
       backgroundColor: ktransparent,
       resizeToAvoidBottomInset: false,
-
       body: SafeArea(
         child: Stack(
           children: [
@@ -98,28 +99,7 @@ class _SelectMoodState extends State<SelectMood> {
                 ),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   PageRouteBuilder(
-                      //     transitionDuration: Duration(milliseconds: 500),
-                      //     pageBuilder:
-                      //         (context, animation, secondaryAnimation) =>
-                      //             RelaxPage(),
-                      //     transitionsBuilder: (
-                      //       context,
-                      //       animation,
-                      //       secondaryAnimation,
-                      //       child,
-                      //     ) {
-                      //       return FadeTransition(
-                      //         opacity: animation,
-                      //         child: child,
-                      //       );
-                      //     },
-                      //   ),
-                      // );
-                    },
+                    onPressed: widget.onContinue,
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
@@ -146,6 +126,14 @@ class _SelectMoodState extends State<SelectMood> {
                   ),
                 ),
               ],
+            ),
+            Positioned(
+              top: kMqHeight(context) * 0.019,
+              left: kMqWidth(context) * 0.019,
+              child: IconButton(
+                onPressed: widget.onBack,
+                icon: Icon(Icons.arrow_back_ios_new, color: kPrimaryPurple),
+              ),
             ),
           ],
         ),
