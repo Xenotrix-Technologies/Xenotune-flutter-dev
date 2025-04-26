@@ -17,3 +17,11 @@ const kBlueTextColour = Color(0xFF5DA5F2);
 const kGreenTextColour = Color(0xFFA8E6CF);
 const kPurpleTextColour = Color(0xFFC1B3FF);
 const kGrey = Color(0xFF5B5B5B);
+
+const kRelax = Color(0xFFA8E6CF);
+const kAnxious = Color(0xFFFFC9C9);
+const kCreative = Color(0xFFFFD86B);
+const kSad = Color(0xFF96A5AE);
+const kEnergized = Color(0xFFFF9E57);
+const kSleep = Color(0xFFC1B3FF);
+const kFocus = Color(0xFF5DA5F2);
