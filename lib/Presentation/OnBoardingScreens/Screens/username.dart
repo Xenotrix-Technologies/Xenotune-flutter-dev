@@ -6,7 +6,8 @@ import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class UsernamePage extends StatelessWidget {
-  const UsernamePage({super.key});
+  final Function()? onContinue;
+  const UsernamePage({super.key, this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -70,28 +71,7 @@ class UsernamePage extends StatelessWidget {
                     ),
                     Center(
                       child: ElevatedButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   PageRouteBuilder(
-                          //     transitionDuration: Duration(milliseconds: 500),
-                          //     pageBuilder:
-                          //         (context, animation, secondaryAnimation) =>
-                          //             RelaxPage(),
-                          //     transitionsBuilder: (
-                          //       context,
-                          //       animation,
-                          //       secondaryAnimation,
-                          //       child,
-                          //     ) {
-                          //       return FadeTransition(
-                          //         opacity: animation,
-                          //         child: child,
-                          //       );
-                          //     },
-                          //   ),
-                          // );
-                        },
+                        onPressed: onContinue,
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
