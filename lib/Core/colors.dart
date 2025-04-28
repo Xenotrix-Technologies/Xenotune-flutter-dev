@@ -39,3 +39,9 @@ const kFallAsleepDart = Color(0xFF2A1F3D);
 const kFallAsleepLight = Color(0xFFC1B3FF);
 const kGetInspiredDart = Color(0xFFFF9E57);
 const kGetInspiredLight = Color(0xFFFFD86B);
+
+const kWarm = Color(0xFFF5B38B);
+const kSpacious = Color(0xFFB0C4DE);
+const kDreamy = Color(0xFFD6C2F0);
+const kMinimal = Color(0xFFEDEDED);
+const kDeep = Color(0xFF4B4B6B);
