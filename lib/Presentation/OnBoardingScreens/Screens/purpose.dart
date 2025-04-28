@@ -4,16 +4,16 @@ import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
-class HelpsToPage extends StatefulWidget {
+class PurposePage extends StatefulWidget {
   final Function()? onBack;
   final void onTap;
-  const HelpsToPage({super.key, this.onBack, this.onTap});
+  const PurposePage({super.key, this.onBack, this.onTap});
 
   @override
-  State<HelpsToPage> createState() => _HelpsToPageState();
+  State<PurposePage> createState() => _PurposePageState();
 }
 
-class _HelpsToPageState extends State<HelpsToPage> {
+class _PurposePageState extends State<PurposePage> {
   String? helpsTo;
 
   @override
