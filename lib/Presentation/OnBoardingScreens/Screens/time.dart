@@ -110,7 +110,7 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                         onPressed: () {
                           widget.onTap;
                           setState(() {
-                            time = 'Studing';
+                            time = 'Studying';
                           });
                         },
                         icon: Icon(Symbols.book_2, size: 30, color: kblack),
