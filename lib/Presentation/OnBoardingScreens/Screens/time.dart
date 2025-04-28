@@ -84,7 +84,9 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                       child: IconButton(
                         onPressed: () {
                           widget.onTap;
-                          time = 'Night';
+                          setState(() {
+                            time = 'Night';
+                          });
                         },
                         icon: Icon(
                           Symbols.clear_night,
@@ -107,7 +109,9 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                       child: IconButton(
                         onPressed: () {
                           widget.onTap;
-                          time = 'Studing';
+                          setState(() {
+                            time = 'Studing';
+                          });
                         },
                         icon: Icon(Symbols.book_2, size: 30, color: kblack),
                       ),
@@ -126,7 +130,9 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                       child: IconButton(
                         onPressed: () {
                           widget.onTap;
-                          time = 'Bedtime';
+                          setState(() {
+                            time = 'Bedtime';
+                          });
                         },
                         icon: Icon(Symbols.bed, size: 30, color: kblack),
                       ),
