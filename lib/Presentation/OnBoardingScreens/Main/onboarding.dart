@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/feel.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/purpose.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/select_moods.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/time.dart';
@@ -19,7 +20,13 @@ class _OnboardingState extends State<Onboarding> {
       child: Scaffold(
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
-          children: [PurposePage()],
+          children: [
+            UsernamePage(),
+            SelectMood(),
+            TimeSelectPage(),
+            PurposePage(),
+            FeelPage(),
+          ],
         ),
       ),
     );
