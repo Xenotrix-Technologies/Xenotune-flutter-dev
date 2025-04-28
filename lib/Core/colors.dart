@@ -30,3 +30,12 @@ const kDay = Color(0xFFFFF5CC);
 const kNight = Color(0xFF2A1F3D);
 const kReading = Color(0xFFD0E6FF);
 const kBedtime = Color(0xFFE3D5FF);
+
+const kConcentrateDart = Color(0xFF1A2B4C);
+const kConcentrateLight = Color(0xFF5DA5F2);
+const kCalmDownDart = Color(0xFF3E6651);
+const kCalmDownLight = Color(0xFFA8E6CF);
+const kFallAsleepDart = Color(0xFF2A1F3D);
+const kFallAsleepLight = Color(0xFFC1B3FF);
+const kGetInspiredDart = Color(0xFFFF9E57);
+const kGetInspiredLight = Color(0xFFFFD86B);
