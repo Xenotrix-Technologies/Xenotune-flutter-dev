@@ -25,3 +25,8 @@ const kSad = Color(0xFF96A5AE);
 const kEnergized = Color(0xFFFF9E57);
 const kSleep = Color(0xFFC1B3FF);
 const kFocus = Color(0xFF5DA5F2);
+
+const kDay = Color(0xFFFFF5CC);
+const kNight = Color(0xFF2A1F3D);
+const kReading = Color(0xFFD0E6FF);
+const kBedtime = Color(0xFFE3D5FF);
