@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class PurposePage extends StatefulWidget {
   final Function()? onBack;
-  final void onTap;
-  const PurposePage({super.key, this.onBack, this.onTap});
+  final PageController controller;
+  final int pageNumber;
+  const PurposePage({
+    super.key,
+    this.onBack,
+    required this.controller,
+    required this.pageNumber,
+  });
 
   @override
   State<PurposePage> createState() => _PurposePageState();
@@ -24,20 +29,6 @@ class _PurposePageState extends State<PurposePage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [kPrimaryBlueDark, kblack, kPrimaryPurpleDark],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-            GradientHeader(
-              bottom: 0,
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,9 +42,13 @@ class _PurposePageState extends State<PurposePage> {
                   ),
                 ),
                 Center(
-                  child: InkWell(
+                  child: GestureDetector(
                     onTap: () {
-                      widget.onTap;
+                      widget.controller.animateToPage(
+                        widget.pageNumber,
+                        duration: Durations.long1,
+                        curve: Curves.easeInOut,
+                      );
                       setState(() {
                         helpsTo = 'Concentrate';
                       });
@@ -81,9 +76,13 @@ class _PurposePageState extends State<PurposePage> {
                   ),
                 ),
                 Center(
-                  child: InkWell(
+                  child: GestureDetector(
                     onTap: () {
-                      widget.onTap;
+                      widget.controller.animateToPage(
+                        widget.pageNumber,
+                        duration: Durations.long1,
+                        curve: Curves.easeInOut,
+                      );
                       setState(() {
                         helpsTo = 'Calm Down';
                       });
@@ -111,9 +110,13 @@ class _PurposePageState extends State<PurposePage> {
                   ),
                 ),
                 Center(
-                  child: InkWell(
+                  child: GestureDetector(
                     onTap: () {
-                      widget.onTap;
+                      widget.controller.animateToPage(
+                        widget.pageNumber,
+                        duration: Durations.long1,
+                        curve: Curves.easeInOut,
+                      );
                       setState(() {
                         helpsTo = 'Fall Asleep';
                       });
@@ -141,9 +144,13 @@ class _PurposePageState extends State<PurposePage> {
                   ),
                 ),
                 Center(
-                  child: InkWell(
+                  child: GestureDetector(
                     onTap: () {
-                      widget.onTap;
+                      widget.controller.animateToPage(
+                        widget.pageNumber,
+                        duration: Durations.long1,
+                        curve: Curves.easeInOut,
+                      );
                       setState(() {
                         helpsTo = 'Get Inspired';
                       });

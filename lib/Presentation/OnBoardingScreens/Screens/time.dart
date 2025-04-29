@@ -3,12 +3,17 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class TimeSelectPage extends StatefulWidget {
   final Function()? onBack;
-  final void onTap;
-  const TimeSelectPage({super.key, this.onBack, this.onTap});
+  final PageController controller;
+  final int pageNumber;
+  const TimeSelectPage({
+    super.key,
+    this.onBack,
+    required this.controller,
+    required this.pageNumber,
+  });
 
   @override
   State<TimeSelectPage> createState() => _TimeSelectPageState();
@@ -25,20 +30,6 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [kPrimaryBlueDark, kblack, kPrimaryPurpleDark],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-            GradientHeader(
-              bottom: 0,
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +53,11 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                     child: Center(
                       child: IconButton(
                         onPressed: () {
-                          widget.onTap;
+                          widget.controller.animateToPage(
+                            widget.pageNumber,
+                            duration: Durations.long1,
+                            curve: Curves.easeInOut,
+                          );
                           setState(() {
                             time = 'Day';
                           });
@@ -83,7 +78,11 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                     child: Center(
                       child: IconButton(
                         onPressed: () {
-                          widget.onTap;
+                          widget.controller.animateToPage(
+                            widget.pageNumber,
+                            duration: Durations.long1,
+                            curve: Curves.easeInOut,
+                          );
                           setState(() {
                             time = 'Night';
                           });
@@ -108,7 +107,11 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                     child: Center(
                       child: IconButton(
                         onPressed: () {
-                          widget.onTap;
+                          widget.controller.animateToPage(
+                            widget.pageNumber,
+                            duration: Durations.long1,
+                            curve: Curves.easeInOut,
+                          );
                           setState(() {
                             time = 'Studying';
                           });
@@ -129,7 +132,11 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                     child: Center(
                       child: IconButton(
                         onPressed: () {
-                          widget.onTap;
+                          widget.controller.animateToPage(
+                            widget.pageNumber,
+                            duration: Durations.long1,
+                            curve: Curves.easeInOut,
+                          );
                           setState(() {
                             time = 'Bedtime';
                           });

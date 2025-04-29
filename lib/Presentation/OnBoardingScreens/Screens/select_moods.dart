@@ -3,7 +3,6 @@ import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/widgets/float.dart';
-import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class SelectMood extends StatefulWidget {
   final Function()? onBack;
@@ -45,20 +44,6 @@ class _SelectMoodState extends State<SelectMood> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [kPrimaryBlueDark, kblack, kPrimaryPurpleDark],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-            GradientHeader(
-              bottom: 0,
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,14 +111,6 @@ class _SelectMoodState extends State<SelectMood> {
                   ),
                 ),
               ],
-            ),
-            Positioned(
-              top: kMqHeight(context) * 0.019,
-              left: kMqWidth(context) * 0.019,
-              child: IconButton(
-                onPressed: widget.onBack,
-                icon: Icon(Icons.arrow_back_ios_new, color: kPrimaryPurple),
-              ),
             ),
           ],
         ),

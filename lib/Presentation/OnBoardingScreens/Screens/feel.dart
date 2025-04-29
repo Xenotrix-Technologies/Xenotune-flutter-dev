@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class FeelPage extends StatefulWidget {
   final Function()? onBack;
-  final void onTap;
+  final Function()? onTap;
   const FeelPage({super.key, this.onBack, this.onTap});
 
   @override
@@ -23,20 +22,6 @@ class _FeelPageState extends State<FeelPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [kPrimaryBlueDark, kblack, kPrimaryPurpleDark],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
-              ),
-            ),
-            GradientHeader(
-              bottom: 0,
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,7 +37,7 @@ class _FeelPageState extends State<FeelPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         setState(() {
                           feel = 'Warm';
@@ -80,7 +65,7 @@ class _FeelPageState extends State<FeelPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         setState(() {
                           feel = 'Spacious';
@@ -108,7 +93,7 @@ class _FeelPageState extends State<FeelPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         setState(() {
                           feel = 'Dreamy';
@@ -136,7 +121,7 @@ class _FeelPageState extends State<FeelPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         setState(() {
                           feel = 'Minimal';
@@ -164,7 +149,7 @@ class _FeelPageState extends State<FeelPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
                         setState(() {
                           feel = 'Deep';
