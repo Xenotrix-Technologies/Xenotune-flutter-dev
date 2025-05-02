@@ -17,6 +17,22 @@ class _HomePageState extends State<HomePage> {
   // bool _isPlaying = false;
   List<double> _heights = List.generate(25, (_) => 7.0);
   // Timer? _timer;
+  final List<String> sounds = [
+    'Rain',
+    'Wave',
+    'Wind',
+    'Nature',
+    'Birds',
+    'Violin',
+    'Guiter',
+    'Piano',
+    'Flute',
+    'White noise',
+    'Forest',
+    'Ocean breeze',
+    'Thunderstorm',
+    'Night crickets',
+  ];
 
   // @override
   // void dispose() {
@@ -57,189 +73,228 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
 
-      endDrawer: DrawerWidget(),
-      appBar: AppBar(
-        foregroundColor: kwhite,
-        title: Text(
-          'Hey user,\nWhats\'s your current mood',
-          maxLines: 2,
-          style: poppins(color: kwhite, fontSize: 15),
+        endDrawer: DrawerWidget(),
+        appBar: AppBar(
+          foregroundColor: kwhite,
+          title: Text(
+            'Hey user,\nWhats\'s your current mood',
+            maxLines: 2,
+            style: poppins(color: kwhite, fontSize: 15),
+          ),
+          backgroundColor: ktransparent,
+          surfaceTintColor: ktransparent,
         ),
-        backgroundColor: ktransparent,
-      ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [kPrimaryPurpleDark, kblack, kPrimaryBlueDark],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [kPrimaryPurpleDark, kblack, kPrimaryBlueDark],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: kMqHeight(context) * 0.65,
-                  color: kPrimarySleepColor,
-                ),
-                kSizedBoxHeight15,
-                Center(
-                  child: Container(
-                    height: kMqHeight(context) * 0.08,
-                    width: kMqWidth(context) * 0.7,
-                    decoration: BoxDecoration(
-                      color: kGrey,
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed:
-                              //_togglePlayPause
-                              () {},
-                          icon: Icon(
-                            //_isPlaying ? Symbols.pause :
-                            Symbols.play_arrow,
-                            color: kwhite,
-                            size: 45,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            right: kMqWidth(context) * 0.05,
-                          ),
-                          child: Row(
-                            children:
-                                _heights.map((height) {
-                                  return AnimatedContainer(
-                                    duration: Duration(milliseconds: 100),
-                                    width: 4,
-                                    height: height,
-                                    margin: EdgeInsets.symmetric(horizontal: 2),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(2),
-                                    ),
-                                  );
-                                }).toList(),
-                          ),
-                        ),
-                      ],
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    height: kMqHeight(context) * 0.65,
+                    color: ktransparent,
+                    child: Center(
+                      child: Text(
+                        'Animation',
+                        style: poppins(color: kwhite, fontSize: 35),
+                      ),
                     ),
                   ),
-                ),
-                kSizedBoxHeight15,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      height: kMqHeight(context) * 0.1,
-                      width: kMqWidth(context) * 0.19,
-
+                  kSizedBoxHeight15,
+                  Center(
+                    child: Container(
+                      height: kMqHeight(context) * 0.08,
+                      width: kMqWidth(context) * 0.7,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            kPrimaryPurple.withAlpha(120),
-                            kPrimaryBlue.withAlpha(120),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        shape: BoxShape.circle,
+                        color: kGrey,
+                        borderRadius: BorderRadius.circular(18),
                       ),
-                      child: Center(
-                        child: TextButton(
-                          onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            onPressed:
+                                //_togglePlayPause
+                                () {},
+                            icon: Icon(
+                              //_isPlaying ? Symbols.pause :
+                              Symbols.play_arrow,
+                              color: kwhite,
+                              size: 45,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              right: kMqWidth(context) * 0.05,
+                            ),
+                            child: Row(
+                              children:
+                                  _heights.map((height) {
+                                    return AnimatedContainer(
+                                      duration: Duration(milliseconds: 100),
+                                      width: 4,
+                                      height: height,
+                                      margin: EdgeInsets.symmetric(
+                                        horizontal: 2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(2),
+                                      ),
+                                    );
+                                  }).toList(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  kSizedBoxHeight15,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: kMqHeight(context) * 0.1,
+                        width: kMqWidth(context) * 0.19,
+
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              kPrimaryPurple.withAlpha(120),
+                              kPrimaryBlue.withAlpha(120),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'AI',
+                              style: kdamThmor(color: kwhite, fontSize: 25),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: kMqHeight(context) * 0.1,
+                        width: kMqWidth(context) * 0.19,
+
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              kPrimaryPurple.withAlpha(120),
+                              kPrimaryBlue.withAlpha(120),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Symbols.stream, color: kwhite, size: 30),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: kMqHeight(context) * 0.1,
+                        width: kMqWidth(context) * 0.19,
+
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              kPrimaryPurple.withAlpha(120),
+                              kPrimaryBlue.withAlpha(120),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Symbols.sentiment_calm,
+                              color: kwhite,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: kMqHeight(context) * 0.1,
+                        width: kMqWidth(context) * 0.19,
+
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              kPrimaryPurple.withAlpha(120),
+                              kPrimaryBlue.withAlpha(120),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Symbols.sleep, color: kwhite, size: 30),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  kSizedBoxHeight15,
+                  Divider(
+                    color: kwhite,
+                    indent: kMqWidth(context) * 0.07,
+                    endIndent: kMqWidth(context) * 0.07,
+                  ),
+                  kSizedBoxHeight15,
+                  Center(
+                    child: Wrap(
+                      children: List.generate(sounds.length, (index) {
+                        return Container(
+                          margin: EdgeInsets.all(7),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: kBgBlue,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           child: Text(
-                            'AI',
-                            style: kdamThmor(color: kwhite, fontSize: 25),
+                            sounds[index],
+                            style: inter(color: kwhite),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ),
-                    Container(
-                      height: kMqHeight(context) * 0.1,
-                      width: kMqWidth(context) * 0.19,
-
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            kPrimaryPurple.withAlpha(120),
-                            kPrimaryBlue.withAlpha(120),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Symbols.stream, color: kwhite, size: 30),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: kMqHeight(context) * 0.1,
-                      width: kMqWidth(context) * 0.19,
-
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            kPrimaryPurple.withAlpha(120),
-                            kPrimaryBlue.withAlpha(120),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Symbols.sentiment_calm,
-                            color: kwhite,
-                            size: 30,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: kMqHeight(context) * 0.1,
-                      width: kMqWidth(context) * 0.19,
-
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            kPrimaryPurple.withAlpha(120),
-                            kPrimaryBlue.withAlpha(120),
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Center(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Symbols.sleep, color: kwhite, size: 30),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
