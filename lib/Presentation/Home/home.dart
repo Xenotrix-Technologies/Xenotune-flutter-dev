@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     'Ocean breeze',
     'Thunderstorm',
     'Night crickets',
+    'Cicadas',
   ];
 
   // @override
