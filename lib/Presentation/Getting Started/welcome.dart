@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -33,9 +34,9 @@ class WelcomePage extends StatelessWidget {
             children: [
               Hero(
                 tag: 'animation',
-                child: Container(
-                  height: kMqHeight(context) * 0.45,
-                  color: kPrimaryBlueDark.withAlpha(170),
+                child: SizedBox(
+                  height: kMqHeight(context) * 0.59,
+                  child: RiveAnimation.asset('assets/animations/logo.riv'),
                 ),
               ),
               Text(
