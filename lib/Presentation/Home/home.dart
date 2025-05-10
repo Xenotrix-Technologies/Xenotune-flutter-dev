@@ -182,12 +182,9 @@ class _HomePageState extends State<HomePage> {
                           shape: BoxShape.circle,
                         ),
                         child: Center(
-                          child: TextButton(
+                          child: IconButton(
                             onPressed: () {},
-                            child: Text(
-                              'AI',
-                              style: kdamThmor(color: kwhite, fontSize: 25),
-                            ),
+                            icon: Icon(Symbols.tune, color: kwhite, size: 30),
                           ),
                         ),
                       ),

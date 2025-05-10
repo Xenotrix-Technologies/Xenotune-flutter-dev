@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
+import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
 
 void main() {
@@ -11,6 +11,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: BeginPage());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SoundsPage());
   }
 }
