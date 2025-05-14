@@ -3,6 +3,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -80,6 +81,7 @@ class _HomePageState extends State<HomePage> {
 
         endDrawer: DrawerWidget(),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           foregroundColor: kwhite,
           title: Text(
             'Hey user,\nWhats\'s your current mood',
@@ -183,7 +185,40 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Center(
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration: Duration(
+                                    milliseconds: 500,
+                                  ),
+                                  pageBuilder:
+                                      (
+                                        context,
+                                        animation,
+                                        secondaryAnimation,
+                                      ) => SoundsPage(),
+                                  transitionsBuilder: (
+                                    context,
+                                    animation,
+                                    secondaryAnimation,
+                                    child,
+                                  ) {
+                                    const begin = Offset(1.0, 0.0);
+                                    const end = Offset.zero;
+                                    final tween = Tween(begin: begin, end: end);
+                                    final offsetAnimation = animation.drive(
+                                      tween,
+                                    );
+
+                                    return SlideTransition(
+                                      position: offsetAnimation,
+                                      child: child,
+                                    );
+                                  },
+                                ),
+                              );
+                            },
                             icon: Icon(Symbols.tune, color: kwhite, size: 30),
                           ),
                         ),

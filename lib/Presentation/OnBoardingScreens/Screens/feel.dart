@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 
 class FeelPage extends StatefulWidget {
   final Function()? onBack;
-  final Function()? onTap;
+  final Future<dynamic>? onTap;
   const FeelPage({super.key, this.onBack, this.onTap});
 
   @override
@@ -39,10 +40,29 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 500),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    LoadingScreen(),
+                            transitionsBuilder: (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                              child,
+                            ) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                         setState(() {
                           feel = 'Warm';
                         });
-                        widget.onTap;
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: kMqWidth(context) * 0.06),
@@ -70,7 +90,26 @@ class _FeelPageState extends State<FeelPage> {
                         setState(() {
                           feel = 'Spacious';
                         });
-                        widget.onTap;
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 500),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    LoadingScreen(),
+                            transitionsBuilder: (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                              child,
+                            ) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: kMqWidth(context) * 0.06),
@@ -98,7 +137,26 @@ class _FeelPageState extends State<FeelPage> {
                         setState(() {
                           feel = 'Dreamy';
                         });
-                        widget.onTap;
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 500),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    LoadingScreen(),
+                            transitionsBuilder: (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                              child,
+                            ) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: kMqWidth(context) * 0.06),
@@ -126,7 +184,26 @@ class _FeelPageState extends State<FeelPage> {
                         setState(() {
                           feel = 'Minimal';
                         });
-                        widget.onTap;
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 500),
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    LoadingScreen(),
+                            transitionsBuilder: (
+                              context,
+                              animation,
+                              secondaryAnimation,
+                              child,
+                            ) {
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: kMqWidth(context) * 0.06),
@@ -153,8 +230,27 @@ class _FeelPageState extends State<FeelPage> {
                       onTap: () {
                         setState(() {
                           feel = 'Deep';
+                          Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration: Duration(milliseconds: 500),
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      LoadingScreen(),
+                              transitionsBuilder: (
+                                context,
+                                animation,
+                                secondaryAnimation,
+                                child,
+                              ) {
+                                return FadeTransition(
+                                  opacity: animation,
+                                  child: child,
+                                );
+                              },
+                            ),
+                          );
                         });
-                        widget.onTap;
                       },
                       child: Container(
                         margin: EdgeInsets.only(left: kMqWidth(context) * 0.06),

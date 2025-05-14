@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
+import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
@@ -20,10 +21,30 @@ class LoadingScreen extends StatelessWidget {
             ),
           ),
           Center(
-            child: Text(
-              'Loading Text\nBased on user response',
-              textAlign: TextAlign.center,
-              style: lexanGiga(color: kwhite),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    transitionDuration: Duration(milliseconds: 500),
+                    pageBuilder:
+                        (context, animation, secondaryAnimation) => HomePage(),
+                    transitionsBuilder: (
+                      context,
+                      animation,
+                      secondaryAnimation,
+                      child,
+                    ) {
+                      return FadeTransition(opacity: animation, child: child);
+                    },
+                  ),
+                );
+              },
+              child: Text(
+                'Loading Text\nBased on user response',
+                textAlign: TextAlign.center,
+                style: lexanGiga(color: kwhite),
+              ),
             ),
           ),
         ],

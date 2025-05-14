@@ -36,7 +36,7 @@ class UsernamePage extends StatelessWidget {
                       ),
                       child: TextField(
                         showCursor: true,
-                        autofocus: true,
+                        autofocus: false,
                         maxLength: 30,
                         cursorColor: kwhite,
 
