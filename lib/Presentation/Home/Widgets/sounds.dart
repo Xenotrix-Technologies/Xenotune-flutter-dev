@@ -13,7 +13,7 @@ class SoundsViewWidget extends StatefulWidget {
 
 class _SoundsViewWidgetState extends State<SoundsViewWidget> {
   double _value = 0;
-  double _trackHeight = 20;
+  double _trackHeight = 15;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -61,12 +61,12 @@ class _SoundsViewWidgetState extends State<SoundsViewWidget> {
 
                       onChangeStart: (value) {
                         setState(() {
-                          _trackHeight = 30;
+                          _trackHeight = 25;
                         });
                       },
                       onChangeEnd: (value) {
                         setState(() {
-                          _trackHeight = 20;
+                          _trackHeight = 15;
                         });
                       },
                       onChanged: (value) {
