@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -22,11 +21,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ),
-          GradientHeader(
-            top: 0,
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+
           Column(
             spacing: kMqHeight(context) * 0.08,
             mainAxisAlignment: MainAxisAlignment.center,
