@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Main/onboarding.dart';
 import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class LoginPage extends StatelessWidget {
@@ -38,10 +39,31 @@ class LoginPage extends StatelessWidget {
                   color: kPrimaryBlueDark.withAlpha(170),
                 ),
               ),
-              Text(
-                'Tune In',
-                style: poppins(color: kwhite, fontSize: 40),
-                textAlign: TextAlign.center,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      transitionDuration: Duration(milliseconds: 500),
+                      pageBuilder:
+                          (context, animation, secondaryAnimation) =>
+                              Onboarding(),
+                      transitionsBuilder: (
+                        context,
+                        animation,
+                        secondaryAnimation,
+                        child,
+                      ) {
+                        return FadeTransition(opacity: animation, child: child);
+                      },
+                    ),
+                  );
+                },
+                child: Text(
+                  'Tune In',
+                  style: poppins(color: kwhite, fontSize: 40),
+                  textAlign: TextAlign.center,
+                ),
               ),
               Column(
                 children: [
@@ -51,6 +73,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
+                        Navigator.of(context).pop();
                         // Navigator.push(
                         //   context,
                         //   PageRouteBuilder(
@@ -111,6 +134,7 @@ class LoginPage extends StatelessWidget {
                   kSizedBoxHeight10,
                   TextButton(
                     onPressed: () {
+                      Navigator.of(context).pop();
                       // Navigator.push(
                       //   context,
                       //   PageRouteBuilder(
