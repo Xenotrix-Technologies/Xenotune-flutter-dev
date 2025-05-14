@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
@@ -118,14 +120,15 @@ class _HomePageState extends State<HomePage> {
                   kSizedBoxHeight15,
                   Center(
                     child: Container(
-                      height: kMqHeight(context) * 0.08,
-                      width: kMqWidth(context) * 0.7,
+                      height: kMqHeight(context) * 0.075,
+                      width: kMqWidth(context) * 0.8,
                       decoration: BoxDecoration(
                         color: kGrey,
                         borderRadius: BorderRadius.circular(18),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        spacing: kMqWidth(context) * 0.02,
                         children: [
                           IconButton(
                             onPressed:
@@ -147,10 +150,10 @@ class _HomePageState extends State<HomePage> {
                                   _heights.map((height) {
                                     return AnimatedContainer(
                                       duration: Duration(milliseconds: 100),
-                                      width: 4,
+                                      width: 3,
                                       height: height,
                                       margin: EdgeInsets.symmetric(
-                                        horizontal: 2,
+                                        horizontal: 2.2,
                                       ),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
