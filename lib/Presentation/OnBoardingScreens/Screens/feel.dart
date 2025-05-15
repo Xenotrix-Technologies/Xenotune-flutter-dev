@@ -32,7 +32,7 @@ class _FeelPageState extends State<FeelPage> {
                   padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                   child: Text(
                     'How do you want it to feel?',
-                    style: inter(color: kwhite),
+                    style: inter(color: kwhite, fontSize: 19),
                   ),
                 ),
                 Row(

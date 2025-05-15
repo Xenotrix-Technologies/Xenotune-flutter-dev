@@ -27,7 +27,7 @@ class UsernamePage extends StatelessWidget {
                       padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                       child: Text(
                         'What do we call you?',
-                        style: inter(color: kwhite),
+                        style: inter(color: kwhite, fontSize: 19),
                       ),
                     ),
                     Padding(

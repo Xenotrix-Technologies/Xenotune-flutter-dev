@@ -53,7 +53,7 @@ class _SelectMoodState extends State<SelectMood> {
                   padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                   child: Text(
                     'Hei (username),\nWhat\'s your go-to mood lately?\n(you choose more than one)',
-                    style: inter(color: kwhite),
+                    style: inter(color: kwhite, fontSize: 19),
                   ),
                 ),
                 Center(

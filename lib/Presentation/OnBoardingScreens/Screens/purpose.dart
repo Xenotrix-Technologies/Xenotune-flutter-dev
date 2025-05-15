@@ -38,7 +38,7 @@ class _PurposePageState extends State<PurposePage> {
                   padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                   child: Text(
                     'What do you want the music\nto help you do?',
-                    style: inter(color: kwhite),
+                    style: inter(color: kwhite, fontSize: 19),
                   ),
                 ),
                 Center(
