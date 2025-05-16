@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       child: Row(
                         spacing: kMqWidth(context) * 0.05,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
@@ -100,6 +100,7 @@ class LoginPage extends StatelessWidget {
                             'Continue with Google',
                             style: inter(color: kblack),
                           ),
+                          SizedBox(height: 35, width: 35),
                         ],
                       ),
                     ),
