@@ -3,6 +3,7 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Presentation/Home/Screens/subscription.dart';
 import 'package:xenotune_flutter_dev/Presentation/Login/login_page.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -60,7 +61,30 @@ class DrawerWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Upgrade to pro', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 600),
+                          pageBuilder: (_, _, _) => SubscriptionPage(),
+                          transitionsBuilder: (_, animation, __, child) {
+                            final offsetAnimation = Tween<Offset>(
+                              begin: Offset(0, 1),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            );
+
+                            return SlideTransition(
+                              position: offsetAnimation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
                 ),
