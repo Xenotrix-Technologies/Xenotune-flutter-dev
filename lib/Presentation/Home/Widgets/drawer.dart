@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:slide_countdown/slide_countdown.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -30,7 +31,31 @@ class DrawerWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Set timer', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Center(
+                              child: Text(
+                                'Choose when to stop',
+                                style: inter(color: kwhite, fontSize: 17),
+                              ),
+                            ),
+                            backgroundColor: kPrimaryBlueDark,
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SlideCountdownSeparated(
+                                  duration: Duration(),
+                                  showZeroValue: true,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
                 ),
