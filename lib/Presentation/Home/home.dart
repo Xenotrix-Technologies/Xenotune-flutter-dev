@@ -1,8 +1,11 @@
-// ignore_for_file: prefer_final_fields
+import 'dart:async';
+import 'dart:math' show Random;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:slide_countdown/slide_countdown.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -17,10 +20,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final AudioPlayer _audioPlayer = AudioPlayer();
-  // bool _isPlaying = false;
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  bool _isPlaying = false;
   List<double> _heights = List.generate(25, (_) => 7.0);
-  // Timer? _timer;
+
+  Timer? _timer;
   final List<String> sounds = [
     'Rain',
     'Wave',
@@ -39,42 +43,66 @@ class _HomePageState extends State<HomePage> {
     'Cicadas',
   ];
 
-  // @override
-  // void dispose() {
-  //   _audioPlayer.dispose();
-  //   _timer?.cancel();
-  //   super.dispose();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayer.playerStateStream.listen((state) {
+      final isPlaying = state.playing;
+      final hasEnded = state.processingState == ProcessingState.completed;
 
-  // void _togglePlayPause() async {
-  //   if (_isPlaying) {
-  //     await _audioPlayer.pause();
-  //     _timer?.cancel();
-  //     setState(() {
-  //       _isPlaying = false;
-  //     });
-  //   } else {
-  //     if (_audioPlayer.playerState.processingState == ProcessingState.idle) {
-  //       await _audioPlayer.setUrl(
-  //         'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  //       );
-  //     }
-  //     await _audioPlayer.play();
-  //     _startWaveAnimation();
-  //     setState(() {
-  //       _isPlaying = true;
-  //     });
-  //   }
-  //   setState(() => _isPlaying = !_isPlaying);
-  // }
+      if (mounted) {
+        setState(() {
+          _isPlaying = isPlaying;
 
-  // void _startWaveAnimation() {
-  //   _timer = Timer.periodic(Duration(milliseconds: 100), (_) {
-  //     setState(() {
-  //       _heights = List.generate(25, (_) => Random().nextDouble() * 60 + 10);
-  //     });
-  //   });
-  // }
+          if (!isPlaying || hasEnded) {
+            _stopWaveAnimation();
+          } else {
+            _startWaveAnimation();
+          }
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _togglePlayPause() async {
+    if (_audioPlayer.playing) {
+      await _audioPlayer.pause();
+    } else {
+      if (_audioPlayer.playerState.processingState == ProcessingState.idle) {
+        await _audioPlayer.setUrl(
+          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        );
+      }
+
+      await _audioPlayer.play();
+    }
+  }
+
+  void _startWaveAnimation() {
+    _timer?.cancel();
+    _timer = Timer.periodic(Duration(milliseconds: 100), (_) {
+      setState(() {
+        _heights = List.generate(25, (_) => Random().nextDouble() * 60 + 10);
+      });
+    });
+  }
+
+  void _stopWaveAnimation() {
+    if (_timer != null && _timer!.isActive) {
+      _timer!.cancel();
+      _timer = null;
+      setState(() {
+        _heights = List.generate(25, (_) => 7.0);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,12 +183,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     kSizedBoxHeight15,
+
                     Center(
                       child: Container(
                         height: kMqHeight(context) * 0.075,
                         width: kMqWidth(context) * 0.8,
                         decoration: BoxDecoration(
-                          color: kGrey,
+                          color: ktransparent,
                           borderRadius: BorderRadius.circular(18),
                         ),
                         child: Row(
@@ -168,38 +197,36 @@ class _HomePageState extends State<HomePage> {
                           spacing: kMqWidth(context) * 0.02,
                           children: [
                             IconButton(
-                              onPressed:
-                                  //_togglePlayPause
-                                  () {},
+                              onPressed: _togglePlayPause,
                               icon: Icon(
-                                //_isPlaying ? Symbols.pause :
-                                Symbols.play_arrow,
+                                _isPlaying ? Symbols.pause : Symbols.play_arrow,
                                 color: kwhite,
                                 size: 45,
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                right: kMqWidth(context) * 0.05,
-                              ),
-                              child: Row(
-                                children:
-                                    _heights.map((height) {
-                                      return AnimatedContainer(
-                                        duration: Duration(milliseconds: 100),
-                                        width: 3,
-                                        height: height,
-                                        margin: EdgeInsets.symmetric(
-                                          horizontal: 2.2,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                            2,
-                                          ),
-                                        ),
-                                      );
-                                    }).toList(),
+                            Row(
+                              children:
+                                  _heights.map((height) {
+                                    return AnimatedContainer(
+                                      duration: Duration(milliseconds: 100),
+                                      width: 3,
+                                      height: height,
+                                      margin: EdgeInsets.symmetric(
+                                        horizontal: 2.2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(2),
+                                      ),
+                                    );
+                                  }).toList(),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Symbols.timer,
+                                color: kwhite,
+                                size: 45,
                               ),
                             ),
                           ],
@@ -347,6 +374,25 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ],
+                    ),
+                    kSizedBoxHeight15,
+                    SlideCountdownSeparated(
+                      separator: ':',
+                      separatorPadding: EdgeInsets.symmetric(horizontal: 5),
+                      separatorStyle: TextStyle(
+                        color: kwhite,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      duration: Duration(minutes: 1),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [kPrimaryPurple, kPrimaryBlue],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                      showZeroValue: true,
                     ),
                     kSizedBoxHeight15,
                     Divider(
