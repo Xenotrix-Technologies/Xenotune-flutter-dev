@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:xenotune_flutter_dev/Domain/Core/Dependency_injection.dart';
+
+import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
 
 void main() async {

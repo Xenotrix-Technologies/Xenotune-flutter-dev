@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
@@ -42,6 +43,11 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
+              ),
+            ),
+            SafeArea(
+              child: RiveAnimation.asset(
+                'assets/animations/particles_drop.riv',
               ),
             ),
             SingleChildScrollView(
