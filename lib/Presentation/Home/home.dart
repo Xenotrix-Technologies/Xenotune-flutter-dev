@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:math' show Random;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
@@ -42,6 +44,8 @@ class _HomePageState extends State<HomePage> {
     'Night crickets',
     'Cicadas',
   ];
+
+  int _value = 1;
 
   @override
   void initState() {
@@ -222,7 +226,47 @@ class _HomePageState extends State<HomePage> {
                                   }).toList(),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return StatefulBuilder(
+                                      builder: (context, setState) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                kPrimaryBlueDark,
+                                                kPrimaryPurpleDark,
+                                              ],
+                                              begin: Alignment.topLeft,
+                                              end: Alignment.bottomRight,
+                                            ),
+                                          ),
+                                          width: double.infinity,
+                                          height: kMqHeight(context) * 0.3,
+                                          child: NumberPicker(
+                                            selectedTextStyle: inter(
+                                              color: kPrimaryPurple,
+                                              fontSize: 25,
+                                            ),
+                                            zeroPad: true,
+                                            textStyle: inter(color: kwhite),
+                                            minValue: 0,
+                                            maxValue: 12,
+                                            value: _value,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _value = value;
+                                              });
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
                               icon: Icon(
                                 Symbols.timer,
                                 color: kwhite,

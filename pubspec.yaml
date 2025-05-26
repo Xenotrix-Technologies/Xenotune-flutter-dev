@@ -23,6 +23,7 @@ dependencies:
   just_audio: ^0.10.1
   just_waveform: ^0.0.7
   material_symbols_icons: ^4.2815.0
+  numberpicker: ^2.1.2
   rive: ^0.13.20
   simple_gradient_text: ^1.3.0
   slide_countdown: ^2.0.2
