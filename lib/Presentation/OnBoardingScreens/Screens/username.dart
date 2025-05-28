@@ -39,7 +39,7 @@ class UsernamePage extends StatelessWidget {
                         autofocus: false,
                         maxLength: 30,
                         cursorColor: kwhite,
-
+                        style: inter(color: kwhite),
                         decoration: InputDecoration(
                           counterText: ' ',
                           focusColor: kwhite,
