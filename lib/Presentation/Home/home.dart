@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:slide_countdown/slide_countdown.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
@@ -45,7 +46,11 @@ class _HomePageState extends State<HomePage> {
     'Cicadas',
   ];
 
-  int _value = 1;
+  int _defaultHour = 0;
+  int _defaultminute = 0;
+
+  int _minute = 0;
+  int _hour = 0;
 
   @override
   void initState() {
@@ -229,11 +234,16 @@ class _HomePageState extends State<HomePage> {
                               onPressed: () {
                                 showModalBottomSheet(
                                   context: context,
+                                  isDismissible: false,
                                   builder: (context) {
                                     return StatefulBuilder(
-                                      builder: (context, setState) {
+                                      builder: (context, secondarySetState) {
                                         return Container(
                                           decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(18),
+                                              topRight: Radius.circular(18),
+                                            ),
                                             gradient: LinearGradient(
                                               colors: [
                                                 kPrimaryBlueDark,
@@ -244,22 +254,151 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                           width: double.infinity,
-                                          height: kMqHeight(context) * 0.3,
-                                          child: NumberPicker(
-                                            selectedTextStyle: inter(
-                                              color: kPrimaryPurple,
-                                              fontSize: 25,
-                                            ),
-                                            zeroPad: true,
-                                            textStyle: inter(color: kwhite),
-                                            minValue: 0,
-                                            maxValue: 12,
-                                            value: _value,
-                                            onChanged: (value) {
-                                              setState(() {
-                                                _value = value;
-                                              });
-                                            },
+                                          height: kMqHeight(context) * 0.35,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                      setState(() {
+                                                        _defaultHour = 0;
+                                                        _defaultminute = 0;
+                                                      });
+                                                    },
+                                                    icon: Icon(
+                                                      Symbols.close,
+                                                      color: kwhite,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  top:
+                                                      kMqHeight(context) *
+                                                      0.015,
+                                                ),
+                                                child: GradientText(
+                                                  'Set Timer',
+                                                  colors: [
+                                                    kPrimaryPurple,
+                                                    kPrimaryBlue,
+                                                  ],
+                                                  style: lexanGiga(
+                                                    fontSize: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                              kSizedBoxHeight10,
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  NumberPicker(
+                                                    itemCount: 3,
+                                                    selectedTextStyle: inter(
+                                                      color: kPrimaryPurple,
+                                                      fontSize: 25,
+                                                    ),
+                                                    zeroPad: true,
+                                                    textStyle: inter(
+                                                      color: kwhite,
+                                                    ),
+                                                    minValue: 0,
+                                                    maxValue: 24,
+                                                    value: _defaultHour,
+                                                    onChanged: (value) {
+                                                      secondarySetState(() {
+                                                        _defaultHour = value;
+                                                      });
+                                                    },
+                                                  ),
+                                                  Text(
+                                                    ':',
+                                                    style: poppins(
+                                                      color: kwhite,
+                                                    ),
+                                                  ),
+                                                  NumberPicker(
+                                                    itemCount: 3,
+                                                    selectedTextStyle: inter(
+                                                      color: kPrimaryPurple,
+                                                      fontSize: 25,
+                                                    ),
+                                                    zeroPad: true,
+                                                    textStyle: inter(
+                                                      color: kwhite,
+                                                    ),
+                                                    minValue: 0,
+                                                    maxValue: 59,
+                                                    value: _defaultminute,
+                                                    onChanged: (value) {
+                                                      secondarySetState(() {
+                                                        _defaultminute = value;
+                                                      });
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                  horizontal:
+                                                      kMqWidth(context) * 0.1,
+                                                ),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    _hour > 0 || _minute > 0
+                                                        ? ElevatedButton(
+                                                          onPressed: () {
+                                                            setState(() {
+                                                              _hour = 0;
+                                                              _minute = 0;
+                                                              _defaultHour = 0;
+                                                              _defaultminute =
+                                                                  0;
+                                                            });
+                                                            Navigator.of(
+                                                              context,
+                                                            ).pop();
+                                                          },
+                                                          child: Text(
+                                                            'Remove current',
+                                                            style: inter(
+                                                              color: kblack,
+                                                            ),
+                                                          ),
+                                                        )
+                                                        : SizedBox.shrink(),
+
+                                                    TextButton(
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          _hour = _defaultHour;
+                                                          _minute =
+                                                              _defaultminute;
+                                                        });
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        'Set',
+                                                        style: inter(
+                                                          color: kwhite,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         );
                                       },
@@ -421,13 +560,21 @@ class _HomePageState extends State<HomePage> {
                     ),
                     kSizedBoxHeight15,
                     SlideCountdownSeparated(
+                      key: ValueKey('${_hour}_$_minute'),
                       separator: ':',
                       separatorPadding: EdgeInsets.symmetric(horizontal: 5),
                       separatorStyle: TextStyle(
                         color: kwhite,
                         fontWeight: FontWeight.bold,
                       ),
-                      duration: Duration(minutes: 1),
+                      shouldShowDays: (p0) {
+                        return false;
+                      },
+                      onDone: () {
+                        _audioPlayer.stop();
+                      },
+
+                      duration: Duration(minutes: _minute, hours: _hour),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [kPrimaryPurple, kPrimaryBlue],
