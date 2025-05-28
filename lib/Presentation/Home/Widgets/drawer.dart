@@ -28,9 +28,71 @@ class DrawerWidget extends StatelessWidget {
             Column(
               children: [
                 ListTile(
-                  title: Text('Set timer', style: inter(color: kwhite)),
+                  title: Text('Change username', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            backgroundColor: kPrimaryFocusDarkColor,
+
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                kSizedBoxHeight15,
+                                TextFormField(
+                                  cursorColor: kPrimaryPurple,
+                                  autofocus: true,
+                                  style: inter(color: kwhite),
+                                  decoration: InputDecoration(
+                                    hintText: 'New username',
+
+                                    hintStyle: inter(
+                                      color: kwhite.withAlpha(190),
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(18),
+                                      borderSide: BorderSide(color: kwhite),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(13),
+                                      borderSide: BorderSide(color: kwhite),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(18),
+                                      borderSide: BorderSide(
+                                        color: kPrimaryPurple,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  'Cancel',
+                                  style: inter(color: kwhite),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  'Change',
+                                  style: inter(color: kwhite),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
                 ),
