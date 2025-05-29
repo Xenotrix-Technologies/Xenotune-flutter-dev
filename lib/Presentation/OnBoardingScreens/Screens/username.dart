@@ -6,7 +6,12 @@ import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 class UsernamePage extends StatelessWidget {
   final Function()? onContinue;
-  const UsernamePage({super.key, this.onContinue});
+  final TextEditingController userNameController;
+  const UsernamePage({
+    super.key,
+    this.onContinue,
+    required this.userNameController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +40,7 @@ class UsernamePage extends StatelessWidget {
                         horizontal: kMqWidth(context) * 0.07,
                       ),
                       child: TextField(
+                        controller: userNameController,
                         showCursor: true,
                         autofocus: false,
                         maxLength: 30,

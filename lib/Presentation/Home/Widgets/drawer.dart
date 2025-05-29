@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/subscription.dart';
 import 'package:xenotune_flutter_dev/Presentation/Login/login_page.dart';
 
@@ -11,6 +14,8 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController userNameController = TextEditingController();
+    final userController = Get.find<UserController>();
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
@@ -42,6 +47,7 @@ class DrawerWidget extends StatelessWidget {
                               children: [
                                 kSizedBoxHeight15,
                                 TextFormField(
+                                  controller: userNameController,
                                   cursorColor: kPrimaryPurple,
                                   autofocus: true,
                                   style: inter(color: kwhite),
@@ -81,6 +87,9 @@ class DrawerWidget extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () {
+                                  userController.updateUsername(
+                                    userNameController.text,
+                                  );
                                   Navigator.pop(context);
                                 },
                                 child: Text(

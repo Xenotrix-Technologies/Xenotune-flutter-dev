@@ -4,6 +4,8 @@ import 'dart:math' show Random;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -12,6 +14,7 @@ import 'package:slide_countdown/slide_countdown.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/drawer.dart';
 
@@ -52,9 +55,12 @@ class _HomePageState extends State<HomePage> {
   int _minute = 0;
   int _hour = 0;
 
+  final box = GetStorage();
+
   @override
   void initState() {
     super.initState();
+
     _audioPlayer.playerStateStream.listen((state) {
       final isPlaying = state.playing;
       final hasEnded = state.processingState == ProcessingState.completed;
@@ -115,6 +121,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final userController = Get.find<UserController>();
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -123,10 +130,12 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           foregroundColor: kwhite,
-          title: Text(
-            'Hey user,\nWhats\'s your current mood',
-            maxLines: 2,
-            style: poppins(color: kwhite, fontSize: 15),
+          title: Obx(
+            () => Text(
+              'Hey ${userController.username.value},\nWhats\'s your current mood',
+              maxLines: 2,
+              style: poppins(color: kwhite, fontSize: 15),
+            ),
           ),
           backgroundColor: ktransparent,
           surfaceTintColor: ktransparent,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
@@ -10,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configInjectable();
   await GetStorage.init();
+  Get.put(UserController());
   runApp(MainApp());
 }
 
