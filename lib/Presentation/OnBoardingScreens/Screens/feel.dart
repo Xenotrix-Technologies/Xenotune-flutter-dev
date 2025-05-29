@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -15,6 +16,7 @@ class FeelPage extends StatefulWidget {
 
 class _FeelPageState extends State<FeelPage> {
   String? feel;
+  final box = GetStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +42,7 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        box.write('onboarding_first_time', false);
                         Navigator.push(
                           context,
                           PageRouteBuilder(
@@ -87,6 +90,7 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Spacious';
                         });
@@ -134,6 +138,7 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Dreamy';
                         });
@@ -181,6 +186,7 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Minimal';
                         });
@@ -228,6 +234,7 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
+                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Deep';
                           Navigator.push(

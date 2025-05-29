@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
 
 class SleepPage extends StatelessWidget {
-  const SleepPage({super.key});
+  SleepPage({super.key});
+
+  final box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +52,7 @@ class SleepPage extends StatelessWidget {
                     tag: 'button',
                     child: ElevatedButton(
                       onPressed: () {
+                        box.write('first_time', false);
                         Navigator.pushAndRemoveUntil(
                           context,
                           PageRouteBuilder(
