@@ -7,7 +7,7 @@ class UserController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    username.value = GetStorage().read('username') ?? 'Guest';
+    username.value = GetStorage().read('username') ?? 'User';
   }
 
   void updateUsername(String newName) {
