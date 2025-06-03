@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:math' show Random;
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -14,6 +12,7 @@ import 'package:slide_countdown/slide_countdown.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/SnackBar/snackbar.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/drawer.dart';
@@ -60,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
+    SnackBars().netWorkCheck(context);
     _audioPlayer.playerStateStream.listen((state) {
       final isPlaying = state.playing;
       final hasEnded = state.processingState == ProcessingState.completed;
@@ -504,7 +503,46 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Center(
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                // Get.snackbar(
+                                //   '',
+                                //   '',
+                                //   titleText: Center(
+                                //     child: Text(
+                                //       'No Intenet',
+                                //       style: inter(color: kwhite, fontSize: 18),
+                                //     ),
+                                //   ),
+                                //   messageText: Container(
+                                //     height: kMqHeight(context) * 0.1,
+                                //     width: double.infinity,
+                                //     color: kPrimarySleepColor,
+                                //     // child: Center(
+                                //     //   child: RiveAnimation.asset(
+                                //     //     'assets/animations/logo.riv',
+                                //     //   ),
+                                //     // ),
+                                //   ),
+                                //   snackPosition: SnackPosition.TOP,
+                                //   colorText: kwhite,
+                                //   margin: EdgeInsets.symmetric(
+                                //     horizontal: 12,
+                                //     vertical: kMqHeight(context) * 0.07,
+                                //   ),
+                                //   borderRadius: 18,
+                                //   duration: Duration(seconds: 3),
+                                //   snackStyle: SnackStyle.FLOATING,
+                                //   backgroundGradient: LinearGradient(
+                                //     colors: [
+                                //       kPrimaryPurple,
+                                //       kblack,
+                                //       kPrimaryBlue,
+                                //     ],
+                                //     begin: Alignment.topLeft,
+                                //     end: Alignment.bottomRight,
+                                //   ),
+                                // );
+                              },
                               icon: Icon(
                                 Symbols.stream,
                                 color: kwhite,
