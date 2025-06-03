@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isFirstTime = box.read('first_time') ?? true;
     bool isOnboardingFirstTime = box.read('onboarding_first_time') ?? true;
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home:
           isFirstTime
