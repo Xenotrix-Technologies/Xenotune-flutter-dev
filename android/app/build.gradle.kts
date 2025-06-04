@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.xenotune_flutter_dev"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.2.12479018"
+    ndkVersion = "29.0.13113456"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
