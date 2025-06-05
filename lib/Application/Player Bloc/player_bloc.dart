@@ -14,11 +14,20 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
 
   PlayerBloc() : super(PlayerState.initial()) {
     on<Play>((event, emit) async {
-      emit(state.copyWith(isPause: false));
+      emit(state.copyWith(isPause: false, isStoped: false));
     });
     on<Pause>((event, emit) async {
       emit(
         state.copyWith(isPause: true, heights: List.generate(25, (_) => 7.0)),
+      );
+    });
+    on<Stop>((event, emit) async {
+      emit(
+        state.copyWith(
+          isPause: true,
+          isStoped: true,
+          heights: List.generate(25, (_) => 7.0),
+        ),
       );
     });
 
@@ -29,7 +38,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
       });
     });
     on<StopWaveForm>((event, emit) {
-      timerControl!.cancel();
+      timerControl?.cancel();
       timerControl = null;
     });
     on<WaveForm>((event, emit) {

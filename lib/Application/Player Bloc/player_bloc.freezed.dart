@@ -109,6 +109,38 @@ String toString() {
 /// @nodoc
 
 
+class Stop implements PlayerEvent {
+  const Stop();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Stop);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'PlayerEvent.stop()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
 class StartWaveForm implements PlayerEvent {
   const StartWaveForm();
   
@@ -205,7 +237,7 @@ String toString() {
 /// @nodoc
 mixin _$PlayerState {
 
- bool get isPause; List<double> get heights;
+ bool get isPause; bool get isStoped; List<double> get heights;
 /// Create a copy of PlayerState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -216,16 +248,16 @@ $PlayerStateCopyWith<PlayerState> get copyWith => _$PlayerStateCopyWithImpl<Play
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PlayerState&&(identical(other.isPause, isPause) || other.isPause == isPause)&&const DeepCollectionEquality().equals(other.heights, heights));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PlayerState&&(identical(other.isPause, isPause) || other.isPause == isPause)&&(identical(other.isStoped, isStoped) || other.isStoped == isStoped)&&const DeepCollectionEquality().equals(other.heights, heights));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isPause,const DeepCollectionEquality().hash(heights));
+int get hashCode => Object.hash(runtimeType,isPause,isStoped,const DeepCollectionEquality().hash(heights));
 
 @override
 String toString() {
-  return 'PlayerState(isPause: $isPause, heights: $heights)';
+  return 'PlayerState(isPause: $isPause, isStoped: $isStoped, heights: $heights)';
 }
 
 
@@ -236,7 +268,7 @@ abstract mixin class $PlayerStateCopyWith<$Res>  {
   factory $PlayerStateCopyWith(PlayerState value, $Res Function(PlayerState) _then) = _$PlayerStateCopyWithImpl;
 @useResult
 $Res call({
- bool isPause, List<double> heights
+ bool isPause, bool isStoped, List<double> heights
 });
 
 
@@ -253,9 +285,10 @@ class _$PlayerStateCopyWithImpl<$Res>
 
 /// Create a copy of PlayerState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isPause = null,Object? heights = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isPause = null,Object? isStoped = null,Object? heights = null,}) {
   return _then(_self.copyWith(
 isPause: null == isPause ? _self.isPause : isPause // ignore: cast_nullable_to_non_nullable
+as bool,isStoped: null == isStoped ? _self.isStoped : isStoped // ignore: cast_nullable_to_non_nullable
 as bool,heights: null == heights ? _self.heights : heights // ignore: cast_nullable_to_non_nullable
 as List<double>,
   ));
@@ -268,10 +301,11 @@ as List<double>,
 
 
 class _PlayerState implements PlayerState {
-  const _PlayerState({required this.isPause, required final  List<double> heights}): _heights = heights;
+  const _PlayerState({required this.isPause, required this.isStoped, required final  List<double> heights}): _heights = heights;
   
 
 @override final  bool isPause;
+@override final  bool isStoped;
  final  List<double> _heights;
 @override List<double> get heights {
   if (_heights is EqualUnmodifiableListView) return _heights;
@@ -290,16 +324,16 @@ _$PlayerStateCopyWith<_PlayerState> get copyWith => __$PlayerStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlayerState&&(identical(other.isPause, isPause) || other.isPause == isPause)&&const DeepCollectionEquality().equals(other._heights, _heights));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlayerState&&(identical(other.isPause, isPause) || other.isPause == isPause)&&(identical(other.isStoped, isStoped) || other.isStoped == isStoped)&&const DeepCollectionEquality().equals(other._heights, _heights));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isPause,const DeepCollectionEquality().hash(_heights));
+int get hashCode => Object.hash(runtimeType,isPause,isStoped,const DeepCollectionEquality().hash(_heights));
 
 @override
 String toString() {
-  return 'PlayerState(isPause: $isPause, heights: $heights)';
+  return 'PlayerState(isPause: $isPause, isStoped: $isStoped, heights: $heights)';
 }
 
 
@@ -310,7 +344,7 @@ abstract mixin class _$PlayerStateCopyWith<$Res> implements $PlayerStateCopyWith
   factory _$PlayerStateCopyWith(_PlayerState value, $Res Function(_PlayerState) _then) = __$PlayerStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isPause, List<double> heights
+ bool isPause, bool isStoped, List<double> heights
 });
 
 
@@ -327,9 +361,10 @@ class __$PlayerStateCopyWithImpl<$Res>
 
 /// Create a copy of PlayerState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isPause = null,Object? heights = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isPause = null,Object? isStoped = null,Object? heights = null,}) {
   return _then(_PlayerState(
 isPause: null == isPause ? _self.isPause : isPause // ignore: cast_nullable_to_non_nullable
+as bool,isStoped: null == isStoped ? _self.isStoped : isStoped // ignore: cast_nullable_to_non_nullable
 as bool,heights: null == heights ? _self._heights : heights // ignore: cast_nullable_to_non_nullable
 as List<double>,
   ));
