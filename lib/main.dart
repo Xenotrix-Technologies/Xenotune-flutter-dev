@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -11,12 +12,14 @@ import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_u
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
+import 'package:xenotune_flutter_dev/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configInjectable();
   await GetStorage.init();
   Get.put(UserController());
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MainApp());
 }
 
