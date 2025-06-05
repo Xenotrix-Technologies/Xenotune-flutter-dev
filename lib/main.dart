@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
-
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
-import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
+import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 import 'package:xenotune_flutter_dev/firebase_options.dart';
 
 void main() async {
@@ -37,13 +37,14 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => getit<PlayerBloc>()),
         BlocProvider(create: (context) => getit<InternetCheckBloc>()),
         BlocProvider(create: (context) => getit<TimerBloc>()),
+        BlocProvider(create: (context) => SplashBloc()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home:
             isFirstTime
                 ? BeginPage()
-                : (isOnboardingFirstTime ? WelcomePage() : HomePage()),
+                : (isOnboardingFirstTime ? WelcomePage() : LoadingScreen()),
       ),
     );
   }

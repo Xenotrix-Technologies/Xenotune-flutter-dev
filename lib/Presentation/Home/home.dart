@@ -7,6 +7,7 @@ import 'package:just_audio/just_audio.dart' hide PlayerState;
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
+
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -46,9 +47,12 @@ class HomePage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       return context.read<InternetCheckBloc>().add(Check(context: context));
     });
+
     final eventAdd = context.read<PlayerBloc>();
     final userController = Get.find<UserController>();
+
     return SafeArea(
+      top: false,
       child: Scaffold(
         extendBodyBehindAppBar: true,
 
