@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "460199195974",
+    "project_id": "xenotune-fromx",
+    "storage_bucket": "xenotune-fromx.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460199195974:android:9eb0f7f847c99bfe8e6147",
+        "android_client_info": {
+          "package_name": "com.example.xenotune_flutter_dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANkbM91R8s7ymlZw2ZIvv0RjihGSc-ebI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
