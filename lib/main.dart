@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
 
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
@@ -32,6 +33,7 @@ class MainApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => getit<PlayerBloc>()),
         BlocProvider(create: (context) => getit<InternetCheckBloc>()),
+        BlocProvider(create: (context) => getit<TimerBloc>()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
