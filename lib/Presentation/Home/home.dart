@@ -8,11 +8,11 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:slide_countdown/slide_countdown.dart';
+import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Infrastructure/SnackBar/snackbar.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/drawer.dart';
@@ -54,12 +54,6 @@ class _HomePageState extends State<HomePage> {
   final box = GetStorage();
 
   @override
-  void initState() {
-    super.initState();
-    SnackBars().netWorkCheck(context);
-  }
-
-  @override
   void dispose() {
     _audioPlayer.dispose();
 
@@ -68,6 +62,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      return context.read<InternetCheckBloc>().add(Check(context: context));
+    });
     final eventAdd = context.read<PlayerBloc>();
     final userController = Get.find<UserController>();
     return SafeArea(

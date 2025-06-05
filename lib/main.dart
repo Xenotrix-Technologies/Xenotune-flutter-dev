@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
 
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
@@ -27,8 +28,11 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isFirstTime = box.read('first_time') ?? true;
     bool isOnboardingFirstTime = box.read('onboarding_first_time') ?? true;
-    return BlocProvider(
-      create: (context) => getit<PlayerBloc>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getit<PlayerBloc>()),
+        BlocProvider(create: (context) => getit<InternetCheckBloc>()),
+      ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home:
