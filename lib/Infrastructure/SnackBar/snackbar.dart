@@ -12,10 +12,11 @@ class SnackBars {
   bool isConnectedToInternet = true;
   bool isSnackbarVisible = false;
 
-  void netWorkCheck(context) {
+  bool netWorkCheck(context) {
     InternetConnection().onStatusChange.listen((status) {
       if (status == InternetStatus.disconnected && isConnectedToInternet) {
         isConnectedToInternet = false;
+
         showSnackBar(context);
       } else if (status == InternetStatus.connected && !isConnectedToInternet) {
         isConnectedToInternet = true;
@@ -24,6 +25,7 @@ class SnackBars {
 
       isConnectedToInternet = status != InternetStatus.disconnected;
     });
+    return isConnectedToInternet;
   }
 
   void showSnackBar(BuildContext context) {

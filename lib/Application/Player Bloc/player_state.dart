@@ -5,6 +5,7 @@ abstract class PlayerState with _$PlayerState {
   const factory PlayerState({
     required bool isPause,
     required bool isStoped,
+
     required List<double> heights,
   }) = _PlayerState;
   factory PlayerState.initial() {

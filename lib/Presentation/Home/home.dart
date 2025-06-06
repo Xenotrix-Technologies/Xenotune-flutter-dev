@@ -47,6 +47,9 @@ class HomePage extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       return context.read<InternetCheckBloc>().add(Check(context: context));
     });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      return context.read<InternetCheckBloc>().add(IfConnected());
+    });
 
     final eventAdd = context.read<PlayerBloc>();
     final userController = Get.find<UserController>();
@@ -132,98 +135,118 @@ class HomePage extends StatelessWidget {
                     ),
                     kSizedBoxHeight15,
 
-                    Center(
-                      child: Container(
-                        height: kMqHeight(context) * 0.075,
-                        width: kMqWidth(context) * 0.8,
-                        decoration: BoxDecoration(
-                          color: ktransparent,
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: BlocConsumer<PlayerBloc, PlayerState>(
-                          listener: (context, state) async {
-                            if (state.isPause) {
-                              eventAdd.add(StopWaveForm());
-                              await _audioPlayer.pause();
-                            } else {
-                              if (_audioPlayer.playerState.processingState ==
-                                  ProcessingState.idle) {
-                                await _audioPlayer.setUrl(
-                                  'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-                                );
-                              }
-                              eventAdd.add(StartWaveForm());
-                              if (!state.isStoped) {
-                                await _audioPlayer.play();
-                              } else {
-                                await _audioPlayer.stop();
-                              }
-                            }
-                          },
-                          builder: (context, state) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              spacing: kMqWidth(context) * 0.02,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    final isPause =
-                                        context
-                                            .read<PlayerBloc>()
-                                            .state
-                                            .isPause;
-                                    context.read<PlayerBloc>().add(
-                                      isPause ? Play() : Pause(),
-                                    );
-                                  },
-                                  icon: Icon(
-                                    state.isPause
-                                        ? Symbols.play_arrow
-                                        : Symbols.pause,
-                                    color: kwhite,
-                                    size: 45,
-                                  ),
-                                ),
-                                Row(
-                                  children:
-                                      state.heights.map((height) {
-                                        return AnimatedContainer(
-                                          duration: Duration(milliseconds: 100),
-                                          width: 3,
-                                          height: height,
-                                          margin: EdgeInsets.symmetric(
-                                            horizontal: 2.2,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                              2,
-                                            ),
-                                          ),
-                                        );
-                                      }).toList(),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      isDismissible: false,
-                                      builder: (context) {
-                                        return SetTimerWidget();
-                                      },
-                                    );
-                                  },
-                                  icon: Icon(
-                                    Symbols.timer,
-                                    color: kwhite,
-                                    size: 45,
-                                  ),
-                                ),
-                              ],
+                    BlocConsumer<PlayerBloc, PlayerState>(
+                      listener: (context, state) async {
+                        if (state.isPause) {
+                          eventAdd.add(StopWaveForm());
+                          await _audioPlayer.pause();
+                        } else {
+                          if (_audioPlayer.playerState.processingState ==
+                              ProcessingState.idle) {
+                            await _audioPlayer.setUrl(
+                              'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
                             );
-                          },
-                        ),
-                      ),
+                            await _audioPlayer.setLoopMode(LoopMode.one);
+                          }
+
+                          eventAdd.add(StartWaveForm());
+                          if (!state.isStoped) {
+                            await _audioPlayer.play();
+                          } else {
+                            await _audioPlayer.stop();
+                          }
+                        }
+                      },
+                      builder: (context, state) {
+                        return Container(
+                          height: kMqHeight(context) * 0.075,
+
+                          decoration: BoxDecoration(
+                            color: ktransparent,
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: kMqWidth(context) * 0.02,
+                            children: [
+                              BlocBuilder<
+                                InternetCheckBloc,
+                                InternetCheckState
+                              >(
+                                builder: (context, iState) {
+                                  return IconButton(
+                                    onPressed: () {
+                                      if (iState.isTrue) {
+                                        final isPause =
+                                            context
+                                                .read<PlayerBloc>()
+                                                .state
+                                                .isPause;
+                                        context.read<PlayerBloc>().add(
+                                          isPause ? Play() : Pause(),
+                                        );
+                                      }
+                                      null;
+                                    },
+                                    icon: Icon(
+                                      state.isPause
+                                          ? Symbols.play_arrow
+                                          : Symbols.pause,
+                                      color: kwhite,
+                                      size: 45,
+                                    ),
+                                  );
+                                },
+                              ),
+
+                              Row(
+                                children:
+                                    state.heights.map((height) {
+                                      return AnimatedContainer(
+                                        duration: Duration(milliseconds: 100),
+                                        width: 3,
+                                        height: height,
+                                        margin: EdgeInsets.symmetric(
+                                          horizontal: 2.2,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                            2,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                              ),
+                              BlocBuilder<
+                                InternetCheckBloc,
+                                InternetCheckState
+                              >(
+                                builder: (context, iState) {
+                                  return IconButton(
+                                    onPressed: () {
+                                      if (iState.isTrue) {
+                                        showModalBottomSheet(
+                                          context: context,
+                                          isDismissible: false,
+                                          builder: (context) {
+                                            return SetTimerWidget();
+                                          },
+                                        );
+                                      }
+                                    },
+                                    icon: Icon(
+                                      Symbols.timer,
+                                      color: kwhite,
+                                      size: 45,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                     kSizedBoxHeight15,
                     Row(
