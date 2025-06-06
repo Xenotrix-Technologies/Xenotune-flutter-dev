@@ -78,15 +78,14 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       child: Row(
-                        spacing: kMqWidth(context) * 0.05,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              height: 35,
-                              width: 35,
+                              height: 32,
+                              width: 32,
 
                               decoration: BoxDecoration(
                                 image: DecorationImage(
@@ -100,7 +99,7 @@ class LoginPage extends StatelessWidget {
                             'Continue with Google',
                             style: inter(color: kblack),
                           ),
-                          SizedBox(height: 35, width: 35),
+                          SizedBox(height: 32, width: 32),
                         ],
                       ),
                     ),
