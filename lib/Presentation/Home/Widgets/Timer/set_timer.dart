@@ -33,8 +33,20 @@ class SetTimerWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Symbols.close, color: ktransparent),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: kMqHeight(context) * 0.015),
+                    child: GradientText(
+                      'Set Timer',
+                      colors: [kPrimaryPurple, kPrimaryBlue, kPrimaryPurple],
+                      style: lexanGiga(fontSize: 18),
+                    ),
+                  ),
                   IconButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -45,14 +57,7 @@ class SetTimerWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.only(top: kMqHeight(context) * 0.015),
-                child: GradientText(
-                  'Set Timer',
-                  colors: [kPrimaryPurple, kPrimaryBlue],
-                  style: lexanGiga(fontSize: 20),
-                ),
-              ),
+
               kSizedBoxHeight10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +66,7 @@ class SetTimerWidget extends StatelessWidget {
                     itemCount: 3,
                     selectedTextStyle: inter(
                       color: kPrimaryPurple,
-                      fontSize: 25,
+                      fontSize: 20,
                     ),
                     zeroPad: true,
                     textStyle: inter(color: kwhite),
@@ -77,7 +82,7 @@ class SetTimerWidget extends StatelessWidget {
                     itemCount: 3,
                     selectedTextStyle: inter(
                       color: kPrimaryPurple,
-                      fontSize: 25,
+                      fontSize: 20,
                     ),
                     zeroPad: true,
                     textStyle: inter(color: kwhite),
