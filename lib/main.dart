@@ -7,6 +7,7 @@ import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
+import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
@@ -40,6 +41,13 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => SplashBloc()),
       ],
       child: GetMaterialApp(
+        theme: ThemeData(
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: kwhite,
+            selectionHandleColor: kPrimaryPurple,
+            selectionColor: kPrimaryPurpleDark,
+          ),
+        ),
         debugShowCheckedModeBanner: false,
         home:
             isFirstTime
