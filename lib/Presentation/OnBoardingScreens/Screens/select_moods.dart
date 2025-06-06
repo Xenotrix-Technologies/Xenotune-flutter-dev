@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -36,11 +37,14 @@ class _SelectMoodState extends State<SelectMood> {
   ];
   final List<double> horizontalPaddings = [30, 50, 50, 20, 70, 60, 100];
 
+  final box = GetStorage();
+
   @override
   Widget build(BuildContext context) {
+    final name = box.read('username');
     return Scaffold(
       backgroundColor: ktransparent,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Stack(
           children: [
@@ -52,8 +56,8 @@ class _SelectMoodState extends State<SelectMood> {
                 Padding(
                   padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                   child: Text(
-                    'Hei (username),\nWhat\'s your go-to mood lately?\n(you choose more than one)',
-                    style: inter(color: kwhite, fontSize: 19),
+                    'Hei $name,\nWhat\'s your go-to mood lately?\n(you choose more than one)',
+                    style: inter(color: kwhite, fontSize: 15),
                   ),
                 ),
                 Center(
