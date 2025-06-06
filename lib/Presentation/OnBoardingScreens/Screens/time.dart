@@ -39,7 +39,7 @@ class _TimeSelectPageState extends State<TimeSelectPage> {
                   padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                   child: Text(
                     'When do you usually listen\nto music like this?',
-                    style: inter(color: kwhite, fontSize: 19),
+                    style: inter(color: kwhite, fontSize: 15),
                   ),
                 ),
                 Center(
