@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 class UsernamePage extends StatelessWidget {
-  final Function()? onContinue;
-  final TextEditingController userNameController;
-  const UsernamePage({
-    super.key,
-    this.onContinue,
-    required this.userNameController,
-  });
+  final PageController pageController;
+  const UsernamePage({super.key, required this.pageController});
 
   @override
   Widget build(BuildContext context) {
+    final box = GetStorage();
+    final TextEditingController userNameController = TextEditingController();
     return Scaffold(
       backgroundColor: ktransparent,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
+
       body: SafeArea(
+        bottom: false,
         child: Stack(
           children: [
             Column(
@@ -32,7 +32,7 @@ class UsernamePage extends StatelessWidget {
                       padding: EdgeInsets.only(left: kMqWidth(context) * 0.07),
                       child: Text(
                         'What do we call you?',
-                        style: inter(color: kwhite, fontSize: 19),
+                        style: inter(color: kwhite, fontSize: 15),
                       ),
                     ),
                     Padding(
@@ -44,7 +44,7 @@ class UsernamePage extends StatelessWidget {
                         showCursor: true,
                         autofocus: false,
                         maxLength: 30,
-                        cursorColor: kwhite,
+
                         style: inter(color: kwhite),
                         decoration: InputDecoration(
                           counterText: ' ',
@@ -62,7 +62,21 @@ class UsernamePage extends StatelessWidget {
                     ),
                     Center(
                       child: ElevatedButton(
-                        onPressed: onContinue,
+                        onPressed: () async {
+                          FocusScope.of(context).unfocus();
+                          if (userNameController.text.isNotEmpty) {
+                            box.write('username', userNameController.text);
+                          } else {
+                            box.write('username', 'User');
+                          }
+                          await Future.delayed(Duration(milliseconds: 300), () {
+                            pageController.animateToPage(
+                              1,
+                              duration: Durations.long1,
+                              curve: Curves.ease,
+                            );
+                          });
+                        },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
@@ -90,14 +104,16 @@ class UsernamePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                GradientText(
-                  textAlign: TextAlign.center,
-                  gradientDirection: GradientDirection.ltr,
+                Flexible(
+                  child: GradientText(
+                    textAlign: TextAlign.center,
+                    gradientDirection: GradientDirection.ltr,
 
-                  style: poppins(fontSize: 22, height: 2.5),
+                    style: poppins(fontSize: 22, height: 2.5),
 
-                  'Music doesn\'t just fill\nthe silence — it rewrites it.\nOne note can lift a heart, \nslow a breath,\nor calm a storm within.',
-                  colors: [kPrimaryPurple, kPrimaryBlue],
+                    'Music doesn\'t just fill\nthe silence — it rewrites it.\nOne note can lift a heart, \nslow a breath,\nor calm a storm within.',
+                    colors: [kPrimaryPurple, kPrimaryBlue],
+                  ),
                 ),
               ],
             ),

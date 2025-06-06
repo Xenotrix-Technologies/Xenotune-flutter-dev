@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/feel.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Screens/purpose.dart';
@@ -18,9 +15,6 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
-  final box = GetStorage();
-  final TextEditingController usernameController = TextEditingController();
-
   final PageController _pageController = PageController();
 
   @override
@@ -47,22 +41,7 @@ class _OnboardingState extends State<Onboarding> {
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              UsernamePage(
-                onContinue: () {
-                  _pageController.animateToPage(
-                    1,
-                    duration: Durations.long1,
-                    curve: Curves.ease,
-                  );
-                  log(usernameController.text);
-                  if (usernameController.text.isNotEmpty) {
-                    box.write('username', usernameController.text);
-                  } else {
-                    box.write('username', 'User');
-                  }
-                },
-                userNameController: usernameController,
-              ),
+              UsernamePage(pageController: _pageController),
               SelectMood(
                 onContinue: () {
                   _pageController.animateToPage(
