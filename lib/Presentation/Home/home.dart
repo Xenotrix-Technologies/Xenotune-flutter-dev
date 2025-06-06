@@ -147,6 +147,10 @@ class HomePage extends StatelessWidget {
                               'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
                             );
                             await _audioPlayer.setLoopMode(LoopMode.one);
+                          } else if (_audioPlayer.playerState.processingState ==
+                              ProcessingState.buffering) {
+                            await _audioPlayer.pause();
+                            eventAdd.add(Pause());
                           }
 
                           eventAdd.add(StartWaveForm());
