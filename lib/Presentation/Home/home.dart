@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
           foregroundColor: kwhite,
           title: Obx(
             () => Text(
-              'Hey ${userController.username.value},\nWhats\'s your current mood',
+              'Hey ${userController.username.value},\nWhat\'s your current mood',
               maxLines: 2,
               style: poppins(color: kwhite, fontSize: 15),
             ),

@@ -47,11 +47,13 @@ class DrawerWidget extends StatelessWidget {
                               children: [
                                 kSizedBoxHeight15,
                                 TextFormField(
+                                  maxLength: 20,
                                   controller: userNameController,
                                   cursorColor: kPrimaryPurple,
                                   autofocus: true,
                                   style: inter(color: kwhite),
                                   decoration: InputDecoration(
+                                    counterText: '',
                                     hintText: 'New username',
 
                                     hintStyle: inter(

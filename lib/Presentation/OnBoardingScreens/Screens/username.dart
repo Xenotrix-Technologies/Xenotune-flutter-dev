@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:get/get.dart';
+
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 
 class UsernamePage extends StatelessWidget {
   final PageController pageController;
@@ -11,8 +13,8 @@ class UsernamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final box = GetStorage();
     final TextEditingController userNameController = TextEditingController();
+    final userController = Get.find<UserController>();
     return Scaffold(
       backgroundColor: ktransparent,
       resizeToAvoidBottomInset: true,
@@ -43,7 +45,7 @@ class UsernamePage extends StatelessWidget {
                         controller: userNameController,
                         showCursor: true,
                         autofocus: false,
-                        maxLength: 30,
+                        maxLength: 20,
 
                         style: inter(color: kwhite),
                         decoration: InputDecoration(
@@ -65,9 +67,9 @@ class UsernamePage extends StatelessWidget {
                         onPressed: () async {
                           FocusScope.of(context).unfocus();
                           if (userNameController.text.isNotEmpty) {
-                            box.write('username', userNameController.text);
+                            userController.addUsername(userNameController.text);
                           } else {
-                            box.write('username', 'User');
+                            userController.addUsername('User');
                           }
                           await Future.delayed(Duration(milliseconds: 300), () {
                             pageController.animateToPage(

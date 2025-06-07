@@ -10,6 +10,11 @@ class UserController extends GetxController {
     username.value = GetStorage().read('username') ?? 'User';
   }
 
+  void addUsername(String firstTime) {
+    username.value = firstTime;
+    GetStorage().write('username', firstTime);
+  }
+
   void updateUsername(String newName) {
     username.value = newName;
     GetStorage().write('username', newName);
