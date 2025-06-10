@@ -1,7 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
+
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
+import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Main/onboarding.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -45,28 +54,91 @@ class LoginPage extends StatelessWidget {
                       horizontal: kMqWidth(context) * 0.1,
                     ),
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        // Navigator.push(
-                        //   context,
-                        //   PageRouteBuilder(
-                        //     transitionDuration: Duration(milliseconds: 500),
-                        //     pageBuilder:
-                        //         (context, animation, secondaryAnimation) =>
-                        //             RelaxPage(),
-                        //     transitionsBuilder: (
-                        //       context,
-                        //       animation,
-                        //       secondaryAnimation,
-                        //       child,
-                        //     ) {
-                        //       return FadeTransition(
-                        //         opacity: animation,
-                        //         child: child,
-                        //       );
-                        //     },
-                        //   ),
-                        // );
+                      onPressed: () async {
+                        try {
+                          final userCredential =
+                              await LoginRepository().loginUsingGoogle();
+                          final user = userCredential.user;
+                          if (user != null) {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 500),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        Onboarding(),
+                                transitionsBuilder: (
+                                  context,
+                                  animation,
+                                  secondaryAnimation,
+                                  child,
+                                ) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
+                            log('Username: ${user.displayName}');
+                          }
+                        } catch (e) {
+                          Get.showSnackbar(
+                            GetSnackBar(
+                              titleText: SizedBox(
+                                height: kMqHeight(context) * 0.15,
+                                width: double.infinity,
+                                child: Center(
+                                  child: RiveAnimation.asset(
+                                    'assets/animations/no_internet.riv',
+                                  ),
+                                ),
+                              ),
+                              messageText: Column(
+                                children: [
+                                  kSizedBoxHeight10,
+                                  Center(
+                                    child: Text(
+                                      'Failed',
+                                      style: lexanGiga(
+                                        color: kwhite,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  kSizedBoxHeight10,
+                                  Center(
+                                    child: Text(
+                                      'Something is not right.',
+                                      textAlign: TextAlign.center,
+                                      style: inter(
+                                        color: kwhite,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              snackPosition: SnackPosition.TOP,
+
+                              margin: EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: kMqHeight(context) * 0.07,
+                              ),
+                              borderRadius: 18,
+                              duration: Duration(seconds: 2),
+                              snackStyle: SnackStyle.FLOATING,
+                              backgroundGradient: LinearGradient(
+                                colors: [kPrimaryPurple, kblack, kPrimaryBlue],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                            ),
+                          );
+                          log('failed to login: $e');
+                        }
                       },
                       style: ButtonStyle(
                         backgroundColor: WidgetStatePropertyAll(kwhite),
@@ -106,28 +178,29 @@ class LoginPage extends StatelessWidget {
                   ),
                   kSizedBoxHeight10,
                   TextButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      await LoginRepository().logout();
                       Navigator.of(context).pop();
-                      // Navigator.push(
-                      //   context,
-                      //   PageRouteBuilder(
-                      //     transitionDuration: Duration(milliseconds: 500),
-                      //     pageBuilder:
-                      //         (context, animation, secondaryAnimation) =>
-                      //             RelaxPage(),
-                      //     transitionsBuilder: (
-                      //       context,
-                      //       animation,
-                      //       secondaryAnimation,
-                      //       child,
-                      //     ) {
-                      //       return FadeTransition(
-                      //         opacity: animation,
-                      //         child: child,
-                      //       );
-                      //     },
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 500),
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  Onboarding(),
+                          transitionsBuilder: (
+                            context,
+                            animation,
+                            secondaryAnimation,
+                            child,
+                          ) {
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.zero,
