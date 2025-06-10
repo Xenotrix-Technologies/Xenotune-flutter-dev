@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:just_audio/just_audio.dart' hide PlayerState;
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Player%20Bloc/player_bloc.dart';
 
@@ -126,11 +127,8 @@ class HomePage extends StatelessWidget {
                     Container(
                       height: kMqHeight(context) * 0.65,
                       color: ktransparent,
-                      child: Center(
-                        child: Text(
-                          'Animation',
-                          style: poppins(color: kwhite, fontSize: 35),
-                        ),
+                      child: RiveAnimation.asset(
+                        'assets/animations/network_connection.riv',
                       ),
                     ),
                     kSizedBoxHeight15,
