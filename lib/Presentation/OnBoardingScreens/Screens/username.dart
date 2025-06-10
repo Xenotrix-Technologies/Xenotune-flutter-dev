@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +16,10 @@ class UsernamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController userNameController = TextEditingController();
     final userController = Get.find<UserController>();
+    final user = FirebaseAuth.instance.currentUser;
+    final userName = user?.displayName;
+    userNameController.text = userName ?? '';
+
     return Scaffold(
       backgroundColor: ktransparent,
       resizeToAvoidBottomInset: true,
@@ -43,6 +48,7 @@ class UsernamePage extends StatelessWidget {
                       ),
                       child: TextField(
                         controller: userNameController,
+
                         showCursor: true,
                         autofocus: false,
                         maxLength: 20,
