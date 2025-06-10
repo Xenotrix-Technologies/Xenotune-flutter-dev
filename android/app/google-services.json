@@ -12,7 +12,12 @@
           "package_name": "com.example.xenotune_flutter_dev"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "460199195974-3vnkvkn9gcjuvtc2gp5h7c101gjd06ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyANkbM91R8s7ymlZw2ZIvv0RjihGSc-ebI"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460199195974-3vnkvkn9gcjuvtc2gp5h7c101gjd06ta.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460199195974-kbbfsnlkmpirghtrmd1mdf3nibob3f9d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.xenotuneFlutterDev"
+              }
+            }
+          ]
         }
       }
     }
