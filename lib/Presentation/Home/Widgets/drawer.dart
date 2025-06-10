@@ -1,3 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -5,9 +8,9 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/subscription.dart';
-import 'package:xenotune_flutter_dev/Presentation/Login/login_page.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -16,6 +19,7 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController userNameController = TextEditingController();
     final userController = Get.find<UserController>();
+    final user = FirebaseAuth.instance.currentUser;
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
@@ -169,29 +173,25 @@ class DrawerWidget extends StatelessWidget {
               child: ListTile(
                 title: Text('App version\n1.0.0', style: inter(color: kwhite)),
                 trailing: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        transitionDuration: Duration(milliseconds: 500),
-                        pageBuilder:
-                            (context, animation, secondaryAnimation) =>
-                                LoginPage(),
-                        transitionsBuilder: (
-                          context,
-                          animation,
-                          secondaryAnimation,
-                          child,
-                        ) {
-                          return FadeTransition(
-                            opacity: animation,
-                            child: child,
-                          );
-                        },
-                      ),
-                    );
+                  onPressed: () async {
+                    if (user != null) {
+                      await LoginRepository().logout();
+                      Navigator.pop(context);
+                    } else {
+                      Navigator.pop(context);
+                      await LoginRepository().loginUsingGoogle();
+                    }
                   },
-                  child: Text('Log In', style: inter(color: kblack)),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        user != null
+                            ? WidgetStatePropertyAll(ktransparent)
+                            : WidgetStatePropertyAll(kwhite),
+                  ),
+                  child:
+                      user != null
+                          ? Text('Log Out', style: inter(color: kwhite))
+                          : Text('Log In', style: inter(color: kblack)),
                 ),
               ),
             ),
