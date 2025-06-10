@@ -3,7 +3,7 @@ import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
-import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Main/onboarding.dart';
+import 'package:xenotune_flutter_dev/Presentation/Login/login_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -50,7 +50,7 @@ class WelcomePage extends StatelessWidget {
                       transitionDuration: Duration(milliseconds: 500),
                       pageBuilder:
                           (context, animation, secondaryAnimation) =>
-                              Onboarding(),
+                              LoginPage(),
                       transitionsBuilder: (
                         context,
                         animation,
