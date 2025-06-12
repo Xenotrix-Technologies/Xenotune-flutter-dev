@@ -10,6 +10,8 @@ import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
+import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Main/onboarding.dart';
 
 class LoginPage extends StatelessWidget {
@@ -59,28 +61,67 @@ class LoginPage extends StatelessWidget {
                           final userCredential =
                               await LoginRepository().loginUsingGoogle();
                           final user = userCredential.user;
-                          if (user != null) {
-                            Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                transitionDuration: Duration(milliseconds: 500),
-                                pageBuilder:
-                                    (context, animation, secondaryAnimation) =>
-                                        Onboarding(),
-                                transitionsBuilder: (
-                                  context,
-                                  animation,
-                                  secondaryAnimation,
-                                  child,
-                                ) {
-                                  return FadeTransition(
-                                    opacity: animation,
-                                    child: child,
-                                  );
-                                },
-                              ),
-                            );
-                            log('Username: ${user.displayName}');
+                          final isNewUser =
+                              userCredential.additionalUserInfo?.isNewUser ??
+                              false;
+                          if (isNewUser) {
+                            if (user != null) {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration: Duration(
+                                    milliseconds: 500,
+                                  ),
+                                  pageBuilder:
+                                      (
+                                        context,
+                                        animation,
+                                        secondaryAnimation,
+                                      ) => Onboarding(),
+                                  transitionsBuilder: (
+                                    context,
+                                    animation,
+                                    secondaryAnimation,
+                                    child,
+                                  ) {
+                                    return FadeTransition(
+                                      opacity: animation,
+                                      child: child,
+                                    );
+                                  },
+                                ),
+                              );
+                              log('Username: ${user.displayName}');
+                              log('New User');
+                            } else {
+                              Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                  transitionDuration: Duration(
+                                    milliseconds: 500,
+                                  ),
+                                  pageBuilder:
+                                      (
+                                        context,
+                                        animation,
+                                        secondaryAnimation,
+                                      ) => LoadingScreen(),
+                                  transitionsBuilder: (
+                                    context,
+                                    animation,
+                                    secondaryAnimation,
+                                    child,
+                                  ) {
+                                    return FadeTransition(
+                                      opacity: animation,
+                                      child: child,
+                                    );
+                                  },
+                                ),
+                              );
+                              UserController().addUsername(user!.displayName!);
+                              log('Existing User');
+                            }
                           }
                         } catch (e) {
                           Get.showSnackbar(
@@ -179,7 +220,6 @@ class LoginPage extends StatelessWidget {
                   kSizedBoxHeight10,
                   TextButton(
                     onPressed: () async {
-                      await LoginRepository().logout();
                       Navigator.of(context).pop();
                       Navigator.push(
                         context,
