@@ -57,6 +57,16 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                   Padding(
                     padding: EdgeInsets.only(top: kMqHeight(context) * 0.05),
                     child: Center(
+                      child: Text(
+                        'Your already using Plus\nYour Plus will expire in 29 days',
+                        style: inter(color: kwhite, fontSize: 18),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: kMqHeight(context) * 0.05),
+                    child: Center(
                       child: GradientText(
                         'No Distraction.\nJust sound.',
                         style: poppins(fontSize: 18),
@@ -254,6 +264,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                       ),
                     ),
                   ),
+                  SizedBox(height: kMqHeight(context) * 0.05),
                 ],
               ),
             ),
