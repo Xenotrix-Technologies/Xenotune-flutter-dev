@@ -77,14 +77,12 @@ class _SoundsPageState extends State<SoundsPage> {
                   kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: Symbols.airwave_sharp),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.snowing),
+                  SoundsViewWidget(soundIcon: Symbols.snowing), // cicada
+
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.window),
+                  SoundsViewWidget(soundIcon: Symbols.pets), //frog
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.pets),
-                  kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.bug_report),
-                  kSizedBoxHeight15,
+
                   SoundsViewWidget(soundIcon: Symbols.hive),
                   kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: Symbols.owl),
