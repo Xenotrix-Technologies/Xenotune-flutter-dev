@@ -47,6 +47,7 @@ flutter:
     - assets/img/
     - assets/animations/
     - assets/Icons/
+    - assets/sounds/
 
   fonts:
     - family: CustomIcons
