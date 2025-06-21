@@ -3,6 +3,7 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
+import 'package:xenotune_flutter_dev/Core/icon.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/sounds.dart';
 
@@ -80,7 +81,7 @@ class _SoundsPageState extends State<SoundsPage> {
                   SoundsViewWidget(soundIcon: Symbols.snowing), // cicada
 
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.pets), //frog
+                  SoundsViewWidget(soundIcon: CustomIcons.frog), //frog
                   kSizedBoxHeight15,
 
                   SoundsViewWidget(soundIcon: Symbols.hive),
