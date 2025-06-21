@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 class SoundsViewWidget extends StatefulWidget {
   final IconData soundIcon;
-  const SoundsViewWidget({super.key, required this.soundIcon});
+  final String path;
+
+  const SoundsViewWidget({
+    super.key,
+    required this.soundIcon,
+    required this.path,
+  });
 
   @override
   State<SoundsViewWidget> createState() => _SoundsViewWidgetState();
@@ -14,6 +21,20 @@ class SoundsViewWidget extends StatefulWidget {
 class _SoundsViewWidgetState extends State<SoundsViewWidget> {
   double _value = 0;
   double _trackHeight = 15;
+  final _audioPlayer = AudioPlayer();
+  @override
+  void initState() {
+    if (_audioPlayer.playerState.processingState == ProcessingState.idle) {
+      _audioPlayer.setAsset(widget.path);
+      _audioPlayer.setLoopMode(LoopMode.one);
+    }
+
+    _audioPlayer.setVolume(_value);
+
+    _audioPlayer.play();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -30,11 +51,12 @@ class _SoundsViewWidgetState extends State<SoundsViewWidget> {
                 setState(() {
                   _value = 0;
                 });
+                _audioPlayer.setVolume(_value);
               },
               icon: Icon(
                 _value == 0
                     ? Symbols.volume_off
-                    : (_value >= 50 ? Symbols.volume_up : Symbols.volume_down),
+                    : (_value >= 0.5 ? Symbols.volume_up : Symbols.volume_down),
                 color: kwhite,
               ),
             ),
@@ -56,7 +78,7 @@ class _SoundsViewWidgetState extends State<SoundsViewWidget> {
                     width: kMqWidth(context) * 0.65,
                     child: Slider(
                       min: 0,
-                      max: 100,
+                      max: 1,
                       value: _value,
 
                       onChangeStart: (value) {
@@ -73,6 +95,7 @@ class _SoundsViewWidgetState extends State<SoundsViewWidget> {
                         setState(() {
                           _value = value;
                         });
+                        _audioPlayer.setVolume(_value);
                       },
                     ),
                   ),

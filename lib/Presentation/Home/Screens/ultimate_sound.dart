@@ -7,14 +7,9 @@ import 'package:xenotune_flutter_dev/Core/icon.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/sounds.dart';
 
-class SoundsPage extends StatefulWidget {
+class SoundsPage extends StatelessWidget {
   const SoundsPage({super.key});
 
-  @override
-  State<SoundsPage> createState() => _SoundsPageState();
-}
-
-class _SoundsPageState extends State<SoundsPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,39 +55,81 @@ class _SoundsPageState extends State<SoundsPage> {
                     ),
                   ),
                   kSizedBoxHeight20,
-                  SoundsViewWidget(soundIcon: Symbols.rainy_heavy),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.rainy_heavy,
+                    path: 'assets/sounds/Heavy_rain.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.rainy_light),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.rainy_light,
+                    path: 'assets/sounds/Light_rain.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.air),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.air,
+                    path: 'assets/sounds/Wind.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.bolt),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.bolt,
+                    path: 'assets/sounds/Thunder.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.mode_heat),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.mode_heat,
+                    path: 'assets/sounds/Fireplace.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.waves),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.waves,
+                    path: 'assets/sounds/Wave.mp3',
+                  ),
                   kSizedBoxHeight15,
 
-                  SoundsViewWidget(soundIcon: Symbols.water),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.water,
+                    path: 'assets/sounds/Stream.mp3',
+                  ),
                   kSizedBoxHeight15,
 
-                  SoundsViewWidget(soundIcon: Symbols.forest),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.forest,
+                    path: 'assets/sounds/Wood.mp3',
+                  ),
                   kSizedBoxHeight15,
 
-                  SoundsViewWidget(soundIcon: Symbols.eco),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.eco,
+                    path: 'assets/sounds/Leaf.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.raven),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.raven,
+                    path: 'assets/sounds/Birds.mp3',
+                  ),
                   kSizedBoxHeight15,
 
-                  SoundsViewWidget(soundIcon: CustomIcons.cicada), // cicada
+                  SoundsViewWidget(
+                    soundIcon: CustomIcons.cicada,
+                    path: 'assets/sounds/Cicada.mp3',
+                  ), // cicada
 
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: CustomIcons.frog), //frog
+                  SoundsViewWidget(
+                    soundIcon: CustomIcons.frog,
+                    path: 'assets/sounds/Frog.mp3',
+                  ), //frog
                   kSizedBoxHeight15,
 
-                  SoundsViewWidget(soundIcon: CustomIcons.bee),
+                  SoundsViewWidget(
+                    soundIcon: CustomIcons.bee,
+                    path: 'assets/sounds/Bees.mp3',
+                  ),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.owl),
+                  SoundsViewWidget(
+                    soundIcon: Symbols.owl,
+                    path: 'assets/sounds/Bees.mp3',
+                  ),
                   kSizedBoxHeight15,
                 ],
               ),
