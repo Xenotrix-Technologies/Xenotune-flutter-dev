@@ -60,33 +60,40 @@ class _SoundsPageState extends State<SoundsPage> {
                     ),
                   ),
                   kSizedBoxHeight20,
-                  SoundsViewWidget(soundIcon: Symbols.waves),
+                  SoundsViewWidget(soundIcon: Symbols.rainy_heavy),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.rainy),
-                  kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.mode_heat),
+                  SoundsViewWidget(soundIcon: Symbols.rainy_light),
                   kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: Symbols.air),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.forest),
-                  kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: Symbols.bolt),
                   kSizedBoxHeight15,
+                  SoundsViewWidget(soundIcon: Symbols.mode_heat),
+                  kSizedBoxHeight15,
+                  SoundsViewWidget(soundIcon: Symbols.waves),
+                  kSizedBoxHeight15,
+
+                  SoundsViewWidget(soundIcon: Symbols.water),
+                  kSizedBoxHeight15,
+
+                  SoundsViewWidget(soundIcon: Symbols.forest),
+                  kSizedBoxHeight15,
+
                   SoundsViewWidget(soundIcon: Symbols.eco),
                   kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: Symbols.raven),
                   kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.airwave_sharp),
-                  kSizedBoxHeight15,
-                  SoundsViewWidget(soundIcon: Symbols.snowing), // cicada
+
+                  SoundsViewWidget(soundIcon: CustomIcons.cicada), // cicada
 
                   kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: CustomIcons.frog), //frog
                   kSizedBoxHeight15,
 
-                  SoundsViewWidget(soundIcon: Symbols.hive),
+                  SoundsViewWidget(soundIcon: CustomIcons.bee),
                   kSizedBoxHeight15,
                   SoundsViewWidget(soundIcon: Symbols.owl),
+                  kSizedBoxHeight15,
                 ],
               ),
             ),

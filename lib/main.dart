@@ -12,6 +12,7 @@ import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependen
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
+import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 import 'package:xenotune_flutter_dev/firebase_options.dart';
 
@@ -49,10 +50,10 @@ class MainApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home:
-            isFirstTime
-                ? BeginPage()
-                : (isOnboardingFirstTime ? WelcomePage() : LoadingScreen()),
+        home: SoundsPage(),
+        // isFirstTime
+        //     ? BeginPage()
+        //     : (isOnboardingFirstTime ? WelcomePage() : LoadingScreen()),
       ),
     );
   }
