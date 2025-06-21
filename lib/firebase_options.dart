@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyANkbM91R8s7ymlZw2ZIvv0RjihGSc-ebI',
-    appId: '1:460199195974:android:9eb0f7f847c99bfe8e6147',
+    appId: '1:460199195974:android:e6504d663c27255a8e6147',
     messagingSenderId: '460199195974',
     projectId: 'xenotune-fromx',
     storageBucket: 'xenotune-fromx.firebasestorage.app',
@@ -66,10 +66,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBcRK5soI4CA0w5IXqlHMZop8dxA3XXmME',
-    appId: '1:460199195974:ios:c2a54ab3553de2198e6147',
+    appId: '1:460199195974:ios:5cd20f881aa90bd98e6147',
     messagingSenderId: '460199195974',
     projectId: 'xenotune-fromx',
     storageBucket: 'xenotune-fromx.firebasestorage.app',
-    iosBundleId: 'com.example.xenotuneFlutterDev',
+    androidClientId: '460199195974-65rsgn6nvtd5biqpl8k9f5b6r00bd2o3.apps.googleusercontent.com',
+    iosClientId: '460199195974-sanu38vnidqpbtb8kptt6b8jpcsnhqac.apps.googleusercontent.com',
+    iosBundleId: 'com.xenotunefromx.app',
   );
+
 }

@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:460199195974:android:9eb0f7f847c99bfe8e6147",
+        "mobilesdk_app_id": "1:460199195974:android:e6504d663c27255a8e6147",
         "android_client_info": {
-          "package_name": "com.example.xenotune_flutter_dev"
+          "package_name": "com.xenotunefromx.app"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "460199195974-qmoftlab7pemigkpgfhia2jqufhp1bi4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xenotunefromx.app",
+            "certificate_hash": "3b7baf2066ef47cbbad0a01ad565d0e252a03759"
+          }
+        },
         {
           "client_id": "460199195974-3vnkvkn9gcjuvtc2gp5h7c101gjd06ta.apps.googleusercontent.com",
           "client_type": 3
