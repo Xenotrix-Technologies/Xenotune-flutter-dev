@@ -20,7 +20,7 @@ class LoadingScreen extends StatelessWidget {
           Navigator.push(
             context,
             PageRouteBuilder(
-              transitionDuration: Duration(milliseconds: 500),
+              transitionDuration: Duration(milliseconds: 1000),
               pageBuilder:
                   (context, animation, secondaryAnimation) => HomePage(),
               transitionsBuilder: (
