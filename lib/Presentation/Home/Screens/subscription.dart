@@ -58,7 +58,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                     padding: EdgeInsets.only(top: kMqHeight(context) * 0.05),
                     child: Center(
                       child: Text(
-                        'Your already using Plus\nYour Plus will expire in 29 days',
+                        'Your already using Plus\nYour Plus will renew in 29 days',
                         style: inter(color: kwhite, fontSize: 18),
                         textAlign: TextAlign.center,
                       ),
