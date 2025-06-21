@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -39,7 +40,10 @@ class SleepPage extends StatelessWidget {
                     tag: 'animation',
                     child: Container(
                       height: kMqHeight(context) * 0.57,
-                      color: kPrimarySleepColor,
+                      color: ktransparent,
+                      child: RiveAnimation.asset(
+                        'assets/animations/sleep_2.riv',
+                      ),
                     ),
                   ),
                   Text(
