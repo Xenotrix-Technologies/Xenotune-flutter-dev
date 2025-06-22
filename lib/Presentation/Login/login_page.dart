@@ -93,35 +93,30 @@ class LoginPage extends StatelessWidget {
                               );
                               log('Username: ${user.displayName}');
                               log('New User');
-                            } else {
-                              Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                  transitionDuration: Duration(
-                                    milliseconds: 500,
-                                  ),
-                                  pageBuilder:
-                                      (
-                                        context,
-                                        animation,
-                                        secondaryAnimation,
-                                      ) => LoadingScreen(),
-                                  transitionsBuilder: (
-                                    context,
-                                    animation,
-                                    secondaryAnimation,
-                                    child,
-                                  ) {
-                                    return FadeTransition(
-                                      opacity: animation,
-                                      child: child,
-                                    );
-                                  },
-                                ),
-                              );
-                              UserController().addUsername(user!.displayName!);
-                              log('Existing User');
                             }
+                          } else {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 500),
+                                pageBuilder:
+                                    (context, animation, secondaryAnimation) =>
+                                        LoadingScreen(),
+                                transitionsBuilder: (
+                                  context,
+                                  animation,
+                                  secondaryAnimation,
+                                  child,
+                                ) {
+                                  return FadeTransition(
+                                    opacity: animation,
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
+                            UserController().addUsername(user!.displayName!);
+                            log('Existing User');
                           }
                         } catch (e) {
                           Get.showSnackbar(
