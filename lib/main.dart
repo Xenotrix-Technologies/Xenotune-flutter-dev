@@ -7,6 +7,7 @@ import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check
 import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Ultimate_Sound/sounds_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
@@ -36,6 +37,7 @@ class MainApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getit<MusicControlBloc>()),
+        BlocProvider(create: (context) => getit<SoundsControlBloc>()),
         BlocProvider(create: (context) => getit<InternetCheckBloc>()),
         BlocProvider(create: (context) => getit<TimerBloc>()),
         BlocProvider(create: (context) => SplashBloc()),

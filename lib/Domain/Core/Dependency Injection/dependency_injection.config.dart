@@ -17,6 +17,8 @@ import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_blo
     as _i20;
 import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart'
     as _i932;
+import 'package:xenotune_flutter_dev/Application/Ultimate_Sound/sounds_control_bloc.dart'
+    as _i346;
 import 'package:xenotune_flutter_dev/Domain/Login%20functions/i_login.dart'
     as _i73;
 import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart' as _i257;
@@ -30,8 +32,9 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.factory<_i932.TimerBloc>(() => _i932.TimerBloc());
     gh.factory<_i20.MusicControlBloc>(() => _i20.MusicControlBloc());
+    gh.factory<_i932.TimerBloc>(() => _i932.TimerBloc());
+    gh.factory<_i346.SoundsControlBloc>(() => _i346.SoundsControlBloc());
     gh.lazySingleton<_i652.SnackBars>(() => _i652.SnackBars());
     gh.lazySingleton<_i73.ILogin>(() => _i257.LoginRepository());
     gh.factory<_i391.InternetCheckBloc>(
