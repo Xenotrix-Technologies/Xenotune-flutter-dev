@@ -310,7 +310,6 @@ class HomePage extends StatelessWidget {
                                   child: Center(
                                     child: IconButton(
                                       onPressed: () {
-                                        eventAdd.add(Stop());
                                         eventAdd.add(
                                           MusicControlEvent.play(
                                             url:
@@ -346,7 +345,6 @@ class HomePage extends StatelessWidget {
                                   child: Center(
                                     child: IconButton(
                                       onPressed: () {
-                                        eventAdd.add(Stop());
                                         eventAdd.add(
                                           MusicControlEvent.play(
                                             url:
@@ -382,7 +380,6 @@ class HomePage extends StatelessWidget {
                                   child: Center(
                                     child: IconButton(
                                       onPressed: () {
-                                        eventAdd.add(Stop());
                                         eventAdd.add(
                                           MusicControlEvent.play(
                                             url:

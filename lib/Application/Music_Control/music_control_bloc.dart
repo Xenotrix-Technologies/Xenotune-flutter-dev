@@ -20,7 +20,7 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
       await _audioPlayer.stop();
       emit(
         state.copyWith(
-          isLoading: false,
+          isLoading: true,
           isError: false,
           isPause: true,
           isStoped: true,
