@@ -22,6 +22,7 @@ void main() async {
   await GetStorage.init();
   Get.put(UserController());
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(MainApp());
 }
 
