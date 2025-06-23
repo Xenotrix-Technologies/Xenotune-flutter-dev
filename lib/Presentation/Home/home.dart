@@ -1,10 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
@@ -14,6 +13,7 @@ import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_blo
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Domain/Audio/hearing_protection.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/Timer/set_timer.dart';
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('${kMqHeight(context) * 0.65}');
+    startHearingReminder(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       return context.read<InternetCheckBloc>().add(Check(context: context));
     });
@@ -312,8 +312,11 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         eventAdd.add(
                                           MusicControlEvent.play(
-                                            url:
+                                            source: AudioSource.uri(
+                                              Uri.parse(
                                                 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+                                              ),
+                                            ),
                                             animation:
                                                 'assets/animations/network_connection.riv',
                                           ),
@@ -347,8 +350,11 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         eventAdd.add(
                                           MusicControlEvent.play(
-                                            url:
+                                            source: AudioSource.uri(
+                                              Uri.parse(
                                                 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+                                              ),
+                                            ),
                                             animation:
                                                 'assets/animations/relax.riv',
                                           ),
@@ -382,8 +388,11 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         eventAdd.add(
                                           MusicControlEvent.play(
-                                            url:
+                                            source: AudioSource.uri(
+                                              Uri.parse(
                                                 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+                                              ),
+                                            ),
                                             animation:
                                                 'assets/animations/sleep.riv',
                                           ),
