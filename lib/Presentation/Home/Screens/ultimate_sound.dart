@@ -150,7 +150,7 @@ class SoundsPage extends StatelessWidget {
                     kSizedBoxHeight15,
                     SoundsViewWidget(
                       soundIcon: Symbols.owl,
-                      path: 'assets/sounds/Bees.mp3',
+                      path: 'assets/sounds/Owl.mp3',
                       soundId: 'owl',
                     ),
                     kSizedBoxHeight15,
