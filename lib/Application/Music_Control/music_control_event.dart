@@ -3,7 +3,7 @@ part of 'music_control_bloc.dart';
 @freezed
 class MusicControlEvent with _$MusicControlEvent {
   const factory MusicControlEvent.play({
-    required String url,
+    required AudioSource source,
     required String animation,
   }) = Play;
   const factory MusicControlEvent.onTapPlay() = OnTapPlay;

@@ -46,10 +46,10 @@ $MusicControlEventCopyWith(MusicControlEvent _, $Res Function(MusicControlEvent)
 
 
 class Play implements MusicControlEvent {
-  const Play({required this.url, required this.animation});
+  const Play({required this.source, required this.animation});
   
 
- final  String url;
+ final  AudioSource source;
  final  String animation;
 
 /// Create a copy of MusicControlEvent
@@ -62,16 +62,16 @@ $PlayCopyWith<Play> get copyWith => _$PlayCopyWithImpl<Play>(this, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Play&&(identical(other.url, url) || other.url == url)&&(identical(other.animation, animation) || other.animation == animation));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Play&&(identical(other.source, source) || other.source == source)&&(identical(other.animation, animation) || other.animation == animation));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,url,animation);
+int get hashCode => Object.hash(runtimeType,source,animation);
 
 @override
 String toString() {
-  return 'MusicControlEvent.play(url: $url, animation: $animation)';
+  return 'MusicControlEvent.play(source: $source, animation: $animation)';
 }
 
 
@@ -82,7 +82,7 @@ abstract mixin class $PlayCopyWith<$Res> implements $MusicControlEventCopyWith<$
   factory $PlayCopyWith(Play value, $Res Function(Play) _then) = _$PlayCopyWithImpl;
 @useResult
 $Res call({
- String url, String animation
+ AudioSource source, String animation
 });
 
 
@@ -99,10 +99,10 @@ class _$PlayCopyWithImpl<$Res>
 
 /// Create a copy of MusicControlEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? url = null,Object? animation = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? source = null,Object? animation = null,}) {
   return _then(Play(
-url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
-as String,animation: null == animation ? _self.animation : animation // ignore: cast_nullable_to_non_nullable
+source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
+as AudioSource,animation: null == animation ? _self.animation : animation // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

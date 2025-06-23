@@ -30,8 +30,8 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
       );
       try {
         if (_audioPlayer.playerState.processingState == ProcessingState.idle) {
-          await _audioPlayer.setUrl(event.url);
-          log(event.url);
+          await _audioPlayer.setAudioSource(event.source);
+          log(event.source.toString());
           await _audioPlayer.setLoopMode(LoopMode.one);
           emit(state.copyWith(animation: event.animation));
         } else if (_audioPlayer.playerState.processingState ==
@@ -59,6 +59,7 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
             onTapPlay: true,
           ),
         );
+
         await _audioPlayer.play();
       } catch (e) {
         emit(
