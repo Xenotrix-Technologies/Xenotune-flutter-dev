@@ -13,6 +13,8 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart'
     as _i391;
+import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart'
+    as _i710;
 import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart'
     as _i20;
 import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart'
@@ -32,6 +34,7 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.factory<_i710.IntroMusicBloc>(() => _i710.IntroMusicBloc());
     gh.factory<_i20.MusicControlBloc>(() => _i20.MusicControlBloc());
     gh.factory<_i932.TimerBloc>(() => _i932.TimerBloc());
     gh.factory<_i346.SoundsControlBloc>(() => _i346.SoundsControlBloc());
