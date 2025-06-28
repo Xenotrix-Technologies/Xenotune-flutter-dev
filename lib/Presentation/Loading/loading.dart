@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
+import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
@@ -14,6 +16,12 @@ class LoadingScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       return context.read<SplashBloc>().add(Splash());
     });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      return context.read<MusicControlBloc>().add(Load());
+    });
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => context.read<IntroMusicBloc>().add(IntroMusicEvent.pause()),
+    );
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.loaded) {
