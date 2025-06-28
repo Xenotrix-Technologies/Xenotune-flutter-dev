@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
+
 import 'package:rive/rive.dart' show RiveAnimation;
-import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart';
+
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -14,12 +15,7 @@ class BeginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => context.read<MusicControlBloc>().add(
-        MusicControlEvent.play(
-          source: AudioSource.asset('assets/sounds/intro.mp3'),
-          animation: 'assets/animations/earphone.riv',
-        ),
-      ),
+      (_) => context.read<IntroMusicBloc>().add(Play()),
     );
     return SafeArea(
       child: Scaffold(
