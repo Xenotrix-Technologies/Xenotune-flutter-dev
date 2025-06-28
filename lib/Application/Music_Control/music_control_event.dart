@@ -2,10 +2,8 @@ part of 'music_control_bloc.dart';
 
 @freezed
 class MusicControlEvent with _$MusicControlEvent {
-  const factory MusicControlEvent.play({
-    required AudioSource source,
-    required String animation,
-  }) = Play;
+  const factory MusicControlEvent.play({required String mood}) = Play;
+  const factory MusicControlEvent.load() = Load;
   const factory MusicControlEvent.onTapPlay() = OnTapPlay;
   const factory MusicControlEvent.pause() = Pause;
   const factory MusicControlEvent.stop() = Stop;

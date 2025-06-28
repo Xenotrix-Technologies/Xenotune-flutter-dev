@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:math' show Random;
 
+import 'package:audio_service/audio_service.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:xenotune_flutter_dev/Domain/Audio/music_media_item.dart';
+import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 
 part 'music_control_event.dart';
 part 'music_control_state.dart';
@@ -14,40 +16,38 @@ part 'music_control_bloc.freezed.dart';
 @injectable
 class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
   Timer? timerControl;
-  final AudioPlayer _audioPlayer = AudioPlayer();
+
+  final audioHandler = getit<AudioHandler>();
+  final playlist = moodSongs;
   MusicControlBloc() : super(MusicControlState.initial()) {
+    on<Load>((event, emit) async {
+      final mediaItems =
+          playlist
+              .map(
+                (mI) => MediaItem(
+                  id: mI.id,
+                  title: mI.title,
+                  album: mI.album,
+                  extras: mI.extras,
+                ),
+              )
+              .toList();
+      await audioHandler.addQueueItems(mediaItems);
+    });
     on<Play>((event, emit) async {
-      await _audioPlayer.stop();
-      emit(
-        state.copyWith(
-          isLoading: true,
-          isError: false,
-          isPause: true,
-          isStoped: true,
-          isPlay: false,
-          onTapPlay: false,
-        ),
-      );
-      try {
-        if (_audioPlayer.playerState.processingState == ProcessingState.idle) {
-          await _audioPlayer.setAudioSource(event.source);
-          log(event.source.toString());
-          await _audioPlayer.setLoopMode(LoopMode.one);
-          emit(state.copyWith(animation: event.animation));
-        } else if (_audioPlayer.playerState.processingState ==
-                ProcessingState.buffering ||
-            _audioPlayer.playerState.processingState ==
-                ProcessingState.loading) {
-          emit(
-            state.copyWith(
-              isLoading: true,
-              isPause: false,
-              isStoped: false,
-              isPlay: false,
-              onTapPlay: false,
-            ),
-          );
-        }
+      await audioHandler.stop();
+      final mood = event.mood;
+      final queueItems = audioHandler.queue.value;
+      final index = queueItems.indexWhere((item) => item.id == mood);
+      final url = queueItems[index].extras!['url'] as String;
+      final animationPath = queueItems[index].extras!['animation'] as String;
+
+      log('index :$index');
+
+      if (index != -1) {
+        await audioHandler.skipToQueueItem(index);
+        log(url);
+        await audioHandler.play();
 
         emit(
           state.copyWith(
@@ -55,27 +55,16 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
             isPause: false,
             isError: false,
             isStoped: false,
-            isPlay: true,
-            onTapPlay: true,
-          ),
-        );
-
-        await _audioPlayer.play();
-      } catch (e) {
-        emit(
-          state.copyWith(
-            isError: true,
-            isLoading: false,
-            isPlay: false,
-            isPause: false,
-            isStoped: false,
             onTapPlay: false,
+            isPlay: true,
+            animation: animationPath,
           ),
         );
       }
     });
     on<Pause>((event, emit) async {
-      await _audioPlayer.pause();
+      await audioHandler.pause();
+
       emit(
         state.copyWith(
           isPause: true,
@@ -99,7 +88,7 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
           onTapPlay: true,
         ),
       );
-      await _audioPlayer.play();
+      await audioHandler.play();
     });
     on<Stop>((event, emit) async {
       emit(
@@ -111,7 +100,7 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
           heights: List.generate(25, (_) => 7.0),
         ),
       );
-      await _audioPlayer.stop();
+      await audioHandler.stop();
     });
     on<StartWaveForm>((event, emit) {
       timerControl?.cancel();

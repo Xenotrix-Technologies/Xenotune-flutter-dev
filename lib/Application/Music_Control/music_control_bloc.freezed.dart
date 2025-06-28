@@ -46,11 +46,10 @@ $MusicControlEventCopyWith(MusicControlEvent _, $Res Function(MusicControlEvent)
 
 
 class Play implements MusicControlEvent {
-  const Play({required this.source, required this.animation});
+  const Play({required this.mood});
   
 
- final  AudioSource source;
- final  String animation;
+ final  String mood;
 
 /// Create a copy of MusicControlEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -62,16 +61,16 @@ $PlayCopyWith<Play> get copyWith => _$PlayCopyWithImpl<Play>(this, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Play&&(identical(other.source, source) || other.source == source)&&(identical(other.animation, animation) || other.animation == animation));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Play&&(identical(other.mood, mood) || other.mood == mood));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,source,animation);
+int get hashCode => Object.hash(runtimeType,mood);
 
 @override
 String toString() {
-  return 'MusicControlEvent.play(source: $source, animation: $animation)';
+  return 'MusicControlEvent.play(mood: $mood)';
 }
 
 
@@ -82,7 +81,7 @@ abstract mixin class $PlayCopyWith<$Res> implements $MusicControlEventCopyWith<$
   factory $PlayCopyWith(Play value, $Res Function(Play) _then) = _$PlayCopyWithImpl;
 @useResult
 $Res call({
- AudioSource source, String animation
+ String mood
 });
 
 
@@ -99,16 +98,47 @@ class _$PlayCopyWithImpl<$Res>
 
 /// Create a copy of MusicControlEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? source = null,Object? animation = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? mood = null,}) {
   return _then(Play(
-source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
-as AudioSource,animation: null == animation ? _self.animation : animation // ignore: cast_nullable_to_non_nullable
+mood: null == mood ? _self.mood : mood // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
 
 
 }
+
+/// @nodoc
+
+
+class Load implements MusicControlEvent {
+  const Load();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Load);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'MusicControlEvent.load()';
+}
+
+
+}
+
+
+
 
 /// @nodoc
 
