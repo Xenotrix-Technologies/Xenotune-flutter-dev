@@ -10,4 +10,12 @@ class MusicControlEvent with _$MusicControlEvent {
   const factory MusicControlEvent.startWaveForm() = StartWaveForm;
   const factory MusicControlEvent.stopWaveForm() = StopWaveForm;
   const factory MusicControlEvent.waveForm() = WaveForm;
+  const factory MusicControlEvent.isPlayingOrPaused({
+    required bool isPlaying,
+    required bool isbuffering,
+  }) = IsPlayingOrPaused;
+  const factory MusicControlEvent.isMusicChanged({
+    required String animation,
+    required String id,
+  }) = IsMusicChanged;
 }

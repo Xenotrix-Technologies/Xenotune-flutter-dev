@@ -21,23 +21,23 @@ import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/drawer.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final List<String> sounds = [
-    'Rain',
-    'Wave',
-    'Wind',
-    'Nature',
-    'Birds',
-    'Violin',
-    'Guiter',
-    'Piano',
-    'Flute',
-    'White noise',
-    'Forest',
-    'Ocean breeze',
-    'Thunderstorm',
-    'Night crickets',
-    'Cicadas',
-  ];
+  // final List<String> sounds = [
+  //   'Rain',
+  //   'Wave',
+  //   'Wind',
+  //   'Nature',
+  //   'Birds',
+  //   'Violin',
+  //   'Guiter',
+  //   'Piano',
+  //   'Flute',
+  //   'White noise',
+  //   'Forest',
+  //   'Ocean breeze',
+  //   'Thunderstorm',
+  //   'Night crickets',
+  //   'Cicadas',
+  // ];   //For future update
 
   final box = GetStorage();
 
@@ -164,19 +164,33 @@ class HomePage extends StatelessWidget {
                                     InternetCheckState
                                   >(
                                     builder: (context, iState) {
-                                      return IconButton(
-                                        onPressed: () {
-                                          final isPlay = musicState.isPlay;
-                                          context.read<MusicControlBloc>().add(
-                                            isPlay ? Pause() : OnTapPlay(),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          musicState.isPlay
-                                              ? Symbols.pause
-                                              : Symbols.play_arrow,
-                                          color: kwhite,
-                                          size: 45,
+                                      return SizedBox(
+                                        height: 100,
+                                        width: 50,
+                                        child: IconButton(
+                                          onPressed: () {
+                                            final isPlay = musicState.isPlay;
+
+                                            context
+                                                .read<MusicControlBloc>()
+                                                .add(
+                                                  isPlay
+                                                      ? Pause()
+                                                      : OnTapPlay(),
+                                                );
+                                          },
+                                          icon:
+                                              musicState.isLoading
+                                                  ? CircularProgressIndicator(
+                                                    color: kwhite,
+                                                  )
+                                                  : Icon(
+                                                    musicState.isPlay
+                                                        ? Symbols.pause
+                                                        : Symbols.play_arrow,
+                                                    color: kwhite,
+                                                    size: 45,
+                                                  ),
                                         ),
                                       );
                                     },
@@ -202,22 +216,26 @@ class HomePage extends StatelessWidget {
                                           );
                                         }).toList(),
                                   ),
-                                  IconButton(
-                                    onPressed: () {
-                                      if (iState.isTrue) {
-                                        showModalBottomSheet(
-                                          context: context,
-                                          isDismissible: false,
-                                          builder: (context) {
-                                            return SetTimerWidget();
-                                          },
-                                        );
-                                      }
-                                    },
-                                    icon: Icon(
-                                      Symbols.timer,
-                                      color: kwhite,
-                                      size: 45,
+                                  SizedBox(
+                                    height: 100,
+                                    width: 50,
+                                    child: IconButton(
+                                      onPressed: () {
+                                        if (iState.isTrue) {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            isDismissible: false,
+                                            builder: (context) {
+                                              return SetTimerWidget();
+                                            },
+                                          );
+                                        }
+                                      },
+                                      icon: Icon(
+                                        Symbols.timer,
+                                        color: kwhite,
+                                        size: 45,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -385,33 +403,33 @@ class HomePage extends StatelessWidget {
                             kSizedBoxHeight15,
                             TimerWidget(),
                             kSizedBoxHeight15,
-                            Divider(
-                              color: kwhite,
-                              indent: kMqWidth(context) * 0.07,
-                              endIndent: kMqWidth(context) * 0.07,
-                            ),
-                            kSizedBoxHeight15,
-                            Center(
-                              child: Wrap(
-                                children: List.generate(sounds.length, (index) {
-                                  return Container(
-                                    margin: EdgeInsets.all(7),
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 14,
-                                      vertical: 10,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: kBgBlue,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Text(
-                                      sounds[index],
-                                      style: inter(color: kwhite),
-                                    ),
-                                  );
-                                }),
-                              ),
-                            ),
+                            // Divider(
+                            //   color: kwhite,
+                            //   indent: kMqWidth(context) * 0.07,
+                            //   endIndent: kMqWidth(context) * 0.07,
+                            // ),
+                            // kSizedBoxHeight15,
+                            // Center(
+                            //   child: Wrap(
+                            //     children: List.generate(sounds.length, (index) {
+                            //       return Container(
+                            //         margin: EdgeInsets.all(7),
+                            //         padding: EdgeInsets.symmetric(
+                            //           horizontal: 14,
+                            //           vertical: 10,
+                            //         ),
+                            //         decoration: BoxDecoration(
+                            //           color: kBgBlue,
+                            //           borderRadius: BorderRadius.circular(20),
+                            //         ),
+                            //         child: Text(
+                            //           sounds[index],
+                            //           style: inter(color: kwhite),
+                            //         ),
+                            //       );
+                            //     }),
+                            //   ),
+                            // ),                                         // For Future update
                           ],
                         ),
                       );

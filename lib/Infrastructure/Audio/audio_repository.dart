@@ -90,10 +90,34 @@ class MyAudioHandler extends BaseAudioHandler {
   }
 
   @override
-  Future<void> pause() => player.pause();
+  Future<void> pause() async {
+    await player.pause();
+    playbackState.add(
+      playbackState.value.copyWith(
+        playing: false,
+        controls: [
+          MediaControl.skipToPrevious,
+          MediaControl.play,
+          MediaControl.skipToNext,
+        ],
+      ),
+    );
+  }
 
   @override
-  Future<void> play() => player.play();
+  Future<void> play() async {
+    player.play();
+    playbackState.add(
+      playbackState.value.copyWith(
+        playing: true,
+        controls: [
+          MediaControl.skipToPrevious,
+          MediaControl.pause,
+          MediaControl.skipToNext,
+        ],
+      ),
+    );
+  }
 
   @override
   Future<void> stop() => player.stop();
@@ -111,5 +135,21 @@ class MyAudioHandler extends BaseAudioHandler {
       index = player.shuffleIndices[index];
     }
     player.seek(Duration.zero, index: index);
+  }
+
+  @override
+  Future<void> removeQueueItemAt(int index) async {
+    playlist.removeAt(index);
+
+    final newQueue = queue.value..removeAt(index);
+    queue.add(newQueue);
+  }
+
+  @override
+  Future<void> customAction(String name, [Map<String, dynamic>? extras]) async {
+    if (name == 'dispose') {
+      await player.dispose();
+      super.stop();
+    }
   }
 }

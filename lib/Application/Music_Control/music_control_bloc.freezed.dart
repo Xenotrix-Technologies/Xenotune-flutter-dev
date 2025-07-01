@@ -333,6 +333,142 @@ String toString() {
 
 
 /// @nodoc
+
+
+class IsPlayingOrPaused implements MusicControlEvent {
+  const IsPlayingOrPaused({required this.isPlaying, required this.isbuffering});
+  
+
+ final  bool isPlaying;
+ final  bool isbuffering;
+
+/// Create a copy of MusicControlEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IsPlayingOrPausedCopyWith<IsPlayingOrPaused> get copyWith => _$IsPlayingOrPausedCopyWithImpl<IsPlayingOrPaused>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IsPlayingOrPaused&&(identical(other.isPlaying, isPlaying) || other.isPlaying == isPlaying)&&(identical(other.isbuffering, isbuffering) || other.isbuffering == isbuffering));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,isPlaying,isbuffering);
+
+@override
+String toString() {
+  return 'MusicControlEvent.isPlayingOrPaused(isPlaying: $isPlaying, isbuffering: $isbuffering)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IsPlayingOrPausedCopyWith<$Res> implements $MusicControlEventCopyWith<$Res> {
+  factory $IsPlayingOrPausedCopyWith(IsPlayingOrPaused value, $Res Function(IsPlayingOrPaused) _then) = _$IsPlayingOrPausedCopyWithImpl;
+@useResult
+$Res call({
+ bool isPlaying, bool isbuffering
+});
+
+
+
+
+}
+/// @nodoc
+class _$IsPlayingOrPausedCopyWithImpl<$Res>
+    implements $IsPlayingOrPausedCopyWith<$Res> {
+  _$IsPlayingOrPausedCopyWithImpl(this._self, this._then);
+
+  final IsPlayingOrPaused _self;
+  final $Res Function(IsPlayingOrPaused) _then;
+
+/// Create a copy of MusicControlEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? isPlaying = null,Object? isbuffering = null,}) {
+  return _then(IsPlayingOrPaused(
+isPlaying: null == isPlaying ? _self.isPlaying : isPlaying // ignore: cast_nullable_to_non_nullable
+as bool,isbuffering: null == isbuffering ? _self.isbuffering : isbuffering // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class IsMusicChanged implements MusicControlEvent {
+  const IsMusicChanged({required this.animation, required this.id});
+  
+
+ final  String animation;
+ final  String id;
+
+/// Create a copy of MusicControlEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IsMusicChangedCopyWith<IsMusicChanged> get copyWith => _$IsMusicChangedCopyWithImpl<IsMusicChanged>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IsMusicChanged&&(identical(other.animation, animation) || other.animation == animation)&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,animation,id);
+
+@override
+String toString() {
+  return 'MusicControlEvent.isMusicChanged(animation: $animation, id: $id)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IsMusicChangedCopyWith<$Res> implements $MusicControlEventCopyWith<$Res> {
+  factory $IsMusicChangedCopyWith(IsMusicChanged value, $Res Function(IsMusicChanged) _then) = _$IsMusicChangedCopyWithImpl;
+@useResult
+$Res call({
+ String animation, String id
+});
+
+
+
+
+}
+/// @nodoc
+class _$IsMusicChangedCopyWithImpl<$Res>
+    implements $IsMusicChangedCopyWith<$Res> {
+  _$IsMusicChangedCopyWithImpl(this._self, this._then);
+
+  final IsMusicChanged _self;
+  final $Res Function(IsMusicChanged) _then;
+
+/// Create a copy of MusicControlEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? animation = null,Object? id = null,}) {
+  return _then(IsMusicChanged(
+animation: null == animation ? _self.animation : animation // ignore: cast_nullable_to_non_nullable
+as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$MusicControlState {
 
  bool get isLoading; bool get isError; String get animation; bool get isPlay; bool get onTapPlay; bool get isPause; bool get isStoped; List<double> get heights;
