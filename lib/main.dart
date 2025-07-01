@@ -24,6 +24,7 @@ void main() async {
   await GetStorage.init();
   await configInjectable();
   Get.put(UserController());
+  tz.initializeTimeZones();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MainApp());
