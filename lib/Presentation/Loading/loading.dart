@@ -6,6 +6,7 @@ import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_blo
 import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
+import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -55,22 +56,20 @@ class LoadingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: Opacity(
-                opacity: 0.5,
-                child: RiveAnimation.asset(
-                  'assets/animations/honey_comb.riv',
 
-                  speedMultiplier: 0.8,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  height: kMqHeight(context) * 0.59,
+                  child: RiveAnimation.asset('assets/animations/earphone.riv'),
                 ),
-              ),
-            ),
-            Center(
-              child: Text(
-                'Music is the moonlight\nin the gloomy night of life',
-                textAlign: TextAlign.center,
-                style: lexanGiga(color: kwhite),
-              ),
+                Text(
+                  'Music is the moonlight\nin the gloomy night of life',
+                  textAlign: TextAlign.center,
+                  style: lexanGiga(color: kwhite),
+                ),
+              ],
             ),
           ],
         ),
