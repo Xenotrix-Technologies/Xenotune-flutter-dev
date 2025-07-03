@@ -12,6 +12,7 @@ import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_blo
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Notification/schedule_notification.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/Timer/set_timer.dart';
@@ -403,6 +404,13 @@ class HomePage extends StatelessWidget {
                             kSizedBoxHeight15,
                             TimerWidget(),
                             kSizedBoxHeight15,
+                            ElevatedButton(
+                              onPressed: () async {
+                                await showNotification();
+                              },
+                              child: Text('show'),
+                            ),
+
                             // Divider(
                             //   color: kwhite,
                             //   indent: kMqWidth(context) * 0.07,
