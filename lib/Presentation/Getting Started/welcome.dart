@@ -3,6 +3,8 @@ import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Notification/initilize_notification.dart';
+
 import 'package:xenotune_flutter_dev/Presentation/Login/login_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Widgets/Gradient%20Header/gradient_header.dart';
 
@@ -11,6 +13,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    requestPermission();
     return Scaffold(
       backgroundColor: ktransparent,
       body: Stack(
@@ -43,8 +46,9 @@ class WelcomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
+                    // ignore: use_build_context_synchronously
                     context,
                     PageRouteBuilder(
                       transitionDuration: Duration(milliseconds: 500),
