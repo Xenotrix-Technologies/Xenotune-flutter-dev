@@ -65,13 +65,13 @@ class SoundsPage extends StatelessWidget {
                     ),
                     kSizedBoxHeight20,
                     SoundsViewWidget(
-                      soundIcon: Symbols.rainy_heavy,
+                      soundIcon: Symbols.rainy,
                       path: 'assets/sounds/Heavy_rain.mp3',
                       soundId: 'heavy_rain',
                     ),
                     kSizedBoxHeight15,
                     SoundsViewWidget(
-                      soundIcon: Symbols.rainy_light,
+                      soundIcon: Symbols.cloudy_snowing,
                       path: 'assets/sounds/Light_rain.mp3',
                       soundId: 'light_rain',
                     ),
