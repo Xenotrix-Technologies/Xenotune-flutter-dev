@@ -7,6 +7,7 @@ import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Notification/schedule_notification.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
 
 class LoadingScreen extends StatelessWidget {
@@ -23,6 +24,9 @@ class LoadingScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => context.read<IntroMusicBloc>().add(IntroMusicEvent.pause()),
     );
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await scheduleMoodReminder();
+    });
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state.loaded) {
