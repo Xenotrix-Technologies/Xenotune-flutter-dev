@@ -51,12 +51,12 @@
     <action android:name="android.media.browse.MediaBrowserService" />
   </intent-filter>
 </service>
-<service
+<!-- <service
         android:name="com.dexterous.flutterlocalnotifications.ForegroundService"
         android:exported="false"
         android:stopWithTask="false"
         android:foregroundServiceType="<foreground service types>">
-</service>
+</service> -->
 <receiver 
     android:name="com.ryanheise.audioservice.MediaButtonReceiver"
     android:exported="true" 
