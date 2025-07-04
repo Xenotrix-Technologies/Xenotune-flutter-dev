@@ -22,17 +22,19 @@ dependencies:
   flutter_local_notifications: ^19.3.0
   flutter_native_splash: ^2.4.6
   flutter_timezone: ^4.1.1
-  freezed_annotation: ^3.0.0
+  freezed_annotation: ^2.0.1
   get: ^4.7.2
   get_it: ^8.0.3
   get_storage: ^2.1.1
   google_fonts: ^6.2.1
+  google_mobile_ads: ^6.0.0
   google_sign_in: ^6.3.0
   injectable: ^2.0.1
   internet_connection_checker_plus: ^2.7.2
   just_audio: ^0.10.1
   material_symbols_icons: ^4.2815.0
   numberpicker: ^2.1.2
+  purchases_flutter: ^8.10.5
   rive: ^0.13.20
   simple_gradient_text: ^1.3.0
   slide_countdown: ^2.0.2
@@ -44,7 +46,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  freezed: ^3.0.6
+  freezed: ^2.5.8
   injectable_generator: ^2.0.1
 
 flutter_launcher_icons:
@@ -53,22 +55,20 @@ flutter_launcher_icons:
 
   android: true
 
- 
   adaptive_icon_foreground: "assets/img/xenotune_logo.png"
   min_sdk_android: 23
   adaptive_icon_background: "assets/img/bg.png"
 
 flutter_native_splash:
- 
 
- background_image: "assets/img/bg.png"
- image: assets/img/xenotune_logo.png
- android: true
- ios: false
- web: false
- android_12:
   background_image: "assets/img/bg.png"
   image: assets/img/xenotune_logo.png
+  android: true
+  ios: false
+  web: false
+  android_12:
+
+    image: assets/img/xenotune_logo.png
 
 flutter:
   uses-material-design: true
