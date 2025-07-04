@@ -60,7 +60,8 @@ flutter_launcher_icons:
 
 flutter_native_splash:
  
- color: "#010125"
+
+ background_image: "assets/img/bg.png"
  image: assets/img/xenotune_logo.png
  android: true
  ios: false
