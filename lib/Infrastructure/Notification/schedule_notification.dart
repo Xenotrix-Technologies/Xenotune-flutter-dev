@@ -1,6 +1,6 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
-import 'package:xenotune_flutter_dev/Core/colors.dart';
+
 import 'package:xenotune_flutter_dev/Infrastructure/Notification/initilize_notification.dart';
 
 Future<void> scheduleMoodReminder() async {
@@ -37,13 +37,12 @@ Future<void> showNotification() async {
       AndroidNotificationDetails(
         'com.xenotune',
         'xenotrix',
-        // icon: 'google.png',
-        //largeIcon: DrawableResourceAndroidBitmap('ic_launcher'),
+        icon: 'splash',
+        largeIcon: DrawableResourceAndroidBitmap('splash'),
         importance: Importance.max,
         priority: Priority.high,
         ticker: 'ticker',
         enableVibration: false,
-        color: kBgBlue,
       );
   const NotificationDetails notificationDetails = NotificationDetails(
     android: androidNotificationDetails,
