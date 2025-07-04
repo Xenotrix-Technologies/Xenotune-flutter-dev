@@ -32,7 +32,11 @@ class DrawerWidget extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
-              child: CircleAvatar(radius: 50, backgroundColor: kwhite),
+              child: CircleAvatar(
+                radius: 60,
+                backgroundColor: ktransparent,
+                backgroundImage: AssetImage('assets/img/xenotune_logo.png'),
+              ),
             ),
             Column(
               children: [
