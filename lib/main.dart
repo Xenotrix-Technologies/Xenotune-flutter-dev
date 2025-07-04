@@ -12,9 +12,7 @@ import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Ultimate_Sound/sounds_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
-import 'package:xenotune_flutter_dev/Infrastructure/Notification/firebase_msg.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Notification/initilize_notification.dart';
-
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
@@ -32,7 +30,6 @@ void main() async {
   await initNotifications();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseMsg().initFCM();
 
   runApp(MainApp());
 }
