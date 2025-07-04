@@ -17,7 +17,7 @@ Future<void> scheduleMoodReminder() async {
       0,
       'Mood Reminder',
       'Feeling something? Let Xenotune match your vibe.',
-      tz.TZDateTime.now(tz.local).add(Duration(minutes: 1)),
+      tz.TZDateTime.now(tz.local).add(Duration(minutes: 30)),
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'mood_channel_id',
