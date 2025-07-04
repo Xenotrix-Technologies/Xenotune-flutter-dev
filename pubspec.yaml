@@ -67,7 +67,7 @@ flutter_native_splash:
  ios: false
  web: false
  android_12:
-  color: 
+  background_image: "assets/img/bg.png"
   image: assets/img/xenotune_logo.png
 
 flutter:
