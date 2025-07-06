@@ -27,6 +27,8 @@ class LoadingScreen extends StatelessWidget {
     );
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await scheduleMoodReminder();
+      await ifUserNotOpendedTheAppFor48Hour();
+      await show10PmNotification();
       await FirebaseMsg().initFCM();
     });
     return BlocListener<SplashBloc, SplashState>(
