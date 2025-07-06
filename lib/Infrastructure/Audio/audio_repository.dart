@@ -7,10 +7,11 @@ import 'package:just_audio/just_audio.dart';
 Future<AudioHandler> initAudioService() async {
   return await AudioService.init(
     builder: () => MyAudioHandler(),
-    config: const AudioServiceConfig(
+    config: AudioServiceConfig(
       androidNotificationChannelId: 'com.xenotrix.xenotune.audio',
       androidNotificationChannelName: 'Audio Service',
       androidNotificationOngoing: true,
+      androidStopForegroundOnPause: true,
     ),
   );
 }
