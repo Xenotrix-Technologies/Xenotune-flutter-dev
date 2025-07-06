@@ -37,11 +37,12 @@ class LoginPage extends StatelessWidget {
             spacing: kMqHeight(context) * 0.08,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Hero(
-                tag: 'animation',
-                child: Container(
-                  height: kMqHeight(context) * 0.45,
-                  color: kPrimaryBlueDark.withAlpha(170),
+              Container(
+                height: kMqHeight(context) * 0.45,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/img/xenotune_logo.png'),
+                  ),
                 ),
               ),
               Text(
