@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,404 +9,871 @@ part of 'timer_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$TimerEvent {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TimerEvent);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'TimerEvent()';
-}
-
-
-}
-
-/// @nodoc
-class $TimerEventCopyWith<$Res>  {
-$TimerEventCopyWith(TimerEvent _, $Res Function(TimerEvent) __);
-}
-
-
-/// @nodoc
-
-
-class Hour implements TimerEvent {
-  const Hour({required this.hour});
-  
-
- final  int hour;
-
-/// Create a copy of TimerEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$HourCopyWith<Hour> get copyWith => _$HourCopyWithImpl<Hour>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Hour&&(identical(other.hour, hour) || other.hour == hour));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,hour);
-
-@override
-String toString() {
-  return 'TimerEvent.hour(hour: $hour)';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int hour) hour,
+    required TResult Function(int minute) minute,
+    required TResult Function(int hour, int minute) set,
+    required TResult Function() cancel,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int hour)? hour,
+    TResult? Function(int minute)? minute,
+    TResult? Function(int hour, int minute)? set,
+    TResult? Function()? cancel,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int hour)? hour,
+    TResult Function(int minute)? minute,
+    TResult Function(int hour, int minute)? set,
+    TResult Function()? cancel,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Hour value) hour,
+    required TResult Function(Minute value) minute,
+    required TResult Function(Set value) set,
+    required TResult Function(Cancel value) cancel,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Hour value)? hour,
+    TResult? Function(Minute value)? minute,
+    TResult? Function(Set value)? set,
+    TResult? Function(Cancel value)? cancel,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Hour value)? hour,
+    TResult Function(Minute value)? minute,
+    TResult Function(Set value)? set,
+    TResult Function(Cancel value)? cancel,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $HourCopyWith<$Res> implements $TimerEventCopyWith<$Res> {
-  factory $HourCopyWith(Hour value, $Res Function(Hour) _then) = _$HourCopyWithImpl;
-@useResult
-$Res call({
- int hour
-});
-
-
-
-
-}
-/// @nodoc
-class _$HourCopyWithImpl<$Res>
-    implements $HourCopyWith<$Res> {
-  _$HourCopyWithImpl(this._self, this._then);
-
-  final Hour _self;
-  final $Res Function(Hour) _then;
-
-/// Create a copy of TimerEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? hour = null,}) {
-  return _then(Hour(
-hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-
+abstract class $TimerEventCopyWith<$Res> {
+  factory $TimerEventCopyWith(
+    TimerEvent value,
+    $Res Function(TimerEvent) then,
+  ) = _$TimerEventCopyWithImpl<$Res, TimerEvent>;
 }
 
 /// @nodoc
+class _$TimerEventCopyWithImpl<$Res, $Val extends TimerEvent>
+    implements $TimerEventCopyWith<$Res> {
+  _$TimerEventCopyWithImpl(this._value, this._then);
 
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-class Minute implements TimerEvent {
-  const Minute({required this.minute});
-  
-
- final  int minute;
-
-/// Create a copy of TimerEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$MinuteCopyWith<Minute> get copyWith => _$MinuteCopyWithImpl<Minute>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Minute&&(identical(other.minute, minute) || other.minute == minute));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,minute);
-
-@override
-String toString() {
-  return 'TimerEvent.minute(minute: $minute)';
-}
-
-
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract mixin class $MinuteCopyWith<$Res> implements $TimerEventCopyWith<$Res> {
-  factory $MinuteCopyWith(Minute value, $Res Function(Minute) _then) = _$MinuteCopyWithImpl;
-@useResult
-$Res call({
- int minute
-});
-
-
-
-
+abstract class _$$HourImplCopyWith<$Res> {
+  factory _$$HourImplCopyWith(
+    _$HourImpl value,
+    $Res Function(_$HourImpl) then,
+  ) = __$$HourImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int hour});
 }
+
 /// @nodoc
-class _$MinuteCopyWithImpl<$Res>
-    implements $MinuteCopyWith<$Res> {
-  _$MinuteCopyWithImpl(this._self, this._then);
+class __$$HourImplCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res, _$HourImpl>
+    implements _$$HourImplCopyWith<$Res> {
+  __$$HourImplCopyWithImpl(_$HourImpl _value, $Res Function(_$HourImpl) _then)
+    : super(_value, _then);
 
-  final Minute _self;
-  final $Res Function(Minute) _then;
-
-/// Create a copy of TimerEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? minute = null,}) {
-  return _then(Minute(
-minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? hour = null}) {
+    return _then(
+      _$HourImpl(
+        hour:
+            null == hour
+                ? _value.hour
+                : hour // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 
+class _$HourImpl implements Hour {
+  const _$HourImpl({required this.hour});
 
-class Set implements TimerEvent {
-  const Set({required this.hour, required this.minute});
-  
+  @override
+  final int hour;
 
- final  int hour;
- final  int minute;
+  @override
+  String toString() {
+    return 'TimerEvent.hour(hour: $hour)';
+  }
 
-/// Create a copy of TimerEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SetCopyWith<Set> get copyWith => _$SetCopyWithImpl<Set>(this, _$identity);
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HourImpl &&
+            (identical(other.hour, hour) || other.hour == hour));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, hour);
 
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HourImplCopyWith<_$HourImpl> get copyWith =>
+      __$$HourImplCopyWithImpl<_$HourImpl>(this, _$identity);
 
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Set&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute));
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int hour) hour,
+    required TResult Function(int minute) minute,
+    required TResult Function(int hour, int minute) set,
+    required TResult Function() cancel,
+  }) {
+    return hour(this.hour);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int hour)? hour,
+    TResult? Function(int minute)? minute,
+    TResult? Function(int hour, int minute)? set,
+    TResult? Function()? cancel,
+  }) {
+    return hour?.call(this.hour);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int hour)? hour,
+    TResult Function(int minute)? minute,
+    TResult Function(int hour, int minute)? set,
+    TResult Function()? cancel,
+    required TResult orElse(),
+  }) {
+    if (hour != null) {
+      return hour(this.hour);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Hour value) hour,
+    required TResult Function(Minute value) minute,
+    required TResult Function(Set value) set,
+    required TResult Function(Cancel value) cancel,
+  }) {
+    return hour(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Hour value)? hour,
+    TResult? Function(Minute value)? minute,
+    TResult? Function(Set value)? set,
+    TResult? Function(Cancel value)? cancel,
+  }) {
+    return hour?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Hour value)? hour,
+    TResult Function(Minute value)? minute,
+    TResult Function(Set value)? set,
+    TResult Function(Cancel value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (hour != null) {
+      return hour(this);
+    }
+    return orElse();
+  }
 }
 
+abstract class Hour implements TimerEvent {
+  const factory Hour({required final int hour}) = _$HourImpl;
 
-@override
-int get hashCode => Object.hash(runtimeType,hour,minute);
+  int get hour;
 
-@override
-String toString() {
-  return 'TimerEvent.set(hour: $hour, minute: $minute)';
-}
-
-
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$HourImplCopyWith<_$HourImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $SetCopyWith<$Res> implements $TimerEventCopyWith<$Res> {
-  factory $SetCopyWith(Set value, $Res Function(Set) _then) = _$SetCopyWithImpl;
-@useResult
-$Res call({
- int hour, int minute
-});
-
-
-
-
-}
-/// @nodoc
-class _$SetCopyWithImpl<$Res>
-    implements $SetCopyWith<$Res> {
-  _$SetCopyWithImpl(this._self, this._then);
-
-  final Set _self;
-  final $Res Function(Set) _then;
-
-/// Create a copy of TimerEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? hour = null,Object? minute = null,}) {
-  return _then(Set(
-hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
-as int,minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-
+abstract class _$$MinuteImplCopyWith<$Res> {
+  factory _$$MinuteImplCopyWith(
+    _$MinuteImpl value,
+    $Res Function(_$MinuteImpl) then,
+  ) = __$$MinuteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int minute});
 }
 
 /// @nodoc
+class __$$MinuteImplCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res, _$MinuteImpl>
+    implements _$$MinuteImplCopyWith<$Res> {
+  __$$MinuteImplCopyWithImpl(
+    _$MinuteImpl _value,
+    $Res Function(_$MinuteImpl) _then,
+  ) : super(_value, _then);
 
-
-class Cancel implements TimerEvent {
-  const Cancel();
-  
-
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Cancel);
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? minute = null}) {
+    return _then(
+      _$MinuteImpl(
+        minute:
+            null == minute
+                ? _value.minute
+                : minute // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
-@override
-int get hashCode => runtimeType.hashCode;
+class _$MinuteImpl implements Minute {
+  const _$MinuteImpl({required this.minute});
 
-@override
-String toString() {
-  return 'TimerEvent.cancel()';
+  @override
+  final int minute;
+
+  @override
+  String toString() {
+    return 'TimerEvent.minute(minute: $minute)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MinuteImpl &&
+            (identical(other.minute, minute) || other.minute == minute));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, minute);
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MinuteImplCopyWith<_$MinuteImpl> get copyWith =>
+      __$$MinuteImplCopyWithImpl<_$MinuteImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int hour) hour,
+    required TResult Function(int minute) minute,
+    required TResult Function(int hour, int minute) set,
+    required TResult Function() cancel,
+  }) {
+    return minute(this.minute);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int hour)? hour,
+    TResult? Function(int minute)? minute,
+    TResult? Function(int hour, int minute)? set,
+    TResult? Function()? cancel,
+  }) {
+    return minute?.call(this.minute);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int hour)? hour,
+    TResult Function(int minute)? minute,
+    TResult Function(int hour, int minute)? set,
+    TResult Function()? cancel,
+    required TResult orElse(),
+  }) {
+    if (minute != null) {
+      return minute(this.minute);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Hour value) hour,
+    required TResult Function(Minute value) minute,
+    required TResult Function(Set value) set,
+    required TResult Function(Cancel value) cancel,
+  }) {
+    return minute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Hour value)? hour,
+    TResult? Function(Minute value)? minute,
+    TResult? Function(Set value)? set,
+    TResult? Function(Cancel value)? cancel,
+  }) {
+    return minute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Hour value)? hour,
+    TResult Function(Minute value)? minute,
+    TResult Function(Set value)? set,
+    TResult Function(Cancel value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (minute != null) {
+      return minute(this);
+    }
+    return orElse();
+  }
 }
 
+abstract class Minute implements TimerEvent {
+  const factory Minute({required final int minute}) = _$MinuteImpl;
 
+  int get minute;
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$MinuteImplCopyWith<_$MinuteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
+/// @nodoc
+abstract class _$$SetImplCopyWith<$Res> {
+  factory _$$SetImplCopyWith(_$SetImpl value, $Res Function(_$SetImpl) then) =
+      __$$SetImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int hour, int minute});
+}
 
+/// @nodoc
+class __$$SetImplCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res, _$SetImpl>
+    implements _$$SetImplCopyWith<$Res> {
+  __$$SetImplCopyWithImpl(_$SetImpl _value, $Res Function(_$SetImpl) _then)
+    : super(_value, _then);
 
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? hour = null, Object? minute = null}) {
+    return _then(
+      _$SetImpl(
+        hour:
+            null == hour
+                ? _value.hour
+                : hour // ignore: cast_nullable_to_non_nullable
+                    as int,
+        minute:
+            null == minute
+                ? _value.minute
+                : minute // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$SetImpl implements Set {
+  const _$SetImpl({required this.hour, required this.minute});
+
+  @override
+  final int hour;
+  @override
+  final int minute;
+
+  @override
+  String toString() {
+    return 'TimerEvent.set(hour: $hour, minute: $minute)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetImpl &&
+            (identical(other.hour, hour) || other.hour == hour) &&
+            (identical(other.minute, minute) || other.minute == minute));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, hour, minute);
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetImplCopyWith<_$SetImpl> get copyWith =>
+      __$$SetImplCopyWithImpl<_$SetImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int hour) hour,
+    required TResult Function(int minute) minute,
+    required TResult Function(int hour, int minute) set,
+    required TResult Function() cancel,
+  }) {
+    return set(this.hour, this.minute);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int hour)? hour,
+    TResult? Function(int minute)? minute,
+    TResult? Function(int hour, int minute)? set,
+    TResult? Function()? cancel,
+  }) {
+    return set?.call(this.hour, this.minute);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int hour)? hour,
+    TResult Function(int minute)? minute,
+    TResult Function(int hour, int minute)? set,
+    TResult Function()? cancel,
+    required TResult orElse(),
+  }) {
+    if (set != null) {
+      return set(this.hour, this.minute);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Hour value) hour,
+    required TResult Function(Minute value) minute,
+    required TResult Function(Set value) set,
+    required TResult Function(Cancel value) cancel,
+  }) {
+    return set(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Hour value)? hour,
+    TResult? Function(Minute value)? minute,
+    TResult? Function(Set value)? set,
+    TResult? Function(Cancel value)? cancel,
+  }) {
+    return set?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Hour value)? hour,
+    TResult Function(Minute value)? minute,
+    TResult Function(Set value)? set,
+    TResult Function(Cancel value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (set != null) {
+      return set(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Set implements TimerEvent {
+  const factory Set({required final int hour, required final int minute}) =
+      _$SetImpl;
+
+  int get hour;
+  int get minute;
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetImplCopyWith<_$SetImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CancelImplCopyWith<$Res> {
+  factory _$$CancelImplCopyWith(
+    _$CancelImpl value,
+    $Res Function(_$CancelImpl) then,
+  ) = __$$CancelImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CancelImplCopyWithImpl<$Res>
+    extends _$TimerEventCopyWithImpl<$Res, _$CancelImpl>
+    implements _$$CancelImplCopyWith<$Res> {
+  __$$CancelImplCopyWithImpl(
+    _$CancelImpl _value,
+    $Res Function(_$CancelImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of TimerEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CancelImpl implements Cancel {
+  const _$CancelImpl();
+
+  @override
+  String toString() {
+    return 'TimerEvent.cancel()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CancelImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int hour) hour,
+    required TResult Function(int minute) minute,
+    required TResult Function(int hour, int minute) set,
+    required TResult Function() cancel,
+  }) {
+    return cancel();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int hour)? hour,
+    TResult? Function(int minute)? minute,
+    TResult? Function(int hour, int minute)? set,
+    TResult? Function()? cancel,
+  }) {
+    return cancel?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int hour)? hour,
+    TResult Function(int minute)? minute,
+    TResult Function(int hour, int minute)? set,
+    TResult Function()? cancel,
+    required TResult orElse(),
+  }) {
+    if (cancel != null) {
+      return cancel();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Hour value) hour,
+    required TResult Function(Minute value) minute,
+    required TResult Function(Set value) set,
+    required TResult Function(Cancel value) cancel,
+  }) {
+    return cancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Hour value)? hour,
+    TResult? Function(Minute value)? minute,
+    TResult? Function(Set value)? set,
+    TResult? Function(Cancel value)? cancel,
+  }) {
+    return cancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Hour value)? hour,
+    TResult Function(Minute value)? minute,
+    TResult Function(Set value)? set,
+    TResult Function(Cancel value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (cancel != null) {
+      return cancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Cancel implements TimerEvent {
+  const factory Cancel() = _$CancelImpl;
+}
 
 /// @nodoc
 mixin _$TimerState {
+  int get hour => throw _privateConstructorUsedError;
+  int get minute => throw _privateConstructorUsedError;
+  int get settedHour => throw _privateConstructorUsedError;
+  int get settedMinute => throw _privateConstructorUsedError;
 
- int get hour; int get minute; int get settedHour; int get settedMinute;
-/// Create a copy of TimerState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$TimerStateCopyWith<TimerState> get copyWith => _$TimerStateCopyWithImpl<TimerState>(this as TimerState, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TimerState&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute)&&(identical(other.settedHour, settedHour) || other.settedHour == settedHour)&&(identical(other.settedMinute, settedMinute) || other.settedMinute == settedMinute));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,hour,minute,settedHour,settedMinute);
-
-@override
-String toString() {
-  return 'TimerState(hour: $hour, minute: $minute, settedHour: $settedHour, settedMinute: $settedMinute)';
-}
-
-
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TimerStateCopyWith<TimerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $TimerStateCopyWith<$Res>  {
-  factory $TimerStateCopyWith(TimerState value, $Res Function(TimerState) _then) = _$TimerStateCopyWithImpl;
-@useResult
-$Res call({
- int hour, int minute, int settedHour, int settedMinute
-});
-
-
-
-
+abstract class $TimerStateCopyWith<$Res> {
+  factory $TimerStateCopyWith(
+    TimerState value,
+    $Res Function(TimerState) then,
+  ) = _$TimerStateCopyWithImpl<$Res, TimerState>;
+  @useResult
+  $Res call({int hour, int minute, int settedHour, int settedMinute});
 }
+
 /// @nodoc
-class _$TimerStateCopyWithImpl<$Res>
+class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState>
     implements $TimerStateCopyWith<$Res> {
-  _$TimerStateCopyWithImpl(this._self, this._then);
+  _$TimerStateCopyWithImpl(this._value, this._then);
 
-  final TimerState _self;
-  final $Res Function(TimerState) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of TimerState
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? hour = null,Object? minute = null,Object? settedHour = null,Object? settedMinute = null,}) {
-  return _then(_self.copyWith(
-hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
-as int,minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
-as int,settedHour: null == settedHour ? _self.settedHour : settedHour // ignore: cast_nullable_to_non_nullable
-as int,settedMinute: null == settedMinute ? _self.settedMinute : settedMinute // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-}
-
-
-/// @nodoc
-
-
-class _TimerState implements TimerState {
-  const _TimerState({required this.hour, required this.minute, required this.settedHour, required this.settedMinute});
-  
-
-@override final  int hour;
-@override final  int minute;
-@override final  int settedHour;
-@override final  int settedMinute;
-
-/// Create a copy of TimerState
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$TimerStateCopyWith<_TimerState> get copyWith => __$TimerStateCopyWithImpl<_TimerState>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TimerState&&(identical(other.hour, hour) || other.hour == hour)&&(identical(other.minute, minute) || other.minute == minute)&&(identical(other.settedHour, settedHour) || other.settedHour == settedHour)&&(identical(other.settedMinute, settedMinute) || other.settedMinute == settedMinute));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,hour,minute,settedHour,settedMinute);
-
-@override
-String toString() {
-  return 'TimerState(hour: $hour, minute: $minute, settedHour: $settedHour, settedMinute: $settedMinute)';
-}
-
-
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hour = null,
+    Object? minute = null,
+    Object? settedHour = null,
+    Object? settedMinute = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            hour:
+                null == hour
+                    ? _value.hour
+                    : hour // ignore: cast_nullable_to_non_nullable
+                        as int,
+            minute:
+                null == minute
+                    ? _value.minute
+                    : minute // ignore: cast_nullable_to_non_nullable
+                        as int,
+            settedHour:
+                null == settedHour
+                    ? _value.settedHour
+                    : settedHour // ignore: cast_nullable_to_non_nullable
+                        as int,
+            settedMinute:
+                null == settedMinute
+                    ? _value.settedMinute
+                    : settedMinute // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
+  }
 }
 
 /// @nodoc
-abstract mixin class _$TimerStateCopyWith<$Res> implements $TimerStateCopyWith<$Res> {
-  factory _$TimerStateCopyWith(_TimerState value, $Res Function(_TimerState) _then) = __$TimerStateCopyWithImpl;
-@override @useResult
-$Res call({
- int hour, int minute, int settedHour, int settedMinute
-});
-
-
-
-
+abstract class _$$TimerStateImplCopyWith<$Res>
+    implements $TimerStateCopyWith<$Res> {
+  factory _$$TimerStateImplCopyWith(
+    _$TimerStateImpl value,
+    $Res Function(_$TimerStateImpl) then,
+  ) = __$$TimerStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int hour, int minute, int settedHour, int settedMinute});
 }
+
 /// @nodoc
-class __$TimerStateCopyWithImpl<$Res>
-    implements _$TimerStateCopyWith<$Res> {
-  __$TimerStateCopyWithImpl(this._self, this._then);
+class __$$TimerStateImplCopyWithImpl<$Res>
+    extends _$TimerStateCopyWithImpl<$Res, _$TimerStateImpl>
+    implements _$$TimerStateImplCopyWith<$Res> {
+  __$$TimerStateImplCopyWithImpl(
+    _$TimerStateImpl _value,
+    $Res Function(_$TimerStateImpl) _then,
+  ) : super(_value, _then);
 
-  final _TimerState _self;
-  final $Res Function(_TimerState) _then;
-
-/// Create a copy of TimerState
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? hour = null,Object? minute = null,Object? settedHour = null,Object? settedMinute = null,}) {
-  return _then(_TimerState(
-hour: null == hour ? _self.hour : hour // ignore: cast_nullable_to_non_nullable
-as int,minute: null == minute ? _self.minute : minute // ignore: cast_nullable_to_non_nullable
-as int,settedHour: null == settedHour ? _self.settedHour : settedHour // ignore: cast_nullable_to_non_nullable
-as int,settedMinute: null == settedMinute ? _self.settedMinute : settedMinute // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hour = null,
+    Object? minute = null,
+    Object? settedHour = null,
+    Object? settedMinute = null,
+  }) {
+    return _then(
+      _$TimerStateImpl(
+        hour:
+            null == hour
+                ? _value.hour
+                : hour // ignore: cast_nullable_to_non_nullable
+                    as int,
+        minute:
+            null == minute
+                ? _value.minute
+                : minute // ignore: cast_nullable_to_non_nullable
+                    as int,
+        settedHour:
+            null == settedHour
+                ? _value.settedHour
+                : settedHour // ignore: cast_nullable_to_non_nullable
+                    as int,
+        settedMinute:
+            null == settedMinute
+                ? _value.settedMinute
+                : settedMinute // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
+class _$TimerStateImpl implements _TimerState {
+  const _$TimerStateImpl({
+    required this.hour,
+    required this.minute,
+    required this.settedHour,
+    required this.settedMinute,
+  });
+
+  @override
+  final int hour;
+  @override
+  final int minute;
+  @override
+  final int settedHour;
+  @override
+  final int settedMinute;
+
+  @override
+  String toString() {
+    return 'TimerState(hour: $hour, minute: $minute, settedHour: $settedHour, settedMinute: $settedMinute)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TimerStateImpl &&
+            (identical(other.hour, hour) || other.hour == hour) &&
+            (identical(other.minute, minute) || other.minute == minute) &&
+            (identical(other.settedHour, settedHour) ||
+                other.settedHour == settedHour) &&
+            (identical(other.settedMinute, settedMinute) ||
+                other.settedMinute == settedMinute));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, hour, minute, settedHour, settedMinute);
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith =>
+      __$$TimerStateImplCopyWithImpl<_$TimerStateImpl>(this, _$identity);
 }
 
-// dart format on
+abstract class _TimerState implements TimerState {
+  const factory _TimerState({
+    required final int hour,
+    required final int minute,
+    required final int settedHour,
+    required final int settedMinute,
+  }) = _$TimerStateImpl;
+
+  @override
+  int get hour;
+  @override
+  int get minute;
+  @override
+  int get settedHour;
+  @override
+  int get settedMinute;
+
+  /// Create a copy of TimerState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
