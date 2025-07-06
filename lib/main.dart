@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:xenotune_flutter_dev/Application/Advertisemnet/ad_bloc.dart';
 
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart';
@@ -50,6 +51,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => getit<IntroMusicBloc>()),
         BlocProvider(create: (context) => getit<InternetCheckBloc>()),
         BlocProvider(create: (context) => getit<TimerBloc>()),
+        BlocProvider(create: (context) => getit<AdBloc>()),
         BlocProvider(create: (context) => SplashBloc()),
       ],
       child: GetMaterialApp(
