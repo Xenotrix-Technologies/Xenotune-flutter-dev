@@ -1,5 +1,5 @@
+import 'dart:developer';
 import 'dart:io';
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:injectable/injectable.dart';
@@ -40,8 +40,8 @@ class AdvertismentFunctions implements IAdvertisementRepo {
   InterstitialAd? _interstitialAd;
   AppOpenAd? _appOpenAd;
   @override
-  void showAppOpenAd() {
-    AppOpenAd.load(
+  Future<void> showAppOpenAd() async {
+    await AppOpenAd.load(
       adUnitId: AdHelper.appOpensAdUnitId,
       request: const AdRequest(),
       adLoadCallback: AppOpenAdLoadCallback(
