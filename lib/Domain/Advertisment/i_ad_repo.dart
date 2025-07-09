@@ -3,5 +3,5 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 abstract class IAdvertisementRepo {
   BannerAd? showBannerAd();
   void showInterstratitialad();
-  void showAppOpenAd();
+  Future<void> showAppOpenAd();
 }
