@@ -4,6 +4,7 @@ import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Subscription/subscription_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -24,6 +25,9 @@ class LoadingScreen extends StatelessWidget {
     });
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => context.read<IntroMusicBloc>().add(IntroMusicEvent.pause()),
+    );
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => context.read<SubscriptionBloc>().add(OnSubscriptionEvent()),
     );
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await scheduleMoodReminder();
