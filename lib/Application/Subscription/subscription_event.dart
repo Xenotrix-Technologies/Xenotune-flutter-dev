@@ -6,4 +6,5 @@ class SubscriptionEvent with _$SubscriptionEvent {
   const factory SubscriptionEvent.onPurchasePackage({
     required Package package,
   }) = OnPurchasePackage;
+  const factory SubscriptionEvent.onCheckedOrPurchased() = OnCheckedOrPurchased;
 }

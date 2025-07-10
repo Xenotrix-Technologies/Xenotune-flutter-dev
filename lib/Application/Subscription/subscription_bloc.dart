@@ -28,5 +28,14 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
         emit(state.copyWith(purchasedSucces: false));
       }
     });
+    on<OnCheckedOrPurchased>((event, emit) async {
+      final days = await iSubscriptionRepo.checkPremiumDays();
+      final isSubscribed = await iSubscriptionRepo.checkPremium();
+      if (isSubscribed) {
+        emit(state.copyWith(isAdActive: false, remainingDays: days));
+      } else {
+        emit(state.copyWith(isAdActive: true));
+      }
+    });
   }
 }

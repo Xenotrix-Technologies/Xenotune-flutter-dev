@@ -21,32 +21,38 @@ mixin _$SubscriptionEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
     required TResult Function(Package package) onPurchasePackage,
+    required TResult Function() onCheckedOrPurchased,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
     TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function()? onCheckedOrPurchased,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
     TResult Function(Package package)? onPurchasePackage,
+    TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(OnSubscriptionEvent value) onSubscriptionEvent,
     required TResult Function(OnPurchasePackage value) onPurchasePackage,
+    required TResult Function(OnCheckedOrPurchased value) onCheckedOrPurchased,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnSubscriptionEvent value)? onSubscriptionEvent,
     TResult? Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult? Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSubscriptionEvent value)? onSubscriptionEvent,
     TResult Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -119,6 +125,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
     required TResult Function(Package package) onPurchasePackage,
+    required TResult Function() onCheckedOrPurchased,
   }) {
     return onSubscriptionEvent();
   }
@@ -128,6 +135,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
     TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function()? onCheckedOrPurchased,
   }) {
     return onSubscriptionEvent?.call();
   }
@@ -137,6 +145,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
     TResult Function(Package package)? onPurchasePackage,
+    TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) {
     if (onSubscriptionEvent != null) {
@@ -150,6 +159,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(OnSubscriptionEvent value) onSubscriptionEvent,
     required TResult Function(OnPurchasePackage value) onPurchasePackage,
+    required TResult Function(OnCheckedOrPurchased value) onCheckedOrPurchased,
   }) {
     return onSubscriptionEvent(this);
   }
@@ -159,6 +169,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnSubscriptionEvent value)? onSubscriptionEvent,
     TResult? Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult? Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
   }) {
     return onSubscriptionEvent?.call(this);
   }
@@ -168,6 +179,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSubscriptionEvent value)? onSubscriptionEvent,
     TResult Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
     required TResult orElse(),
   }) {
     if (onSubscriptionEvent != null) {
@@ -269,6 +281,7 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
     required TResult Function(Package package) onPurchasePackage,
+    required TResult Function() onCheckedOrPurchased,
   }) {
     return onPurchasePackage(package);
   }
@@ -278,6 +291,7 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
     TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function()? onCheckedOrPurchased,
   }) {
     return onPurchasePackage?.call(package);
   }
@@ -287,6 +301,7 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
     TResult Function(Package package)? onPurchasePackage,
+    TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) {
     if (onPurchasePackage != null) {
@@ -300,6 +315,7 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   TResult map<TResult extends Object?>({
     required TResult Function(OnSubscriptionEvent value) onSubscriptionEvent,
     required TResult Function(OnPurchasePackage value) onPurchasePackage,
+    required TResult Function(OnCheckedOrPurchased value) onCheckedOrPurchased,
   }) {
     return onPurchasePackage(this);
   }
@@ -309,6 +325,7 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(OnSubscriptionEvent value)? onSubscriptionEvent,
     TResult? Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult? Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
   }) {
     return onPurchasePackage?.call(this);
   }
@@ -318,6 +335,7 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(OnSubscriptionEvent value)? onSubscriptionEvent,
     TResult Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
     required TResult orElse(),
   }) {
     if (onPurchasePackage != null) {
@@ -341,9 +359,125 @@ abstract class OnPurchasePackage implements SubscriptionEvent {
 }
 
 /// @nodoc
+abstract class _$$OnCheckedOrPurchasedImplCopyWith<$Res> {
+  factory _$$OnCheckedOrPurchasedImplCopyWith(
+    _$OnCheckedOrPurchasedImpl value,
+    $Res Function(_$OnCheckedOrPurchasedImpl) then,
+  ) = __$$OnCheckedOrPurchasedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnCheckedOrPurchasedImplCopyWithImpl<$Res>
+    extends _$SubscriptionEventCopyWithImpl<$Res, _$OnCheckedOrPurchasedImpl>
+    implements _$$OnCheckedOrPurchasedImplCopyWith<$Res> {
+  __$$OnCheckedOrPurchasedImplCopyWithImpl(
+    _$OnCheckedOrPurchasedImpl _value,
+    $Res Function(_$OnCheckedOrPurchasedImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of SubscriptionEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$OnCheckedOrPurchasedImpl implements OnCheckedOrPurchased {
+  const _$OnCheckedOrPurchasedImpl();
+
+  @override
+  String toString() {
+    return 'SubscriptionEvent.onCheckedOrPurchased()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnCheckedOrPurchasedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() onSubscriptionEvent,
+    required TResult Function(Package package) onPurchasePackage,
+    required TResult Function() onCheckedOrPurchased,
+  }) {
+    return onCheckedOrPurchased();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? onSubscriptionEvent,
+    TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function()? onCheckedOrPurchased,
+  }) {
+    return onCheckedOrPurchased?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? onSubscriptionEvent,
+    TResult Function(Package package)? onPurchasePackage,
+    TResult Function()? onCheckedOrPurchased,
+    required TResult orElse(),
+  }) {
+    if (onCheckedOrPurchased != null) {
+      return onCheckedOrPurchased();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnSubscriptionEvent value) onSubscriptionEvent,
+    required TResult Function(OnPurchasePackage value) onPurchasePackage,
+    required TResult Function(OnCheckedOrPurchased value) onCheckedOrPurchased,
+  }) {
+    return onCheckedOrPurchased(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnSubscriptionEvent value)? onSubscriptionEvent,
+    TResult? Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult? Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
+  }) {
+    return onCheckedOrPurchased?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnSubscriptionEvent value)? onSubscriptionEvent,
+    TResult Function(OnPurchasePackage value)? onPurchasePackage,
+    TResult Function(OnCheckedOrPurchased value)? onCheckedOrPurchased,
+    required TResult orElse(),
+  }) {
+    if (onCheckedOrPurchased != null) {
+      return onCheckedOrPurchased(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnCheckedOrPurchased implements SubscriptionEvent {
+  const factory OnCheckedOrPurchased() = _$OnCheckedOrPurchasedImpl;
+}
+
+/// @nodoc
 mixin _$SubscriptionState {
   List<Offering> get offerings => throw _privateConstructorUsedError;
   bool get purchasedSucces => throw _privateConstructorUsedError;
+  bool get isAdActive => throw _privateConstructorUsedError;
+  int get remainingDays => throw _privateConstructorUsedError;
 
   /// Create a copy of SubscriptionState
   /// with the given fields replaced by the non-null parameter values.
@@ -359,7 +493,12 @@ abstract class $SubscriptionStateCopyWith<$Res> {
     $Res Function(SubscriptionState) then,
   ) = _$SubscriptionStateCopyWithImpl<$Res, SubscriptionState>;
   @useResult
-  $Res call({List<Offering> offerings, bool purchasedSucces});
+  $Res call({
+    List<Offering> offerings,
+    bool purchasedSucces,
+    bool isAdActive,
+    int remainingDays,
+  });
 }
 
 /// @nodoc
@@ -376,7 +515,12 @@ class _$SubscriptionStateCopyWithImpl<$Res, $Val extends SubscriptionState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? offerings = null, Object? purchasedSucces = null}) {
+  $Res call({
+    Object? offerings = null,
+    Object? purchasedSucces = null,
+    Object? isAdActive = null,
+    Object? remainingDays = null,
+  }) {
     return _then(
       _value.copyWith(
             offerings:
@@ -389,6 +533,16 @@ class _$SubscriptionStateCopyWithImpl<$Res, $Val extends SubscriptionState>
                     ? _value.purchasedSucces
                     : purchasedSucces // ignore: cast_nullable_to_non_nullable
                         as bool,
+            isAdActive:
+                null == isAdActive
+                    ? _value.isAdActive
+                    : isAdActive // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            remainingDays:
+                null == remainingDays
+                    ? _value.remainingDays
+                    : remainingDays // ignore: cast_nullable_to_non_nullable
+                        as int,
           )
           as $Val,
     );
@@ -404,7 +558,12 @@ abstract class _$$SubscriptionStateImplCopyWith<$Res>
   ) = __$$SubscriptionStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Offering> offerings, bool purchasedSucces});
+  $Res call({
+    List<Offering> offerings,
+    bool purchasedSucces,
+    bool isAdActive,
+    int remainingDays,
+  });
 }
 
 /// @nodoc
@@ -420,7 +579,12 @@ class __$$SubscriptionStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? offerings = null, Object? purchasedSucces = null}) {
+  $Res call({
+    Object? offerings = null,
+    Object? purchasedSucces = null,
+    Object? isAdActive = null,
+    Object? remainingDays = null,
+  }) {
     return _then(
       _$SubscriptionStateImpl(
         offerings:
@@ -433,6 +597,16 @@ class __$$SubscriptionStateImplCopyWithImpl<$Res>
                 ? _value.purchasedSucces
                 : purchasedSucces // ignore: cast_nullable_to_non_nullable
                     as bool,
+        isAdActive:
+            null == isAdActive
+                ? _value.isAdActive
+                : isAdActive // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        remainingDays:
+            null == remainingDays
+                ? _value.remainingDays
+                : remainingDays // ignore: cast_nullable_to_non_nullable
+                    as int,
       ),
     );
   }
@@ -444,6 +618,8 @@ class _$SubscriptionStateImpl implements _SubscriptionState {
   const _$SubscriptionStateImpl({
     required final List<Offering> offerings,
     required this.purchasedSucces,
+    required this.isAdActive,
+    required this.remainingDays,
   }) : _offerings = offerings;
 
   final List<Offering> _offerings;
@@ -456,10 +632,14 @@ class _$SubscriptionStateImpl implements _SubscriptionState {
 
   @override
   final bool purchasedSucces;
+  @override
+  final bool isAdActive;
+  @override
+  final int remainingDays;
 
   @override
   String toString() {
-    return 'SubscriptionState(offerings: $offerings, purchasedSucces: $purchasedSucces)';
+    return 'SubscriptionState(offerings: $offerings, purchasedSucces: $purchasedSucces, isAdActive: $isAdActive, remainingDays: $remainingDays)';
   }
 
   @override
@@ -472,7 +652,11 @@ class _$SubscriptionStateImpl implements _SubscriptionState {
               _offerings,
             ) &&
             (identical(other.purchasedSucces, purchasedSucces) ||
-                other.purchasedSucces == purchasedSucces));
+                other.purchasedSucces == purchasedSucces) &&
+            (identical(other.isAdActive, isAdActive) ||
+                other.isAdActive == isAdActive) &&
+            (identical(other.remainingDays, remainingDays) ||
+                other.remainingDays == remainingDays));
   }
 
   @override
@@ -480,6 +664,8 @@ class _$SubscriptionStateImpl implements _SubscriptionState {
     runtimeType,
     const DeepCollectionEquality().hash(_offerings),
     purchasedSucces,
+    isAdActive,
+    remainingDays,
   );
 
   /// Create a copy of SubscriptionState
@@ -498,12 +684,18 @@ abstract class _SubscriptionState implements SubscriptionState {
   const factory _SubscriptionState({
     required final List<Offering> offerings,
     required final bool purchasedSucces,
+    required final bool isAdActive,
+    required final int remainingDays,
   }) = _$SubscriptionStateImpl;
 
   @override
   List<Offering> get offerings;
   @override
   bool get purchasedSucces;
+  @override
+  bool get isAdActive;
+  @override
+  int get remainingDays;
 
   /// Create a copy of SubscriptionState
   /// with the given fields replaced by the non-null parameter values.
