@@ -7,13 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+
 import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
-import 'package:xenotune_flutter_dev/Presentation/Home/Screens/subscription.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -145,29 +146,9 @@ class DrawerWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Upgrade to pro', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        PageRouteBuilder(
-                          transitionDuration: Duration(milliseconds: 600),
-                          pageBuilder: (_, _, _) => SubscriptionPage(),
-                          transitionsBuilder: (_, animation, __, child) {
-                            final offsetAnimation = Tween<Offset>(
-                              begin: Offset(0, 1),
-                              end: Offset.zero,
-                            ).animate(
-                              CurvedAnimation(
-                                parent: animation,
-                                curve: Curves.easeInOut,
-                              ),
-                            );
-
-                            return SlideTransition(
-                              position: offsetAnimation,
-                              child: child,
-                            );
-                          },
-                        ),
-                      );
+                    onPressed: () async {
+                      Navigator.pop(context);
+                      LoginRepository().checkUserIsLoggedIn(context);
                     },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
@@ -183,11 +164,17 @@ class DrawerWidget extends StatelessWidget {
                   onPressed: () async {
                     if (user != null) {
                       await LoginRepository().logout();
+
                       Navigator.pop(context);
                     } else {
                       Navigator.pop(context);
                       try {
-                        await LoginRepository().loginUsingGoogle();
+                        final credential =
+                            await LoginRepository().loginUsingGoogle();
+                        final user = credential.user;
+                        final u = user!.uid;
+
+                        await Purchases.logIn(u);
                       } catch (e) {
                         Get.showSnackbar(
                           GetSnackBar(
