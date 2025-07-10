@@ -20,19 +20,20 @@ mixin _$SubscriptionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
-    required TResult Function(Package package) onPurchasePackage,
+    required TResult Function(BuildContext context, Package package)
+    onPurchasePackage,
     required TResult Function() onCheckedOrPurchased,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
-    TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function(BuildContext context, Package package)? onPurchasePackage,
     TResult? Function()? onCheckedOrPurchased,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
-    TResult Function(Package package)? onPurchasePackage,
+    TResult Function(BuildContext context, Package package)? onPurchasePackage,
     TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -124,7 +125,8 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
-    required TResult Function(Package package) onPurchasePackage,
+    required TResult Function(BuildContext context, Package package)
+    onPurchasePackage,
     required TResult Function() onCheckedOrPurchased,
   }) {
     return onSubscriptionEvent();
@@ -134,7 +136,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
-    TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function(BuildContext context, Package package)? onPurchasePackage,
     TResult? Function()? onCheckedOrPurchased,
   }) {
     return onSubscriptionEvent?.call();
@@ -144,7 +146,7 @@ class _$OnSubscriptionEventImpl implements OnSubscriptionEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
-    TResult Function(Package package)? onPurchasePackage,
+    TResult Function(BuildContext context, Package package)? onPurchasePackage,
     TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) {
@@ -200,7 +202,7 @@ abstract class _$$OnPurchasePackageImplCopyWith<$Res> {
     $Res Function(_$OnPurchasePackageImpl) then,
   ) = __$$OnPurchasePackageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Package package});
+  $Res call({BuildContext context, Package package});
 
   $PackageCopyWith<$Res> get package;
 }
@@ -218,9 +220,14 @@ class __$$OnPurchasePackageImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? package = null}) {
+  $Res call({Object? context = null, Object? package = null}) {
     return _then(
       _$OnPurchasePackageImpl(
+        context:
+            null == context
+                ? _value.context
+                : context // ignore: cast_nullable_to_non_nullable
+                    as BuildContext,
         package:
             null == package
                 ? _value.package
@@ -244,14 +251,16 @@ class __$$OnPurchasePackageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnPurchasePackageImpl implements OnPurchasePackage {
-  const _$OnPurchasePackageImpl({required this.package});
+  const _$OnPurchasePackageImpl({required this.context, required this.package});
 
+  @override
+  final BuildContext context;
   @override
   final Package package;
 
   @override
   String toString() {
-    return 'SubscriptionEvent.onPurchasePackage(package: $package)';
+    return 'SubscriptionEvent.onPurchasePackage(context: $context, package: $package)';
   }
 
   @override
@@ -259,11 +268,12 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnPurchasePackageImpl &&
+            (identical(other.context, context) || other.context == context) &&
             (identical(other.package, package) || other.package == package));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, package);
+  int get hashCode => Object.hash(runtimeType, context, package);
 
   /// Create a copy of SubscriptionEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -280,32 +290,33 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
-    required TResult Function(Package package) onPurchasePackage,
+    required TResult Function(BuildContext context, Package package)
+    onPurchasePackage,
     required TResult Function() onCheckedOrPurchased,
   }) {
-    return onPurchasePackage(package);
+    return onPurchasePackage(context, package);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
-    TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function(BuildContext context, Package package)? onPurchasePackage,
     TResult? Function()? onCheckedOrPurchased,
   }) {
-    return onPurchasePackage?.call(package);
+    return onPurchasePackage?.call(context, package);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
-    TResult Function(Package package)? onPurchasePackage,
+    TResult Function(BuildContext context, Package package)? onPurchasePackage,
     TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) {
     if (onPurchasePackage != null) {
-      return onPurchasePackage(package);
+      return onPurchasePackage(context, package);
     }
     return orElse();
   }
@@ -346,9 +357,12 @@ class _$OnPurchasePackageImpl implements OnPurchasePackage {
 }
 
 abstract class OnPurchasePackage implements SubscriptionEvent {
-  const factory OnPurchasePackage({required final Package package}) =
-      _$OnPurchasePackageImpl;
+  const factory OnPurchasePackage({
+    required final BuildContext context,
+    required final Package package,
+  }) = _$OnPurchasePackageImpl;
 
+  BuildContext get context;
   Package get package;
 
   /// Create a copy of SubscriptionEvent
@@ -403,7 +417,8 @@ class _$OnCheckedOrPurchasedImpl implements OnCheckedOrPurchased {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onSubscriptionEvent,
-    required TResult Function(Package package) onPurchasePackage,
+    required TResult Function(BuildContext context, Package package)
+    onPurchasePackage,
     required TResult Function() onCheckedOrPurchased,
   }) {
     return onCheckedOrPurchased();
@@ -413,7 +428,7 @@ class _$OnCheckedOrPurchasedImpl implements OnCheckedOrPurchased {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? onSubscriptionEvent,
-    TResult? Function(Package package)? onPurchasePackage,
+    TResult? Function(BuildContext context, Package package)? onPurchasePackage,
     TResult? Function()? onCheckedOrPurchased,
   }) {
     return onCheckedOrPurchased?.call();
@@ -423,7 +438,7 @@ class _$OnCheckedOrPurchasedImpl implements OnCheckedOrPurchased {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? onSubscriptionEvent,
-    TResult Function(Package package)? onPurchasePackage,
+    TResult Function(BuildContext context, Package package)? onPurchasePackage,
     TResult Function()? onCheckedOrPurchased,
     required TResult orElse(),
   }) {

@@ -166,7 +166,10 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                             final package = packs[productIndex];
                             log(package.toString());
                             context.read<SubscriptionBloc>().add(
-                              OnPurchasePackage(package: package),
+                              OnPurchasePackage(
+                                package: package,
+                                context: context,
+                              ),
                             );
                           },
                           style: ElevatedButton.styleFrom(

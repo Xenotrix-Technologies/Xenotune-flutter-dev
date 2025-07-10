@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -21,7 +22,10 @@ class SubscriptionBloc extends Bloc<SubscriptionEvent, SubscriptionState> {
     });
     on<OnPurchasePackage>((event, emit) async {
       emit(state.copyWith(purchasedSucces: false));
-      final purchase = await iSubscriptionRepo.purchasePackage(event.package);
+      final purchase = await iSubscriptionRepo.purchasePackage(
+        event.context,
+        event.package,
+      );
       if (purchase == true) {
         emit(state.copyWith(purchasedSucces: true));
       } else {

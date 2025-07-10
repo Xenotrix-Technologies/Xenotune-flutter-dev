@@ -1,5 +1,11 @@
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
+import 'package:xenotune_flutter_dev/Core/colors.dart';
+import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
+import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Domain/Subscription/i_subscription_repo.dart';
 
 @LazySingleton(as: ISubscriptionRepo)
@@ -23,11 +29,108 @@ class PurchaseApi implements ISubscriptionRepo {
   }
 
   @override
-  Future<bool> purchasePackage(Package package) async {
+  Future<bool> purchasePackage(BuildContext context, Package package) async {
     try {
       await Purchases.purchasePackage(package);
+      Get.showSnackbar(
+        GetSnackBar(
+          titleText: SizedBox(
+            // ignore: use_build_context_synchronously
+            height: kMqHeight(context) * 0.15,
+            width: double.infinity,
+            child: Center(
+              child: RiveAnimation.asset('assets/animations/success.riv'),
+            ),
+          ),
+          messageText: Column(
+            children: [
+              kSizedBoxHeight10,
+              Center(
+                child: Text(
+                  'Success',
+                  style: lexanGiga(
+                    color: kwhite,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              kSizedBoxHeight10,
+            ],
+          ),
+          snackPosition: SnackPosition.TOP,
+
+          margin: EdgeInsets.symmetric(
+            horizontal: 12,
+            // ignore: use_build_context_synchronously
+            vertical: kMqHeight(context) * 0.07,
+          ),
+          borderRadius: 18,
+          duration: Duration(seconds: 2),
+          snackStyle: SnackStyle.FLOATING,
+          backgroundGradient: LinearGradient(
+            colors: [kPrimaryPurple, kblack, kPrimaryBlue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+      );
       return true;
     } catch (e) {
+      Get.showSnackbar(
+        GetSnackBar(
+          titleText: SizedBox(
+            // ignore: use_build_context_synchronously
+            height: kMqHeight(context) * 0.15,
+            width: double.infinity,
+            child: Center(
+              child: RiveAnimation.asset('assets/animations/no_internet.riv'),
+            ),
+          ),
+          messageText: Column(
+            children: [
+              kSizedBoxHeight10,
+              Center(
+                child: Text(
+                  'Failed',
+                  style: lexanGiga(
+                    color: kwhite,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              kSizedBoxHeight10,
+              Center(
+                child: Text(
+                  'Something is not right.',
+                  textAlign: TextAlign.center,
+                  style: inter(
+                    color: kwhite,
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          snackPosition: SnackPosition.TOP,
+
+          margin: EdgeInsets.symmetric(
+            horizontal: 12,
+            // ignore: use_build_context_synchronously
+            vertical: kMqHeight(context) * 0.07,
+          ),
+          borderRadius: 18,
+          duration: Duration(seconds: 2),
+          snackStyle: SnackStyle.FLOATING,
+          backgroundGradient: LinearGradient(
+            colors: [kPrimaryPurple, kblack, kPrimaryBlue],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+      );
       return false;
     }
   }
