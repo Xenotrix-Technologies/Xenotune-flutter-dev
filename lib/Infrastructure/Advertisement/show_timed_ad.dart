@@ -11,7 +11,7 @@ void startInterstitialAdTimer() {
 
   InternetConnection().onStatusChange.listen((status) {
     if (status == InternetStatus.connected) {
-      _adTimer = Timer.periodic(Duration(minutes: 1), (timer) {
+      _adTimer = Timer.periodic(Duration(minutes: 15), (timer) {
         AdvertismentFunctions().showInterstratitialad();
       });
     }
