@@ -12,9 +12,9 @@ part 'ad_bloc.freezed.dart';
 class AdBloc extends Bloc<AdEvent, AdState> {
   final IAdvertisementRepo iAdvertisementRepo;
   AdBloc(this.iAdvertisementRepo) : super(AdState.initial()) {
-    on<LoadBannerAd>((event, emit) {
+    on<LoadBannerAd>((event, emit) async {
       final ad = iAdvertisementRepo.showBannerAd();
-      emit(AdState(ad: ad));
+      emit(AdState(ad: await ad));
     });
   }
 }
