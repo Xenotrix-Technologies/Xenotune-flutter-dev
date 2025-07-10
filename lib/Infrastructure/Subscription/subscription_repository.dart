@@ -31,4 +31,29 @@ class PurchaseApi implements ISubscriptionRepo {
       return false;
     }
   }
+
+  @override
+  Future<bool> checkPremium() async {
+    final customerInfo = await Purchases.getCustomerInfo();
+    final isSubscribed = customerInfo.entitlements.active.containsKey(
+      'xeno plus',
+    );
+    return isSubscribed;
+  }
+
+  @override
+  Future<int> checkPremiumDays() async {
+    final customerInfo = await Purchases.getCustomerInfo();
+    final isSubscribed = customerInfo.entitlements.active.containsKey(
+      'xeno plus',
+    );
+    final entitlement =
+        customerInfo.entitlements.active['xeno plus']?.expirationDate;
+    if (isSubscribed || entitlement != null) {
+      final convertedEntitlement = DateTime.parse(entitlement!);
+      final daysLeft = convertedEntitlement.difference(DateTime.now()).inDays;
+      return daysLeft;
+    }
+    return 0;
+  }
 }
