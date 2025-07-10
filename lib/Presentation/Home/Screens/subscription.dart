@@ -30,6 +30,9 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => context.read<SubscriptionBloc>().add(OnSubscriptionEvent()),
     );
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => context.read<SubscriptionBloc>().add(OnCheckedOrPurchased()),
+    );
     final List<String> m = ['1 - Year', '6 - Months', '1 - Month'];
     return SafeArea(
       child: Scaffold(
@@ -66,6 +69,8 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
             BlocBuilder<SubscriptionBloc, SubscriptionState>(
               builder: (context, state) {
                 final offerings = state.offerings;
+                final isSubscribed = state.isAdActive;
+                final days = state.remainingDays;
 
                 // if (offerings.isEmpty) {
                 //   log('nothing to show');
@@ -82,18 +87,20 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: kMqHeight(context) * 0.05,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Your already using Plus\nYour Plus will renew in 29 days',
-                            style: inter(color: kwhite, fontSize: 18),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
+                      isSubscribed
+                          ? Padding(
+                            padding: EdgeInsets.only(
+                              top: kMqHeight(context) * 0.05,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Your already using Plus\nYour Plus will renew in $days days',
+                                style: inter(color: kwhite, fontSize: 18),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                          : SizedBox(),
                       Padding(
                         padding: EdgeInsets.only(
                           top: kMqHeight(context) * 0.05,
