@@ -4,4 +4,6 @@ abstract class ISubscriptionRepo {
   Future<void> init();
   Future<List<Offering>> fetchOfferrs();
   Future<bool> purchasePackage(Package package);
+  Future<bool> checkPremium();
+  Future<int> checkPremiumDays();
 }
