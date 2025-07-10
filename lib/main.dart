@@ -4,20 +4,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:xenotune_flutter_dev/Application/Advertisemnet/ad_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Advertisement/ad_bloc.dart';
 
 import 'package:xenotune_flutter_dev/Application/Internet%20Check/internet_check_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Splash/splash_bloc.dart';
+import 'package:xenotune_flutter_dev/Application/Subscription/subscription_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Ultimate_Sound/sounds_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/advertisement__repository.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/show_timed_ad.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Notification/initilize_notification.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Subscription/subscription_repository.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Screens/begin_page.dart';
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
+
 import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 import 'package:xenotune_flutter_dev/firebase_options.dart';
 
@@ -31,6 +36,9 @@ void main() async {
   await configureTimeZone();
   await initNotifications();
   MobileAds.instance.initialize();
+  await PurchaseApi().init();
+  await AdvertismentFunctions().showAppOpenAd();
+  startInterstitialAdTimer();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MainApp());
@@ -50,6 +58,7 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => getit<SoundsControlBloc>()),
         BlocProvider(create: (context) => getit<IntroMusicBloc>()),
         BlocProvider(create: (context) => getit<InternetCheckBloc>()),
+        BlocProvider(create: (context) => getit<SubscriptionBloc>()),
         BlocProvider(create: (context) => getit<TimerBloc>()),
         BlocProvider(create: (context) => getit<AdBloc>()),
         BlocProvider(create: (context) => SplashBloc()),
