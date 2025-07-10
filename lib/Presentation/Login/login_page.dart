@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
 
 import 'package:xenotune_flutter_dev/Core/colors.dart';
@@ -65,6 +66,7 @@ class LoginPage extends StatelessWidget {
                           final isNewUser =
                               userCredential.additionalUserInfo?.isNewUser ??
                               false;
+
                           if (isNewUser) {
                             if (user != null) {
                               Navigator.push(
@@ -96,6 +98,8 @@ class LoginPage extends StatelessWidget {
                               log('New User');
                             }
                           } else {
+                            final u = user!.uid;
+                            await Purchases.logIn(u);
                             Navigator.push(
                               context,
                               PageRouteBuilder(
@@ -116,7 +120,7 @@ class LoginPage extends StatelessWidget {
                                 },
                               ),
                             );
-                            UserController().addUsername(user!.displayName!);
+                            UserController().addUsername(user.displayName!);
                             log('Existing User');
                           }
                         } catch (e) {
@@ -216,7 +220,6 @@ class LoginPage extends StatelessWidget {
                   kSizedBoxHeight10,
                   TextButton(
                     onPressed: () async {
-                      Navigator.of(context).pop();
                       Navigator.push(
                         context,
                         PageRouteBuilder(
