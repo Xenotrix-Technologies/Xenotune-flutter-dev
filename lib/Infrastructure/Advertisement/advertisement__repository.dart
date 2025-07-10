@@ -3,7 +3,10 @@ import 'dart:io';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:injectable/injectable.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:xenotune_flutter_dev/Domain/Advertisment/i_ad_repo.dart';
+
+bool isAdActive = true;
 
 class AdHelper {
   static String get bannerAdUnitId {
@@ -41,63 +44,88 @@ class AdvertismentFunctions implements IAdvertisementRepo {
   AppOpenAd? _appOpenAd;
   @override
   Future<void> showAppOpenAd() async {
-    await AppOpenAd.load(
-      adUnitId: AdHelper.appOpensAdUnitId,
-      request: const AdRequest(),
-      adLoadCallback: AppOpenAdLoadCallback(
-        onAdLoaded: (ad) {
-          _appOpenAd = ad;
-          _appOpenAd!.show();
-        },
-        onAdFailedToLoad: (error) {
-          _appOpenAd!.dispose();
-          log('failed to show app open ad: $error');
-        },
-      ),
-    );
+    if (isAdActive) {
+      final customerInfo = await Purchases.getCustomerInfo();
+      final isSubscribed = customerInfo.entitlements.active.containsKey(
+        'xeno plus',
+      );
+      if (!isSubscribed) {
+        await AppOpenAd.load(
+          adUnitId: AdHelper.appOpensAdUnitId,
+          request: const AdRequest(),
+          adLoadCallback: AppOpenAdLoadCallback(
+            onAdLoaded: (ad) {
+              _appOpenAd = ad;
+              _appOpenAd!.show();
+            },
+            onAdFailedToLoad: (error) {
+              _appOpenAd!.dispose();
+              log('failed to show app open ad: $error');
+            },
+          ),
+        );
+      }
+    }
   }
 
   @override
-  BannerAd? showBannerAd() {
-    BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdHelper.bannerAdUnitId,
-      listener: BannerAdListener(
-        onAdLoaded: (ad) {
-          _bannerAd = ad as BannerAd;
-        },
-        onAdFailedToLoad: (ad, error) {
-          log('Failed to load BannerAd: $error');
-          ad.dispose();
-        },
-      ),
-      request: const AdRequest(),
-    );
+  Future<BannerAd?> showBannerAd() async {
+    if (isAdActive) {
+      final customerInfo = await Purchases.getCustomerInfo();
+      final isSubscribed = customerInfo.entitlements.active.containsKey(
+        'xeno plus',
+      );
+      if (!isSubscribed) {
+        BannerAd(
+          size: AdSize.banner,
+          adUnitId: AdHelper.bannerAdUnitId,
+          listener: BannerAdListener(
+            onAdLoaded: (ad) {
+              _bannerAd = ad as BannerAd;
+            },
+            onAdFailedToLoad: (ad, error) {
+              log('Failed to load BannerAd: $error');
+              ad.dispose();
+            },
+          ),
+          request: const AdRequest(),
+        );
+      }
+      return _bannerAd;
+    }
     return _bannerAd;
   }
 
   @override
-  void showInterstratitialad() {
-    InterstitialAd.load(
-      adUnitId: AdHelper.interstatialAdUnitId,
-      request: const AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) async {
-              ad.dispose();
+  Future<void> showInterstratitialad() async {
+    if (isAdActive) {
+      final customerInfo = await Purchases.getCustomerInfo();
+      final isSubscribed = customerInfo.entitlements.active.containsKey(
+        'xeno plus',
+      );
+      if (!isSubscribed) {
+        InterstitialAd.load(
+          adUnitId: AdHelper.interstatialAdUnitId,
+          request: const AdRequest(),
+          adLoadCallback: InterstitialAdLoadCallback(
+            onAdLoaded: (ad) {
+              ad.fullScreenContentCallback = FullScreenContentCallback(
+                onAdDismissedFullScreenContent: (ad) async {
+                  ad.dispose();
+                },
+                onAdFailedToShowFullScreenContent: (ad, error) {
+                  ad.dispose();
+                },
+              );
+              _interstitialAd = ad;
+              _interstitialAd?.show();
             },
-            onAdFailedToShowFullScreenContent: (ad, error) {
-              ad.dispose();
+            onAdFailedToLoad: (error) {
+              log('InterstitialAd failed to load: $error');
             },
-          );
-          _interstitialAd = ad;
-          _interstitialAd?.show();
-        },
-        onAdFailedToLoad: (error) {
-          log('InterstitialAd failed to load: $error');
-        },
-      ),
-    );
+          ),
+        );
+      }
+    }
   }
 }
