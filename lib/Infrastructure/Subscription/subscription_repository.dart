@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
@@ -39,7 +42,6 @@ class PurchaseApi implements ISubscriptionRepo {
       Get.showSnackbar(
         GetSnackBar(
           titleText: SizedBox(
-            // ignore: use_build_context_synchronously
             height: kMqHeight(context) * 0.15,
             width: double.infinity,
             child: Center(
@@ -66,7 +68,7 @@ class PurchaseApi implements ISubscriptionRepo {
 
           margin: EdgeInsets.symmetric(
             horizontal: 12,
-            // ignore: use_build_context_synchronously
+
             vertical: kMqHeight(context) * 0.07,
           ),
           borderRadius: 18,
@@ -89,7 +91,6 @@ class PurchaseApi implements ISubscriptionRepo {
       Get.showSnackbar(
         GetSnackBar(
           titleText: SizedBox(
-            // ignore: use_build_context_synchronously
             height: kMqHeight(context) * 0.15,
             width: double.infinity,
             child: Center(
@@ -127,7 +128,7 @@ class PurchaseApi implements ISubscriptionRepo {
 
           margin: EdgeInsets.symmetric(
             horizontal: 12,
-            // ignore: use_build_context_synchronously
+
             vertical: kMqHeight(context) * 0.07,
           ),
           borderRadius: 18,
@@ -171,5 +172,18 @@ class PurchaseApi implements ISubscriptionRepo {
       return daysLeft;
     }
     return 0;
+  }
+
+  @override
+  Future<void> cancelSubscriptionThroughPlaystore() async {
+    final packageName = 'com.xenotunefromx.app';
+    final url =
+        'https://play.google.com/store/account/subscriptions?package=$packageName';
+
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch subscription page';
+    }
   }
 }
