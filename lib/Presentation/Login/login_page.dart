@@ -69,6 +69,7 @@ class LoginPage extends StatelessWidget {
 
                           if (isNewUser) {
                             if (user != null) {
+                              await Purchases.logIn(user.uid);
                               Navigator.push(
                                 context,
                                 PageRouteBuilder(
