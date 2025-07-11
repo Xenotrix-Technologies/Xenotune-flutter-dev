@@ -17,6 +17,7 @@ import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/advertisement__repository.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/show_timed_ad.dart';
+
 import 'package:xenotune_flutter_dev/Infrastructure/Notification/initilize_notification.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Subscription/subscription_repository.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
@@ -38,7 +39,7 @@ void main() async {
   MobileAds.instance.initialize();
   await PurchaseApi().init();
   await AdvertismentFunctions().showAppOpenAd();
-  startInterstitialAdTimer();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MainApp());
@@ -52,6 +53,7 @@ class MainApp extends StatelessWidget {
     final box = GetStorage();
     bool isFirstTime = box.read('first_time') ?? true;
     bool isOnboardingFirstTime = box.read('onboarding_first_time') ?? true;
+    startInterstitialAdTimer(context);
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getit<MusicControlBloc>()),
