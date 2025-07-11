@@ -139,14 +139,17 @@ class DrawerWidget extends StatelessWidget {
                 ListTile(
                   title: Text('Remove ads!', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                      LoginRepository().checkUserIsLoggedIn(context);
+                    },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
                 ),
                 ListTile(
                   title: Text('Upgrade to pro', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () async {
+                    onPressed: () {
                       Navigator.pop(context);
                       LoginRepository().checkUserIsLoggedIn(context);
                     },
