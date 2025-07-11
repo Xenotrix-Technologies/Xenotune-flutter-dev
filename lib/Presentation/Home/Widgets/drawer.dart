@@ -172,9 +172,9 @@ class DrawerWidget extends StatelessWidget {
                         final credential =
                             await LoginRepository().loginUsingGoogle();
                         final user = credential.user;
-                        final u = user!.uid;
-
-                        await Purchases.logIn(u);
+                        if (user != null) {
+                          await Purchases.logIn(user.uid);
+                        }
                       } catch (e) {
                         Get.showSnackbar(
                           GetSnackBar(
