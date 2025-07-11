@@ -11,6 +11,7 @@ import 'package:xenotune_flutter_dev/Application/Subscription/subscription_bloc.
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Subscription/subscription_repository.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/carousal_container_widget.dart';
 
 class SubscriptionPage extends StatefulWidget {
@@ -97,6 +98,47 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
                                 'Your already using Plus\nYour Plus will renew in $days days',
                                 style: inter(color: kwhite, fontSize: 18),
                                 textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                          : SizedBox(),
+                      isSubscribed ? kSizedBoxHeight15 : SizedBox(),
+                      isSubscribed
+                          ? Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                PurchaseApi()
+                                    .cancelSubscriptionThroughPlaystore();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                backgroundColor: Colors.transparent,
+                                shadowColor: Colors.transparent,
+                              ),
+                              child: Ink(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: kMqWidth(context) * 0.10,
+                                  vertical: 12,
+                                ),
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      kPrimaryPurple,
+                                      kblack,
+                                      kPrimaryBlue,
+                                    ],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                child: Text(
+                                  'Cancel',
+                                  style: inter(color: kwhite),
+                                ),
                               ),
                             ),
                           )
