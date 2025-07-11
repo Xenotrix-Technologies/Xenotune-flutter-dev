@@ -69,7 +69,7 @@ class _SubscriptionPageState extends State<SubscriptionPage> {
             BlocBuilder<SubscriptionBloc, SubscriptionState>(
               builder: (context, state) {
                 final offerings = state.offerings;
-                final isSubscribed = state.isAdActive;
+                final isSubscribed = !state.isAdActive;
                 final days = state.remainingDays;
 
                 // if (offerings.isEmpty) {
