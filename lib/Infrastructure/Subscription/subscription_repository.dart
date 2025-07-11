@@ -1,4 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:injectable/injectable.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
@@ -7,6 +10,7 @@ import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Domain/Subscription/i_subscription_repo.dart';
+import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 
 @LazySingleton(as: ISubscriptionRepo)
 class PurchaseApi implements ISubscriptionRepo {
@@ -75,6 +79,11 @@ class PurchaseApi implements ISubscriptionRepo {
           ),
         ),
       );
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (c) => LoadingScreen()),
+        (s) => false,
+      );
       return true;
     } catch (e) {
       Get.showSnackbar(
@@ -141,6 +150,7 @@ class PurchaseApi implements ISubscriptionRepo {
     final isSubscribed = customerInfo.entitlements.active.containsKey(
       'xeno plus',
     );
+    log('premium is active: $isSubscribed');
     return isSubscribed;
   }
 
@@ -152,9 +162,12 @@ class PurchaseApi implements ISubscriptionRepo {
     );
     final entitlement =
         customerInfo.entitlements.active['xeno plus']?.expirationDate;
+
     if (isSubscribed || entitlement != null) {
       final convertedEntitlement = DateTime.parse(entitlement!);
-      final daysLeft = convertedEntitlement.difference(DateTime.now()).inDays;
+      final daysLeft =
+          convertedEntitlement.difference(DateTime.now()).inMinutes;
+      log('days remaining: $daysLeft');
       return daysLeft;
     }
     return 0;
