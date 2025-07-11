@@ -1,9 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:injectable/injectable.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:rive/rive.dart' show RiveAnimation;
+import 'package:xenotune_flutter_dev/Core/colors.dart';
+import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
+import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Domain/Advertisment/i_ad_repo.dart';
 
 bool isAdActive = true;
@@ -97,7 +103,7 @@ class AdvertismentFunctions implements IAdvertisementRepo {
   }
 
   @override
-  Future<void> showInterstratitialad() async {
+  Future<void> showInterstratitialad(context) async {
     if (isAdActive) {
       final customerInfo = await Purchases.getCustomerInfo();
       final isSubscribed = customerInfo.entitlements.active.containsKey(
@@ -112,6 +118,62 @@ class AdvertismentFunctions implements IAdvertisementRepo {
               ad.fullScreenContentCallback = FullScreenContentCallback(
                 onAdDismissedFullScreenContent: (ad) async {
                   ad.dispose();
+                  Get.showSnackbar(
+                    GetSnackBar(
+                      titleText: SizedBox(
+                        // ignore: use_build_context_synchronouslys
+                        height: kMqHeight(context) * 0.15,
+                        width: double.infinity,
+                        child: Center(
+                          child: RiveAnimation.asset(
+                            'assets/animations/no_internet.riv',
+                          ),
+                        ),
+                      ),
+                      messageText: Column(
+                        children: [
+                          kSizedBoxHeight10,
+                          Center(
+                            child: Text(
+                              'Remove ads now',
+                              style: lexanGiga(
+                                color: kwhite,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          kSizedBoxHeight10,
+                          Center(
+                            child: Text(
+                              'Buy a subscription and enjoy music without ads',
+                              textAlign: TextAlign.center,
+                              style: inter(
+                                color: kwhite,
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      snackPosition: SnackPosition.TOP,
+
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 12,
+                        // ignore: use_build_context_synchronously
+                        vertical: kMqHeight(context) * 0.07,
+                      ),
+                      borderRadius: 18,
+                      duration: Duration(seconds: 5),
+                      snackStyle: SnackStyle.FLOATING,
+                      backgroundGradient: LinearGradient(
+                        colors: [kPrimaryPurple, kblack, kPrimaryBlue],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ),
+                  );
                 },
                 onAdFailedToShowFullScreenContent: (ad, error) {
                   ad.dispose();
