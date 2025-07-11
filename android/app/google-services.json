@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "460199195974",
+    "firebase_url": "https://xenotune-fromx-default-rtdb.firebaseio.com",
     "project_id": "xenotune-fromx",
     "storage_bucket": "xenotune-fromx.firebasestorage.app"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "460199195974-4558t223oggldumaic9tb3lh5qafdg68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xenotunefromx.app",
+            "certificate_hash": "eef89a584bc0663e917821ca671ff6d333625582"
+          }
+        },
         {
           "client_id": "460199195974-qmoftlab7pemigkpgfhia2jqufhp1bi4.apps.googleusercontent.com",
           "client_type": 1,
