@@ -7,4 +7,5 @@ abstract class ISubscriptionRepo {
   Future<bool> purchasePackage(BuildContext context, Package package);
   Future<bool> checkPremium();
   Future<int> checkPremiumDays();
+  Future<void> cancelSubscriptionThroughPlaystore();
 }
