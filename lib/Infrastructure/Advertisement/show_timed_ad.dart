@@ -12,7 +12,7 @@ void startInterstitialAdTimer(BuildContext context) {
 
   InternetConnection().onStatusChange.listen((status) {
     if (status == InternetStatus.connected) {
-      _adTimer = Timer.periodic(Duration(minutes: 2), (timer) {
+      _adTimer = Timer.periodic(Duration(minutes: 15), (timer) {
         AdvertismentFunctions().showInterstratitialad(context);
       });
     }
