@@ -9,12 +9,15 @@ import 'package:get/get.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 
 import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
+import 'package:xenotune_flutter_dev/Presentation/Extra/privacy_policy.dart';
+import 'package:xenotune_flutter_dev/Presentation/Extra/terms_condition.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -125,14 +128,87 @@ class DrawerWidget extends StatelessWidget {
                     style: inter(color: kwhite),
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 500),
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  TermsCondition(),
+                          transitionsBuilder: (
+                            context,
+                            animation,
+                            secondaryAnimation,
+                            child,
+                          ) {
+                            const begin = Offset(1.0, 0.0);
+                            const end = Offset.zero;
+                            final tween = Tween(begin: begin, end: end);
+                            final offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                              position: offsetAnimation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
                 ),
                 ListTile(
                   title: Text('Privacy policy', style: inter(color: kwhite)),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 500),
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) =>
+                                  PrivacyPolicy(),
+                          transitionsBuilder: (
+                            context,
+                            animation,
+                            secondaryAnimation,
+                            child,
+                          ) {
+                            const begin = Offset(1.0, 0.0);
+                            const end = Offset.zero;
+                            final tween = Tween(begin: begin, end: end);
+                            final offsetAnimation = animation.drive(tween);
+
+                            return SlideTransition(
+                              position: offsetAnimation,
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
+                  ),
+                ),
+                ListTile(
+                  title: Text('Suggest a feature', style: inter(color: kwhite)),
+                  trailing: IconButton(
+                    onPressed: () async {
+                      if (await canLaunchUrl(
+                        Uri.parse(
+                          "https://docs.google.com/forms/d/e/1FAIpQLSdbDjbp24ZS6xvrdVuTeyg62aGWjkelAneUxRRY7-Bv1PebTA/viewform?usp=header",
+                        ),
+                      )) {
+                        await launchUrl(
+                          Uri.parse(
+                            "https://docs.google.com/forms/d/e/1FAIpQLSdbDjbp24ZS6xvrdVuTeyg62aGWjkelAneUxRRY7-Bv1PebTA/viewform?usp=header",
+                          ),
+                        );
+                      } else {
+                        throw 'failed to launch url';
+                      }
+                    },
                     icon: Icon(Symbols.arrow_forward_ios, color: kwhite),
                   ),
                 ),
