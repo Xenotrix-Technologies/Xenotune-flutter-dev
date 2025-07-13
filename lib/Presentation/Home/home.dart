@@ -77,38 +77,7 @@ class HomePage extends StatelessWidget {
         body: PopScope(
           canPop: false,
           onPopInvokedWithResult: (didPop, result) {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  backgroundColor: kPrimaryBlueDark,
-
-                  content: Text(
-                    'Are you sure you want to exit?',
-                    style: poppins(color: kwhite),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: kMqHeight(context) * 0.06,
-                    horizontal: kMqWidth(context) * 0.05,
-                  ),
-
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text('No', style: inter(color: kBlueTextColour)),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        SystemNavigator.pop();
-                      },
-                      child: Text('Yes', style: inter(color: kPrimaryPurple)),
-                    ),
-                  ],
-                );
-              },
-            );
+            SystemNavigator.pop();
           },
           child: BlocBuilder<InternetCheckBloc, InternetCheckState>(
             builder: (context, iState) {
