@@ -12,6 +12,8 @@ import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
+import 'package:xenotune_flutter_dev/Presentation/Extra/privacy_policy.dart';
+import 'package:xenotune_flutter_dev/Presentation/Extra/terms_condition.dart';
 import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
 import 'package:xenotune_flutter_dev/Presentation/OnBoardingScreens/Main/onboarding.dart';
 
@@ -251,6 +253,56 @@ class LoginPage extends StatelessWidget {
                       shadowColor: Colors.transparent,
                     ),
                     child: Text('Skip for now', style: inter(color: kwhite)),
+                  ),
+                  Divider(
+                    indent: kMqWidth(context) * 0.2,
+                    endIndent: kMqWidth(context) * 0.2,
+                  ),
+                  kSizedBoxHeight10,
+                  Column(
+                    children: [
+                      Text(
+                        'by continuing you agree to our ',
+                        style: inter(color: kwhite),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => PrivacyPolicy(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Privacy Policy and ',
+                              style: inter(
+                                color: kwhite,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => TermsCondition(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Terms & Conditions',
+                              style: inter(
+                                color: kwhite,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
