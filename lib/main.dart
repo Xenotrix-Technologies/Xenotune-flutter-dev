@@ -15,7 +15,7 @@ import 'package:xenotune_flutter_dev/Application/Timer/timer_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Ultimate_Sound/sounds_control_bloc.dart';
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
-import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/advertisement__repository.dart';
+
 import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/show_timed_ad.dart';
 
 import 'package:xenotune_flutter_dev/Infrastructure/Notification/initilize_notification.dart';
@@ -26,6 +26,7 @@ import 'package:xenotune_flutter_dev/Presentation/App%20Starting%20Screens/Scree
 import 'package:xenotune_flutter_dev/Presentation/Getting%20Started/welcome.dart';
 
 import 'package:xenotune_flutter_dev/Presentation/Loading/loading.dart';
+
 import 'package:xenotune_flutter_dev/firebase_options.dart';
 
 void main() async {
@@ -39,7 +40,7 @@ void main() async {
   await initNotifications();
   MobileAds.instance.initialize();
   await PurchaseApi().init();
-  await AdvertismentFunctions().showAppOpenAd();
+  //await AdvertismentFunctions().showAppOpenAd();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 

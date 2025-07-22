@@ -12,7 +12,7 @@ import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
 import 'package:xenotune_flutter_dev/Domain/Advertisment/i_ad_repo.dart';
 
-bool isAdActive = true;
+bool isAdActive = false;
 
 class AdHelper {
   static String get bannerAdUnitId {
