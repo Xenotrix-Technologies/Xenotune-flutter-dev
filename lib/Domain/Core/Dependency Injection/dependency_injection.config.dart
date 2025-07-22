@@ -27,12 +27,16 @@ import 'package:xenotune_flutter_dev/Application/Ultimate_Sound/sounds_control_b
     as _i346;
 import 'package:xenotune_flutter_dev/Domain/Advertisment/i_ad_repo.dart'
     as _i46;
+import 'package:xenotune_flutter_dev/Domain/Http%20req/i_http_repo.dart'
+    as _i954;
 import 'package:xenotune_flutter_dev/Domain/Login%20functions/i_login.dart'
     as _i73;
 import 'package:xenotune_flutter_dev/Domain/Subscription/i_subscription_repo.dart'
     as _i381;
 import 'package:xenotune_flutter_dev/Infrastructure/Advertisement/advertisement__repository.dart'
     as _i580;
+import 'package:xenotune_flutter_dev/Infrastructure/Http%20request/http_req.dart'
+    as _i494;
 import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart' as _i257;
 import 'package:xenotune_flutter_dev/Infrastructure/SnackBar/snackbar.dart'
     as _i652;
@@ -47,7 +51,6 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i710.IntroMusicBloc>(() => _i710.IntroMusicBloc());
-    gh.factory<_i20.MusicControlBloc>(() => _i20.MusicControlBloc());
     gh.factory<_i932.TimerBloc>(() => _i932.TimerBloc());
     gh.factory<_i346.SoundsControlBloc>(() => _i346.SoundsControlBloc());
     gh.lazySingleton<_i652.SnackBars>(() => _i652.SnackBars());
@@ -55,10 +58,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i374.SubscriptionBloc>(
       () => _i374.SubscriptionBloc(gh<_i381.ISubscriptionRepo>()),
     );
+    gh.lazySingleton<_i954.IHttpRepo>(() => _i494.HttpReq());
     gh.lazySingleton<_i46.IAdvertisementRepo>(
       () => _i580.AdvertismentFunctions(),
     );
     gh.lazySingleton<_i73.ILogin>(() => _i257.LoginRepository());
+    gh.factory<_i20.MusicControlBloc>(
+      () => _i20.MusicControlBloc(gh<_i954.IHttpRepo>()),
+    );
     gh.factory<_i391.InternetCheckBloc>(
       () => _i391.InternetCheckBloc(gh<_i652.SnackBars>()),
     );
