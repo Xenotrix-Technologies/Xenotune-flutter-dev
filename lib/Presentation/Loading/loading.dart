@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Application/Intro%20bloc/intro_music_bloc.dart';
 import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_bloc.dart';
@@ -13,16 +14,19 @@ import 'package:xenotune_flutter_dev/Infrastructure/Notification/schedule_notifi
 import 'package:xenotune_flutter_dev/Presentation/Home/home.dart';
 
 class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({super.key});
+  LoadingScreen({super.key});
+
+  final box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
+    box.write('onboarding_first_time', false);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       return context.read<SplashBloc>().add(Splash());
     });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      return context.read<MusicControlBloc>().add(Load());
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   return context.read<MusicControlBloc>().add(Load());
+    // });
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => context.read<IntroMusicBloc>().add(IntroMusicEvent.pause()),
     );

@@ -42,7 +42,6 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        box.write('onboarding_first_time', false);
                         Navigator.push(
                           context,
                           PageRouteBuilder(
@@ -90,7 +89,6 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Spacious';
                         });
@@ -138,7 +136,6 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Dreamy';
                         });
@@ -186,7 +183,6 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Minimal';
                         });
@@ -234,7 +230,6 @@ class _FeelPageState extends State<FeelPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        box.write('onboarding_first_time', false);
                         setState(() {
                           feel = 'Deep';
                           Navigator.push(
