@@ -84,9 +84,8 @@ class MyAudioHandler extends BaseAudioHandler {
 
   int _trackToggle = 0;
   int? _lastFetchedIndex;
-  bool _canChange = true;
+
   bool _isFetching = false;
-  bool _isRemovingOldest = false;
 
   void initLoopingPlayback() {
     player.currentIndexStream.listen((index) async {
