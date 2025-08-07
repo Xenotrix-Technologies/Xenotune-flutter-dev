@@ -19,7 +19,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MusicControlEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -33,7 +33,7 @@ mixin _$MusicControlEvent {
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -46,7 +46,7 @@ mixin _$MusicControlEvent {
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -129,7 +129,7 @@ abstract class _$$PlayImplCopyWith<$Res> {
     $Res Function(_$PlayImpl) then,
   ) = __$$PlayImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String mood});
+  $Res call({String mood, String animation});
 }
 
 /// @nodoc
@@ -143,13 +143,18 @@ class __$$PlayImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? mood = null}) {
+  $Res call({Object? mood = null, Object? animation = null}) {
     return _then(
       _$PlayImpl(
         mood:
             null == mood
                 ? _value.mood
                 : mood // ignore: cast_nullable_to_non_nullable
+                    as String,
+        animation:
+            null == animation
+                ? _value.animation
+                : animation // ignore: cast_nullable_to_non_nullable
                     as String,
       ),
     );
@@ -159,14 +164,16 @@ class __$$PlayImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PlayImpl implements Play {
-  const _$PlayImpl({required this.mood});
+  const _$PlayImpl({required this.mood, required this.animation});
 
   @override
   final String mood;
+  @override
+  final String animation;
 
   @override
   String toString() {
-    return 'MusicControlEvent.play(mood: $mood)';
+    return 'MusicControlEvent.play(mood: $mood, animation: $animation)';
   }
 
   @override
@@ -174,11 +181,13 @@ class _$PlayImpl implements Play {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlayImpl &&
-            (identical(other.mood, mood) || other.mood == mood));
+            (identical(other.mood, mood) || other.mood == mood) &&
+            (identical(other.animation, animation) ||
+                other.animation == animation));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, mood);
+  int get hashCode => Object.hash(runtimeType, mood, animation);
 
   /// Create a copy of MusicControlEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -191,7 +200,7 @@ class _$PlayImpl implements Play {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -203,13 +212,13 @@ class _$PlayImpl implements Play {
     isPlayingOrPaused,
     required TResult Function(String animation, String id) isMusicChanged,
   }) {
-    return play(mood);
+    return play(mood, animation);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -220,13 +229,13 @@ class _$PlayImpl implements Play {
     TResult? Function(bool isPlaying, bool isbuffering)? isPlayingOrPaused,
     TResult? Function(String animation, String id)? isMusicChanged,
   }) {
-    return play?.call(mood);
+    return play?.call(mood, animation);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -239,7 +248,7 @@ class _$PlayImpl implements Play {
     required TResult orElse(),
   }) {
     if (play != null) {
-      return play(mood);
+      return play(mood, animation);
     }
     return orElse();
   }
@@ -301,9 +310,13 @@ class _$PlayImpl implements Play {
 }
 
 abstract class Play implements MusicControlEvent {
-  const factory Play({required final String mood}) = _$PlayImpl;
+  const factory Play({
+    required final String mood,
+    required final String animation,
+  }) = _$PlayImpl;
 
   String get mood;
+  String get animation;
 
   /// Create a copy of MusicControlEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -353,7 +366,7 @@ class _$LoadImpl implements Load {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -371,7 +384,7 @@ class _$LoadImpl implements Load {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -388,7 +401,7 @@ class _$LoadImpl implements Load {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -509,7 +522,7 @@ class _$OnTapPlayImpl implements OnTapPlay {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -527,7 +540,7 @@ class _$OnTapPlayImpl implements OnTapPlay {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -544,7 +557,7 @@ class _$OnTapPlayImpl implements OnTapPlay {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -665,7 +678,7 @@ class _$PauseImpl implements Pause {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -683,7 +696,7 @@ class _$PauseImpl implements Pause {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -700,7 +713,7 @@ class _$PauseImpl implements Pause {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -819,7 +832,7 @@ class _$StopImpl implements Stop {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -837,7 +850,7 @@ class _$StopImpl implements Stop {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -854,7 +867,7 @@ class _$StopImpl implements Stop {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -975,7 +988,7 @@ class _$StartWaveFormImpl implements StartWaveForm {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -993,7 +1006,7 @@ class _$StartWaveFormImpl implements StartWaveForm {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -1010,7 +1023,7 @@ class _$StartWaveFormImpl implements StartWaveForm {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -1131,7 +1144,7 @@ class _$StopWaveFormImpl implements StopWaveForm {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -1149,7 +1162,7 @@ class _$StopWaveFormImpl implements StopWaveForm {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -1166,7 +1179,7 @@ class _$StopWaveFormImpl implements StopWaveForm {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -1287,7 +1300,7 @@ class _$WaveFormImpl implements WaveForm {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -1305,7 +1318,7 @@ class _$WaveFormImpl implements WaveForm {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -1322,7 +1335,7 @@ class _$WaveFormImpl implements WaveForm {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -1487,7 +1500,7 @@ class _$IsPlayingOrPausedImpl implements IsPlayingOrPaused {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -1505,7 +1518,7 @@ class _$IsPlayingOrPausedImpl implements IsPlayingOrPaused {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -1522,7 +1535,7 @@ class _$IsPlayingOrPausedImpl implements IsPlayingOrPaused {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
@@ -1695,7 +1708,7 @@ class _$IsMusicChangedImpl implements IsMusicChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String mood) play,
+    required TResult Function(String mood, String animation) play,
     required TResult Function() load,
     required TResult Function() onTapPlay,
     required TResult Function() pause,
@@ -1713,7 +1726,7 @@ class _$IsMusicChangedImpl implements IsMusicChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String mood)? play,
+    TResult? Function(String mood, String animation)? play,
     TResult? Function()? load,
     TResult? Function()? onTapPlay,
     TResult? Function()? pause,
@@ -1730,7 +1743,7 @@ class _$IsMusicChangedImpl implements IsMusicChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String mood)? play,
+    TResult Function(String mood, String animation)? play,
     TResult Function()? load,
     TResult Function()? onTapPlay,
     TResult Function()? pause,
