@@ -12,6 +12,7 @@ import 'package:xenotune_flutter_dev/Application/Music_Control/music_control_blo
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
 import 'package:xenotune_flutter_dev/Core/sized_box.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Http%20request/http_req.dart';
 import 'package:xenotune_flutter_dev/Infrastructure/Username%20Update/username_update.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Screens/ultimate_sound.dart';
 import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/Timer/set_timer.dart';
@@ -296,8 +297,13 @@ class HomePage extends StatelessWidget {
                                     child: IconButton(
                                       onPressed: () {
                                         eventAdd.add(
-                                          MusicControlEvent.play(mood: 'focus'),
+                                          MusicControlEvent.play(
+                                            mood: 'focus',
+                                            animation:
+                                                'assets/animations/network_connection.riv',
+                                          ),
                                         );
+                                        // HttpReq().fetchMusic('focus');
                                       },
                                       icon: Icon(
                                         Symbols.stream,
@@ -326,8 +332,16 @@ class HomePage extends StatelessWidget {
                                     child: IconButton(
                                       onPressed: () {
                                         eventAdd.add(
-                                          MusicControlEvent.play(mood: 'relax'),
+                                          MusicControlEvent.play(
+                                            mood: 'relax',
+                                            animation:
+                                                'assets/animations/relax.riv',
+                                          ),
                                         );
+                                        // eventAdd.add(
+                                        //   MusicControlEvent.play(mood: 'relax'),
+                                        // );
+                                        //fetchAndPlayMusic('relax');
                                       },
                                       icon: Icon(
                                         Symbols.sentiment_calm,
@@ -356,8 +370,16 @@ class HomePage extends StatelessWidget {
                                     child: IconButton(
                                       onPressed: () {
                                         eventAdd.add(
-                                          MusicControlEvent.play(mood: 'sleep'),
+                                          MusicControlEvent.play(
+                                            mood: 'focus',
+                                            animation:
+                                                'assets/animations/sleep.riv',
+                                          ),
                                         );
+                                        // eventAdd.add(
+                                        //   MusicControlEvent.play(mood: 'sleep'),
+                                        // );
+                                        // fetchAndPlayMusic('sleep');
                                       },
                                       icon: Icon(
                                         Symbols.sleep,
