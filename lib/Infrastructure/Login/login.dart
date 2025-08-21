@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
+
 import 'package:rive/rive.dart' show RiveAnimation;
 import 'package:xenotune_flutter_dev/Core/colors.dart';
 import 'package:xenotune_flutter_dev/Core/google_fonts.dart';
@@ -14,6 +16,14 @@ import 'package:xenotune_flutter_dev/Presentation/Home/Screens/subscription.dart
 
 @LazySingleton(as: ILogin)
 class LoginRepository implements ILogin {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  @override
+  Future<UserCredential> signInAnonymously() async {
+    final userCredential = await _firebaseAuth.signInAnonymously();
+    return userCredential;
+  }
+
   @override
   Future<UserCredential> loginUsingGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -28,21 +38,38 @@ class LoginRepository implements ILogin {
       idToken: googleAuth.idToken,
     );
 
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
+    final currentUser = _firebaseAuth.currentUser;
 
-  @override
-  Future<void> logout() async {
-    await GoogleSignIn().signOut();
-    await FirebaseAuth.instance.signOut();
-    await Purchases.logOut();
+    if (currentUser != null && currentUser.isAnonymous) {
+      try {
+        final userCredential = await currentUser.linkWithCredential(credential);
+        return userCredential;
+      } on FirebaseAuthException catch (e) {
+        log('Error linking anonymous user: ${e.code}');
+        if (e.code == 'credential-already-in-use') {
+          await currentUser.delete();
+          final userCredential = await _firebaseAuth.signInWithCredential(
+            credential,
+          );
+
+          return userCredential;
+        } else {
+          rethrow;
+        }
+      }
+    } else {
+      final userCredential = await _firebaseAuth.signInWithCredential(
+        credential,
+      );
+      return userCredential;
+    }
   }
 
   @override
   Future<void> checkUserIsLoggedIn(context) async {
     final user = FirebaseAuth.instance.currentUser;
 
-    if (user == null) {
+    if (user != null && user.isAnonymous) {
       Get.showSnackbar(
         GetSnackBar(
           titleText: SizedBox(
@@ -113,5 +140,34 @@ class LoginRepository implements ILogin {
         ),
       );
     }
+  }
+
+  @override
+  Future<UserCredential> signOutAndUseAnonymous() async {
+    await GoogleSignIn().signOut();
+    await _firebaseAuth.signOut();
+
+    final userCredential = await _firebaseAuth.signInAnonymously();
+    return userCredential;
+  }
+
+  bool get isAnonymous => _firebaseAuth.currentUser?.isAnonymous ?? true;
+  bool get isSignedIn =>
+      _firebaseAuth.currentUser != null &&
+      !_firebaseAuth.currentUser!.isAnonymous;
+  User? get currentUser => _firebaseAuth.currentUser;
+}
+
+String getUserIdForBackend() {
+  final user = FirebaseAuth.instance.currentUser;
+
+  if (user == null) return 'user_guest';
+
+  if (user.isAnonymous) {
+    final uid = user.uid;
+    return 'user_${uid.substring(0, 4)}';
+  } else {
+    final name = user.displayName?.replaceAll(' ', '') ?? 'unknown';
+    return 'user_$name';
   }
 }

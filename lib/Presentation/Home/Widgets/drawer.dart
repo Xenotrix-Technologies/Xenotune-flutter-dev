@@ -241,17 +241,16 @@ class DrawerWidget extends StatelessWidget {
                 title: Text('App version\n1.0.0', style: inter(color: kwhite)),
                 trailing: ElevatedButton(
                   onPressed: () async {
-                    if (user != null) {
-                      await LoginRepository().logout();
+                    if (user != null && !user.isAnonymous) {
+                      await LoginRepository().signOutAndUseAnonymous();
 
                       Navigator.pop(context);
                     } else {
-                      Navigator.pop(context);
                       try {
                         final credential =
                             await LoginRepository().loginUsingGoogle();
                         final user = credential.user;
-                        if (user != null) {
+                        if (user != null && !user.isAnonymous) {
                           await Purchases.logIn(user.uid);
                         }
                       } catch (e) {
@@ -311,16 +310,17 @@ class DrawerWidget extends StatelessWidget {
                         );
                         log('Error: $e');
                       }
+                      Navigator.pop(context);
                     }
                   },
                   style: ButtonStyle(
                     backgroundColor:
-                        user != null
+                        user != null && !user.isAnonymous
                             ? WidgetStatePropertyAll(ktransparent)
                             : WidgetStatePropertyAll(kwhite),
                   ),
                   child:
-                      user != null
+                      user != null && !user.isAnonymous
                           ? Text('Log Out', style: inter(color: kwhite))
                           : Text('Log In', style: inter(color: kblack)),
                 ),
