@@ -3,6 +3,7 @@ part of 'music_control_bloc.dart';
 @freezed
 class MusicControlEvent with _$MusicControlEvent {
   const factory MusicControlEvent.play({
+    required BuildContext context,
     required String mood,
     required String animation,
   }) = Play;

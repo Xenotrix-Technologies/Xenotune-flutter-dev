@@ -297,6 +297,7 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         eventAdd.add(
                                           MusicControlEvent.play(
+                                            context: context,
                                             mood: 'focus',
                                             animation:
                                                 'assets/animations/network_connection.riv',
@@ -332,6 +333,7 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         eventAdd.add(
                                           MusicControlEvent.play(
+                                            context: context,
                                             mood: 'relax',
                                             animation:
                                                 'assets/animations/relax.riv',
@@ -370,6 +372,7 @@ class HomePage extends StatelessWidget {
                                       onPressed: () {
                                         eventAdd.add(
                                           MusicControlEvent.play(
+                                            context: context,
                                             mood: 'focus',
                                             animation:
                                                 'assets/animations/sleep.riv',

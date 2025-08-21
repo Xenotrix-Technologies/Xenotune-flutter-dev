@@ -4,11 +4,13 @@ import 'dart:math' show Random;
 
 import 'package:audio_service/audio_service.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:xenotune_flutter_dev/Domain/Audio/music_media_item.dart';
 import 'package:xenotune_flutter_dev/Domain/Core/Dependency%20Injection/dependency_injection.dart';
 import 'package:xenotune_flutter_dev/Domain/Http%20req/i_http_repo.dart';
+import 'package:xenotune_flutter_dev/Presentation/Home/Widgets/snackbar.dart';
 
 part 'music_control_event.dart';
 part 'music_control_state.dart';
@@ -65,22 +67,28 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
     //   await audioHandler.addQueueItems(mediaItems);
     // });
     on<Play>((event, emit) async {
+      showGeneratingSnackbar(event.context);
       final mood = event.mood;
 
       final result = await iHttpRepo.fetchMusic(mood);
 
       result.fold(
-        (f) => emit(
-          state.copyWith(
-            isLoading: false,
-            isPause: true,
-            isError: true,
-            isStoped: false,
-            onTapPlay: false,
-            isPlay: false,
-            animation: event.animation,
-          ),
-        ),
+        (f) async {
+          hideCurrentSnackBar();
+          // ignore: use_build_context_synchronously
+          await showFailedSnackBar(event.context);
+          emit(
+            state.copyWith(
+              isLoading: false,
+              isPause: true,
+              isError: true,
+              isStoped: false,
+              onTapPlay: false,
+              isPlay: false,
+              animation: event.animation,
+            ),
+          );
+        },
         (s) async {
           final MediaItem item = MediaItem(
             id: mood,
@@ -103,6 +111,7 @@ class MusicControlBloc extends Bloc<MusicControlEvent, MusicControlState> {
           );
           await audioHandler.addQueueItem(item);
           //  await audioHandler.playMediaItem(item);
+          await hideCurrentSnackBar();
           await audioHandler.play();
 
           // Future<void> scheduleNextFetch() async {
