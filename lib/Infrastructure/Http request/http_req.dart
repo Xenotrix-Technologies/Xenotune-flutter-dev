@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +9,7 @@ import 'package:injectable/injectable.dart';
 
 import 'package:xenotune_flutter_dev/Domain/Core/Failures/mainfailures.dart';
 import 'package:xenotune_flutter_dev/Domain/Http%20req/i_http_repo.dart';
+import 'package:xenotune_flutter_dev/Infrastructure/Login/login.dart';
 
 // emulator ipL 10.0.2.2
 // device ip: 192.168.1.35
@@ -15,6 +17,8 @@ import 'package:xenotune_flutter_dev/Domain/Http%20req/i_http_repo.dart';
 
 @LazySingleton(as: IHttpRepo)
 class HttpReq implements IHttpRepo {
+  final userId = getUserIdForBackend();
+  final baseUrl = getBaseUrl();
   // @override
   // Future<Either<MainFailures, String>> fetchMusic(String mood) async {
   //   try {
@@ -39,8 +43,8 @@ class HttpReq implements IHttpRepo {
   Future<Either<MainFailures, String>> fetchMusic(String mood) async {
     try {
       final response = await http.post(
-        Uri.parse('http://10.0.2.2:8000/generate'),
-        body: jsonEncode({'user_id': 'user_h4r1', 'mode': mood}),
+        Uri.parse('$baseUrl/generate'),
+        body: jsonEncode({'user_id': userId, 'mode': mood}),
         headers: {'Content-Type': 'application/json'},
       );
 
@@ -71,7 +75,7 @@ class HttpReq implements IHttpRepo {
   Future<Either<MainFailures, String>> fetcAgainhMusic(String nextFile) async {
     try {
       final storageRef = FirebaseStorage.instance.ref().child(
-        'users/user_h4r1/$nextFile',
+        'users/$userId/$nextFile',
       );
 
       final metadata = await storageRef.getMetadata();
@@ -133,7 +137,7 @@ class HttpReq implements IHttpRepo {
   @override
   Future<Either<MainFailures, String>> stopMusic() async {
     try {
-      final response = await http.post(Uri.parse('http://10.0.2.2:8000/stop'));
+      final response = await http.post(Uri.parse('$baseUrl/stop'));
 
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body);
@@ -151,9 +155,7 @@ class HttpReq implements IHttpRepo {
   @override
   Future<void> replaceSlot() async {
     try {
-      final response = await http.post(
-        Uri.parse('http://10.0.2.2:8000/replace'),
-      );
+      final response = await http.post(Uri.parse('$baseUrl/replace'));
       if (response.statusCode == 200) {
         log('Replace request');
       }
@@ -185,3 +187,23 @@ class HttpReq implements IHttpRepo {
 //     log('Failed to fetch or play music: $e');
 //   }
 // }
+
+Future<String> getBaseUrl() async {
+  try {
+    final doc =
+        await FirebaseFirestore.instance
+            .collection('base_url')
+            .doc('Base-Url-fromXforXenotune')
+            .get();
+
+    if (doc.exists) {
+      return doc.data()?['base_url'] ?? 'http://';
+    } else {
+      log('No base URL document found');
+      return 'http://';
+    }
+  } catch (e) {
+    log('Failed to fetch base URL: $e');
+    return 'http://';
+  }
+}
