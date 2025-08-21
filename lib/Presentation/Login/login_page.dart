@@ -223,6 +223,7 @@ class LoginPage extends StatelessWidget {
                   kSizedBoxHeight10,
                   TextButton(
                     onPressed: () async {
+                      await LoginRepository().signInAnonymously();
                       Navigator.push(
                         context,
                         PageRouteBuilder(
