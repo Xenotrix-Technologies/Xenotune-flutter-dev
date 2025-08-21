@@ -31,7 +31,7 @@ import 'package:xenotune_flutter_dev/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await GetStorage.init();
   await configInjectable();
   Get.put(UserController());
@@ -41,8 +41,6 @@ void main() async {
   MobileAds.instance.initialize();
   await PurchaseApi().init();
   //await AdvertismentFunctions().showAppOpenAd();
-
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MainApp());
 }
